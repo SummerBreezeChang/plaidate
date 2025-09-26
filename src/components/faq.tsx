@@ -13,7 +13,7 @@ export default function Faq() {
 					Frequently Asked Questions
 				</h2>
 				<p className="sm:text-base text-sm text-muted-foreground text-center">
-					Everything you need to know about the template. Find answers to common
+					Everything you need to know about Plaidate. Find answers to common
 					questions.
 				</p>
 			</div>

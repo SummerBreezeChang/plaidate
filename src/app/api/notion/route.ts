@@ -10,13 +10,13 @@ export async function POST(request: Request) {
         database_id: `${process.env.NOTION_DB}`,
       },
       properties: {
-        Email: {
+        "Email Address": {
           type: "email",
           email: body?.email,
         },
         Name: {
-          type: "title",
-          title: [
+          type: "rich_text",
+          rich_text: [
             {
               type: "text",
               text: {

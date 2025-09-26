@@ -25,7 +25,7 @@ export default function Header() {
 			>
 				<Button variant="secondary">
 					<NotionLogo />
-					Notion DB Sample
+					View Waitlist
 				</Button>
 			</Link>
 

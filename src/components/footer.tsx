@@ -27,7 +27,7 @@ export default function Footer() {
       <div>
         <p className="text-sm text-muted-foreground">
           &copy; {new Date().getFullYear()} Crafted by{" "}
-          <Link href="https://idee8.agency" className="font-semibold text-foreground">Idee8</Link>
+          <Link href="https://plaidate.com" className="font-semibold text-foreground">Plaidate</Link>
         </p>
       </div>
     </footer>
