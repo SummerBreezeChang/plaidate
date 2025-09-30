@@ -4,6 +4,16 @@ import { notion } from "~/lib/notion";
 
 export async function POST(request: Request) {
   const body = await request.json();
+  
+  // Check if Notion is configured
+  if (!process.env.NOTION_SECRET || !process.env.NOTION_DB) {
+    console.log("Notion not configured, skipping database insertion");
+    return NextResponse.json(
+      { message: "Notion not configured, email not saved to database", success: true },
+      { status: 200 }
+    );
+  }
+
   try {
     const response = await notion.pages.create({
       parent: {
@@ -40,6 +50,7 @@ export async function POST(request: Request) {
       { status: 200 }
     );
   } catch (error) {
+    console.error("Notion API error:", error);
     return NextResponse.json(
       { error: "Failed to add email to Notion", success: false },
       { status: 500 }

@@ -163,39 +163,37 @@ export default function WaitlistForm({ onSuccessChange }: FormProps) {
         </motion.div>
       ) : (
         <form onSubmit={handleSubmit} className="relative">
-          <div className="bg-[#F9F9F9] border border-[#D8D8D8] rounded-lg p-6 w-full" style={{borderWidth: '1.09px', minWidth: '800px'}}>
-            <div className="flex flex-col md:flex-row gap-4 items-center w-full">
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Name"
-                className="bg-white border-0 text-[#2E4F21] px-4 py-3 rounded-lg focus:outline-1 transition-all duration-300 focus:outline-offset-2 focus:outline-[#2E4F21] flex-1"
-                style={{borderRadius: '8px'}}
-                disabled={loading}
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Email"
-                className="bg-white border-0 text-[#2E4F21] px-4 py-3 rounded-lg focus:outline-1 transition-all duration-300 focus:outline-offset-2 focus:outline-[#2E4F21] flex-1"
-                style={{borderRadius: '8px'}}
-                disabled={loading}
-                required
-              />
-              <button
-                type="submit"
-                className="font-semibold bg-[#2E4F21] text-white px-6 py-3 rounded-lg hover:bg-[#27451c] transition-all disabled:opacity-50 whitespace-nowrap flex-shrink-0"
-                style={{borderRadius: '8px'}}
-                disabled={loading}
-              >
-                {loading ? "Joining..." : "Join Plaidate Waitlist"}
-              </button>
-            </div>
+          <div className="flex flex-col md:flex-row gap-4 items-center w-full">
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Name"
+              className="bg-white border border-[#D8D8D8] text-[#2E4F21] px-4 py-3 rounded-lg focus:outline-1 transition-all duration-300 focus:outline-offset-2 focus:outline-[#2E4F21] flex-1"
+              style={{borderRadius: '8px'}}
+              disabled={loading}
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Email"
+              className="bg-white border border-[#D8D8D8] text-[#2E4F21] px-4 py-3 rounded-lg focus:outline-1 transition-all duration-300 focus:outline-offset-2 focus:outline-[#2E4F21] flex-1"
+              style={{borderRadius: '8px'}}
+              disabled={loading}
+              required
+            />
+            <button
+              type="submit"
+              className="font-semibold bg-[#2E4F21] text-white px-6 py-3 rounded-lg hover:bg-[#27451c] transition-all disabled:opacity-50 whitespace-nowrap flex-shrink-0"
+              style={{borderRadius: '8px'}}
+              disabled={loading}
+            >
+              {loading ? "Joining..." : "Join Plaidate Waitlist"}
+            </button>
           </div>
         </form>
       )}

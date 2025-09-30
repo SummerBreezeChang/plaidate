@@ -13,14 +13,15 @@ export async function POST(request: NextRequest) {
     }
 
     const { data, error } = await resend.emails.send({
-      from: 'Plaidate <onboarding@resend.dev>',
-      to: [email],
-      subject: 'Welcome to Plaidate Waitlist!',
+      from: 'onboarding@resend.dev',
+      to: ['hisummerchang@gmail.com'], // Send to your registered email for testing
+      subject: `New Waitlist Signup: ${firstname} (${email})`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-          <h1 style="color: #2E4F21;">Welcome to Plaidate, ${firstname}!</h1>
-          <p>Thank you for joining our waitlist. We're excited to have you on board!</p>
-          <p>We'll notify you as soon as Plaidate is available for early access.</p>
+          <h1 style="color: #2E4F21;">New Plaidate Waitlist Signup!</h1>
+          <p><strong>Name:</strong> ${firstname}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p>This person has joined the Plaidate waitlist.</p>
           <p>Best regards,<br>The Plaidate Team</p>
         </div>
       `,
