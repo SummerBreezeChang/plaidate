@@ -155,7 +155,7 @@ export default function WaitlistForm({ onSuccessChange }: FormProps) {
         >
           <button
             onClick={resetForm}
-            className="bg-primary text-primary-foreground px-6 py-2 rounded-[12] font-semibold hover:bg-primary/90 transition-all"
+            className="bg-[#3D98D6] text-[#373737] px-6 py-2 rounded-[12] font-semibold hover:bg-[#3588c0] transition-all"
             type="button"
           >
             Join with another email
@@ -163,14 +163,14 @@ export default function WaitlistForm({ onSuccessChange }: FormProps) {
         </motion.div>
       ) : (
         <form onSubmit={handleSubmit} className="relative">
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-stretch w-full">
+          <div className="flex flex-col md:flex-row gap-3 md:gap-4 items-stretch md:items-center w-full">
             <input
               type="text"
               name="name"
               value={formData.name}
               onChange={handleChange}
               placeholder="Name"
-              className="bg-background border border-border text-foreground px-3 sm:px-4 py-3 rounded-lg focus:outline-1 transition-all duration-300 focus:outline-offset-2 focus:outline-ring flex-1"
+              className="bg-white border border-[#D8D8D8] text-[#2E4F21] px-4 py-3 rounded-lg focus:outline-1 transition-all duration-300 focus:outline-offset-2 focus:outline-[#2E4F21] flex-1 w-full"
               style={{borderRadius: '8px'}}
               disabled={loading}
               required
@@ -181,14 +181,14 @@ export default function WaitlistForm({ onSuccessChange }: FormProps) {
               value={formData.email}
               onChange={handleChange}
               placeholder="Email"
-              className="bg-background border border-border text-foreground px-3 sm:px-4 py-3 rounded-lg focus:outline-1 transition-all duration-300 focus:outline-offset-2 focus:outline-ring flex-1"
+              className="bg-white border border-[#D8D8D8] text-[#2E4F21] px-4 py-3 rounded-lg focus:outline-1 transition-all duration-300 focus:outline-offset-2 focus:outline-[#2E4F21] flex-1 w-full"
               style={{borderRadius: '8px'}}
               disabled={loading}
               required
             />
             <button
               type="submit"
-              className="font-semibold bg-primary text-primary-foreground px-4 sm:px-6 py-3 rounded-lg hover:bg-primary/90 transition-all disabled:opacity-50 text-sm sm:text-base flex-1 sm:flex-shrink-0"
+              className="font-semibold bg-[#2E4F21] text-white px-4 md:px-6 py-3 rounded-lg hover:bg-[#27451c] transition-all disabled:opacity-50 whitespace-nowrap flex-shrink-0 w-full md:w-auto"
               style={{borderRadius: '8px'}}
               disabled={loading}
             >

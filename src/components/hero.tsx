@@ -31,14 +31,14 @@ export default function Hero({ waitlistPeople }: { waitlistPeople: number }) {
               ? "You've successfully secured your spot.We'll hit you up the moment it's your turn to dive in"
               : "A family-friendly platform for parents of K–5 children to easily organize, discover, and join playdates — while streamlining communication, payments, and activity planning."}
           </p>
-          <div id="waitlist" className="w-full max-w-xl mt-6 scroll-mt-16">
+          <div id="waitlist" className="w-full max-w-xl mt-6 lg:mt-10 scroll-mt-16">
             <Form onSuccessChange={setIsSuccess} />
             <Countdown className="mt-3" period={new Date(Date.now() + 32 * 24 * 60 * 60 * 1000)} />
           </div>
         </div>
         <div className="w-full block lg:block order-1 lg:order-2">
           <div className="flex justify-center lg:justify-end w-full">
-            <div className="w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] lg:w-[500px] h-auto scale-[1.0] sm:scale-[1.1] md:scale-[1.2] lg:scale-[1.4] lg:origin-top-right">
+            <div className="w-full max-w-[350px] sm:max-w-[400px] md:max-w-[500px] lg:w-[500px] h-auto scale-[1.0] sm:scale-[1.1] md:scale-[1.2] lg:scale-[1.4] lg:origin-top-right">
               <img src="/avatars/HeroImage.png" alt="Children playing outdoors" className="w-full h-auto rounded-xl" />
             </div>
           </div>

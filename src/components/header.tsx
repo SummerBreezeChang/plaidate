@@ -12,7 +12,7 @@ export default function Header() {
     return (
         <header
             className={cn(
-                "px-4 sticky top-0 z-50 h-[100px] bg-[#F9F9F9] flex items-center scale-[1.05] md:scale-[1.1] origin-top",
+                "px-4 sticky top-0 z-50 h-[80px] md:h-[100px] bg-[#F9F9F9] flex items-center scale-[1] md:scale-[1.05] origin-top",
                 scrolled &&
                     "md:backdrop-blur-none backdrop-blur-sm",
             )}
@@ -21,7 +21,7 @@ export default function Header() {
                 <Link href="/" aria-label="Plaidate home" className="flex items-center">
                     <Logo />
                 </Link>
-                <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 text-xs md:text-sm px-2 md:px-3 py-2">
+                <Button asChild className="bg-[#2E4F21] text-[#FFFDF4] hover:bg-[#27451c] text-xs md:text-sm px-2 md:px-3 py-2">
                     <Link href="#waitlist">
                         <span className="hidden sm:inline">Join Plaidate Waitlist</span>
                         <span className="sm:hidden">Join Waitlist</span>
