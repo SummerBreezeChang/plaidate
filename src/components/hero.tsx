@@ -13,7 +13,7 @@ export default function Hero({ waitlistPeople }: { waitlistPeople: number }) {
   return (
     <div className="mx-auto w-full max-w-screen-2xl px-4 -mt-8 bg-[#FFFDF4] min-h-screen">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 items-start lg:items-start justify-center">
-        <div className="flex flex-col items-start justify-start gap-4 mb-4 order-2 lg:order-1">
+        <div className="flex flex-col items-start justify-start gap-4 mb-4 lg:mb-6 order-2 lg:order-1">
           <div className="flex items-center gap-4 rounded-full border border-border px-4 py-1 relative">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F6D636] opacity-75" />
