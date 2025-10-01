@@ -163,7 +163,7 @@ export default function WaitlistForm({ onSuccessChange }: FormProps) {
         </motion.div>
       ) : (
         <form onSubmit={handleSubmit} className="relative">
-          <div className="flex flex-col md:flex-row gap-3 md:gap-4 items-stretch md:items-center w-full">
+          <div className="flex flex-col md:flex-row gap-3 md:gap-4 items-stretch md:items-center w-full max-w-full">
             <input
               type="text"
               name="name"
@@ -188,7 +188,7 @@ export default function WaitlistForm({ onSuccessChange }: FormProps) {
             />
             <button
               type="submit"
-              className="font-semibold bg-[#2E4F21] text-white px-4 md:px-6 py-3 rounded-lg hover:bg-[#27451c] transition-all disabled:opacity-50 whitespace-nowrap flex-shrink-0 w-full md:w-auto"
+              className="font-semibold bg-[#2E4F21] text-white px-4 md:px-6 py-3 rounded-lg hover:bg-[#27451c] transition-all disabled:opacity-50 whitespace-nowrap flex-shrink-0 w-full md:w-auto min-w-fit"
               style={{borderRadius: '8px'}}
               disabled={loading}
             >

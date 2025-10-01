@@ -124,4 +124,23 @@
     @apply bg-background text-foreground font-sans;
     background-color: #FFFDF4 !important;
   }
+  /* Force mobile color consistency */
+  @media (max-width: 768px) {
+    html, body {
+      background-color: #FFFDF4 !important;
+    }
+    .bg-background {
+      background-color: #FFFDF4 !important;
+    }
+    main, div {
+      background-color: #FFFDF4 !important;
+    }
+  }
+  
+  /* Additional mobile color fixes */
+  @media (max-width: 1024px) {
+    html, body, main, div[class*="bg-"] {
+      background-color: #FFFDF4 !important;
+    }
+  }
 }
