@@ -29,9 +29,9 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" className={`${workSans.variable} h-full`} suppressHydrationWarning>
+		<html lang="en" className={`${workSans.variable} h-full bg-[#FFFDF4]`} suppressHydrationWarning>
             <body
-                className={`${workSans.variable} ${geistMono.variable} antialiased flex flex-col h-full`}
+                className={`${workSans.variable} ${geistMono.variable} antialiased flex flex-col h-full bg-[#FFFDF4]`}
             >
 				<ThemeProvider>
 					<Header />
