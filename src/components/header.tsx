@@ -12,7 +12,7 @@ export default function Header() {
     return (
         <header
             className={cn(
-                "px-4 sticky top-0 z-50 h-[100px] bg-[#F9F9F9] flex items-center",
+                "px-4 sticky top-0 z-50 h-[100px] bg-[#CBCBCB] flex items-center",
                 scrolled &&
                     "md:backdrop-blur-none backdrop-blur-sm",
             )}

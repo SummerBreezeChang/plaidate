@@ -155,7 +155,7 @@ export default function WaitlistForm({ onSuccessChange }: FormProps) {
         >
           <button
             onClick={resetForm}
-            className="bg-[#3D98D6] text-[#373737] px-6 py-2 rounded-[12] font-semibold hover:bg-[#3588c0] transition-all"
+            className="bg-[#3D98D6] text-[#373737] px-6 py-2 rounded-[12] font-semibold hover:bg-[#3588c0] transition-all hidden sm:block"
             type="button"
           >
             Join with another email
