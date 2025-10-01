@@ -1,21 +1,44 @@
 import { NextResponse } from "next/server"
+import { Client } from "@notionhq/client"
+
+const notion = new Client({
+  auth: process.env.NOTION_SECRET,
+})
 
 export async function POST(request: Request) {
   try {
-    const { email } = await request.json()
+    const { name, email } = await request.json()
 
-    if (!email || !email.includes("@")) {
-      return NextResponse.json({ error: "Please provide a valid email address" }, { status: 400 })
+    if (!name || !email || !email.includes("@")) {
+      return NextResponse.json({ error: "Please provide a valid name and email address" }, { status: 400 })
     }
 
-    // TODO: Add your email service integration here
-    // For now, we'll just log it
-    console.log("[v0] New waitlist signup:", email)
+    await notion.pages.create({
+      parent: {
+        database_id: process.env.NOTION_DB as string,
+      },
+      properties: {
+        Name: {
+          title: [
+            {
+              text: {
+                content: name,
+              },
+            },
+          ],
+        },
+        Email: {
+          email: email,
+        },
+        "Joined Date": {
+          date: {
+            start: new Date().toISOString(),
+          },
+        },
+      },
+    })
 
-    // You can integrate with:
-    // - Resend (using RESEND_API_KEY env var)
-    // - Notion (using NOTION_SECRET and NOTION_DB env vars)
-    // - Or any other service
+    console.log("[v0] New waitlist signup added to Notion:", { name, email })
 
     return NextResponse.json({ success: true, message: "Successfully joined the waitlist!" }, { status: 200 })
   } catch (error) {
