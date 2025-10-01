@@ -124,22 +124,40 @@
     @apply bg-background text-foreground font-sans;
     background-color: #FFFDF4 !important;
   }
+  
+  /* Force background on all elements */
+  html, body, #__next, main, div {
+    background-color: #FFFDF4 !important;
+  }
   /* Force mobile color consistency */
   @media (max-width: 768px) {
-    html, body {
+    html, body, main, div, section, article, header, footer {
       background-color: #FFFDF4 !important;
     }
-    .bg-background {
+    .bg-background, .bg-white, .bg-gray-50, .bg-gray-100 {
       background-color: #FFFDF4 !important;
     }
-    main, div {
+    * {
+      background-color: #FFFDF4 !important;
+    }
+    *:not([class*="bg-"]) {
       background-color: #FFFDF4 !important;
     }
   }
   
   /* Additional mobile color fixes */
   @media (max-width: 1024px) {
-    html, body, main, div[class*="bg-"] {
+    html, body, main, div, section, article, header, footer {
+      background-color: #FFFDF4 !important;
+    }
+    *[class*="bg-"] {
+      background-color: #FFFDF4 !important;
+    }
+  }
+  
+  /* Force all elements on mobile */
+  @media (max-width: 768px) {
+    * {
       background-color: #FFFDF4 !important;
     }
   }
