@@ -163,7 +163,7 @@ export default function WaitlistForm({ onSuccessChange }: FormProps) {
         </motion.div>
       ) : (
         <form onSubmit={handleSubmit} className="relative">
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center w-full">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center w-full max-w-full overflow-hidden">
             <input
               type="text"
               name="name"
