@@ -26,7 +26,7 @@ export async function POST(request: Request) {
       },
       properties: {
         Name: {
-          title: [
+          rich_text: [
             {
               text: {
                 content: name,
@@ -34,10 +34,10 @@ export async function POST(request: Request) {
             },
           ],
         },
-        Email: {
+        "Email Address": {
           email: email,
         },
-        "Joined Date": {
+        Created: {
           date: {
             start: new Date().toISOString(),
           },
@@ -63,7 +63,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error:
-            "Database properties don't match. Ensure your Notion database has 'Name' (title), 'Email' (email), and 'Joined Date' (date) properties.",
+            "Database properties don't match. Ensure your Notion database has 'Name' (text), 'Email Address' (email), and 'Created' (date) properties.",
         },
         { status: 500 },
       )
