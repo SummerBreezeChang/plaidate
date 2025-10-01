@@ -21,13 +21,6 @@ export const metadata: Metadata = {
 	title: "Plaidate — Join the Waitlist",
 	description:
 		"Be among the first to experience the future of AI-powered productivity. Join the Plaidate waitlist to get notified when we launch.",
-	icons: {
-		icon: [
-			{ url: '/icon.svg', type: 'image/svg+xml' },
-			{ url: '/favicon.ico', sizes: 'any' }
-		],
-		apple: '/icon.svg',
-	},
 };
 
 export default function RootLayout({
@@ -36,15 +29,9 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" className={`${workSans.variable} h-full bg-[#FFFDF4]`} style={{backgroundColor: '#FFFDF4'}} suppressHydrationWarning>
-            <head>
-                <link rel="icon" href="/favicon.ico" sizes="any" />
-                <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-                <link rel="apple-touch-icon" href="/icon.svg" />
-            </head>
+		<html lang="en" className={`${workSans.variable} h-full`} suppressHydrationWarning>
             <body
                 className={`${workSans.variable} ${geistMono.variable} antialiased flex flex-col h-full bg-[#FFFDF4]`}
-                style={{backgroundColor: '#FFFDF4'}}
             >
 				<ThemeProvider>
 					<Header />
