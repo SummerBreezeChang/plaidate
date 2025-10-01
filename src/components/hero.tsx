@@ -36,10 +36,16 @@ export default function Hero({ waitlistPeople }: { waitlistPeople: number }) {
             <Countdown className="mt-3" period={new Date(Date.now() + 32 * 24 * 60 * 60 * 1000)} />
           </div>
         </div>
-        <div className="w-full block lg:block order-1 lg:order-2">
+        <div className="w-full block lg:block order-1 lg:order-2 px-2 sm:px-4 lg:px-0">
           <div className="flex justify-center lg:justify-end w-full">
-            <div className="w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] lg:w-[500px] h-auto scale-[1.0] sm:scale-[1.1] md:scale-[1.2] lg:scale-[1.4] lg:origin-top-right">
-              <img src="/avatars/HeroImage.png" alt="Children playing outdoors" className="w-full h-auto rounded-xl" />
+            <div className="w-full max-w-[280px] sm:max-w-[350px] md:max-w-[450px] lg:max-w-[600px] xl:max-w-[700px] h-auto scale-[1.1] sm:scale-[1.2] md:scale-[1.3] lg:scale-[1.5] xl:scale-[1.6] lg:origin-top-right overflow-hidden">
+              <img 
+                src="/avatars/HeroImage.png" 
+                alt="Children playing outdoors" 
+                className="w-full h-auto rounded-xl object-cover transition-transform duration-300 hover:scale-105" 
+                style={{ maxWidth: '100%', height: 'auto' }}
+                loading="eager"
+              />
             </div>
           </div>
         </div>
