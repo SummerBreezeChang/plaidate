@@ -13,6 +13,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Please provide a valid name and email address" }, { status: 400 })
     }
 
+    if (!process.env.NOTION_SECRET || !process.env.NOTION_DB) {
+      console.error("[v0] Missing Notion environment variables")
+      return NextResponse.json({ error: "Server configuration error" }, { status: 500 })
+    }
+
+    console.log("[v0] Attempting to add to Notion database:", process.env.NOTION_DB)
+
     await notion.pages.create({
       parent: {
         database_id: process.env.NOTION_DB as string,
@@ -38,11 +45,30 @@ export async function POST(request: Request) {
       },
     })
 
-    console.log("[v0] New waitlist signup added to Notion:", { name, email })
+    console.log("[v0] Successfully added to Notion:", { name, email })
 
     return NextResponse.json({ success: true, message: "Successfully joined the waitlist!" }, { status: 200 })
-  } catch (error) {
-    console.error("[v0] Waitlist error:", error)
-    return NextResponse.json({ error: "Failed to join waitlist" }, { status: 500 })
+  } catch (error: any) {
+    console.error("[v0] Notion API error:", {
+      message: error.message,
+      code: error.code,
+      status: error.status,
+    })
+
+    if (error.code === "object_not_found") {
+      return NextResponse.json({ error: "Database not found. Please check your Notion database ID." }, { status: 500 })
+    }
+
+    if (error.code === "validation_error") {
+      return NextResponse.json(
+        {
+          error:
+            "Database properties don't match. Ensure your Notion database has 'Name' (title), 'Email' (email), and 'Joined Date' (date) properties.",
+        },
+        { status: 500 },
+      )
+    }
+
+    return NextResponse.json({ error: "Failed to join waitlist. Please try again." }, { status: 500 })
   }
 }
