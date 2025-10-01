@@ -31,7 +31,7 @@ export default function RootLayout({
 	return (
 		<html lang="en" className={`${workSans.variable} h-full`} suppressHydrationWarning>
             <body
-                className={`${workSans.variable} ${geistMono.variable} antialiased flex flex-col h-full`}
+                className={`${workSans.variable} ${geistMono.variable} antialiased flex flex-col h-full bg-[#FFFDF4]`}
             >
 				<ThemeProvider>
 					<Header />

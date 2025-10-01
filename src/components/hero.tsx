@@ -11,9 +11,9 @@ export default function Hero({ waitlistPeople }: { waitlistPeople: number }) {
   const [isSuccess, setIsSuccess] = useState(false);
 
   return (
-    <div className="mx-auto w-full max-w-screen-2xl px-4 bg-[#FFFDF4] min-h-screen">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start lg:items-start justify-center">
-        <div className="flex flex-col items-start justify-start gap-4 mb-6 order-2 lg:order-1">
+    <div className="mx-auto w-full max-w-screen-2xl px-4 sm:px-6 bg-[#FFFDF4] min-h-screen">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start lg:items-start justify-center py-4 sm:py-8">
+        <div className="flex flex-col items-start justify-start gap-3 sm:gap-4 mb-4 sm:mb-6 order-2 lg:order-1 bg-[#FFFDF4]">
           <div className="flex items-center gap-4 rounded-full border border-border px-4 py-1 relative">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F6D636] opacity-75" />
@@ -23,23 +23,29 @@ export default function Hero({ waitlistPeople }: { waitlistPeople: number }) {
               available in early {year}
             </p>
           </div>
-          <h2 className="text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px] xl:text-[80px] leading-[0.95] font-bold text-foreground">
+          <h2 className="text-[28px] sm:text-[40px] md:text-[50px] lg:text-[60px] xl:text-[80px] leading-[0.95] font-bold text-foreground mb-2 sm:mb-4">
             {isSuccess ? "You're on the waitlist" : "Join Plaidate"}
           </h2>
-          <p className="text-base text-foreground text-left max-w-xl">
+          <p className="text-sm sm:text-base text-foreground text-left max-w-xl mb-4 sm:mb-6">
             {isSuccess
               ? "You've successfully secured your spot.We'll hit you up the moment it's your turn to dive in"
               : "A family-friendly platform for parents of K–5 children to easily organize, discover, and join playdates — while streamlining communication, payments, and activity planning."}
           </p>
-          <div id="waitlist" className="w-full max-w-xl mt-2 scroll-mt-24">
+          <div id="waitlist" className="w-full max-w-xl mt-0 sm:mt-2 scroll-mt-24">
             <Form onSuccessChange={setIsSuccess} />
             <Countdown className="mt-3" period={new Date(Date.now() + 32 * 24 * 60 * 60 * 1000)} />
           </div>
         </div>
-        <div className="w-full block lg:block order-1 lg:order-2">
-          <div className="flex justify-center lg:justify-end w-full">
-            <div className="w-full max-w-[280px] sm:max-w-[350px] md:max-w-[400px] lg:max-w-[500px] h-auto scale-[0.9] sm:scale-[1.0] md:scale-[1.1] lg:scale-[1.2] lg:origin-top-right">
-              <img src="/avatars/HeroImage.png" alt="Children playing outdoors" className="w-full h-auto rounded-xl shadow-lg" />
+        <div className="w-full block lg:block order-1 lg:order-2 mb-4 sm:mb-6 lg:mb-0">
+          <div className="flex justify-center lg:justify-end w-full px-2 sm:px-0">
+            <div className="w-full max-w-[300px] sm:max-w-[380px] md:max-w-[450px] lg:max-w-[500px] h-auto scale-[1.0] sm:scale-[1.0] md:scale-[1.1] lg:scale-[1.2] lg:origin-top-right">
+              <img 
+                src="/avatars/HeroImage.png" 
+                alt="Children playing outdoors" 
+                className="w-full h-auto rounded-xl shadow-lg object-cover" 
+                style={{minHeight: '200px'}}
+                loading="eager"
+              />
             </div>
           </div>
         </div>

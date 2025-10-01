@@ -170,7 +170,7 @@ export default function WaitlistForm({ onSuccessChange }: FormProps) {
               value={formData.name}
               onChange={handleChange}
               placeholder="Name"
-              className="bg-white border border-[#D8D8D8] text-[#2E4F21] px-4 py-3 sm:py-3 rounded-lg focus:outline-1 transition-all duration-300 focus:outline-offset-2 focus:outline-[#2E4F21] flex-1 w-full text-base"
+              className="bg-white border-2 border-[#D8D8D8] text-[#2E4F21] px-4 py-4 sm:py-3 rounded-lg focus:outline-none focus:border-[#2E4F21] focus:ring-2 focus:ring-[#2E4F21] focus:ring-opacity-20 transition-all duration-300 flex-1 w-full text-base min-h-[48px]"
               style={{borderRadius: '8px'}}
               disabled={loading}
               required
@@ -181,14 +181,14 @@ export default function WaitlistForm({ onSuccessChange }: FormProps) {
               value={formData.email}
               onChange={handleChange}
               placeholder="Email"
-              className="bg-white border border-[#D8D8D8] text-[#2E4F21] px-4 py-3 sm:py-3 rounded-lg focus:outline-1 transition-all duration-300 focus:outline-offset-2 focus:outline-[#2E4F21] flex-1 w-full text-base"
+              className="bg-white border-2 border-[#D8D8D8] text-[#2E4F21] px-4 py-4 sm:py-3 rounded-lg focus:outline-none focus:border-[#2E4F21] focus:ring-2 focus:ring-[#2E4F21] focus:ring-opacity-20 transition-all duration-300 flex-1 w-full text-base min-h-[48px]"
               style={{borderRadius: '8px'}}
               disabled={loading}
               required
             />
             <button
               type="submit"
-              className="font-semibold bg-[#2E4F21] text-white px-4 sm:px-6 py-3 sm:py-3 rounded-lg hover:bg-[#27451c] transition-all disabled:opacity-50 whitespace-nowrap flex-shrink-0 w-full sm:w-auto text-base"
+              className="font-semibold bg-[#2E4F21] text-white px-6 sm:px-6 py-4 sm:py-3 rounded-lg hover:bg-[#27451c] transition-all disabled:opacity-50 whitespace-nowrap flex-shrink-0 w-full sm:w-auto text-base min-h-[48px]"
               style={{borderRadius: '8px'}}
               disabled={loading}
             >
