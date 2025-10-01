@@ -52,7 +52,7 @@ export function WaitlistForm() {
             onChange={(e) => setName(e.target.value)}
             required
             disabled={status === "loading"}
-            className="h-12 text-base bg-background"
+            className="h-12 text-base bg-background text-foreground"
           />
           <Input
             type="email"
@@ -61,7 +61,7 @@ export function WaitlistForm() {
             onChange={(e) => setEmail(e.target.value)}
             required
             disabled={status === "loading"}
-            className="h-12 text-base bg-background"
+            className="h-12 text-base bg-background text-foreground"
           />
         </div>
         <Button

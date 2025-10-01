@@ -8,15 +8,13 @@ export default function Home() {
   return (
     <main className="min-h-screen flex flex-col bg-background">
       {/* Header */}
-      <header className="w-full px-6 md:px-12 flex items-center justify-between border-b border-none bg-background py-3">
-        <Image src="/plai-logo.png" alt="Plai Logo" width={80} height={40} priority className="w-auto h-[88px]" />
-        <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6">
-          Join Plaidate Waitlist
-        </Button>
+      <header className="w-full px-6 md:px-12 flex items-center border-b border-none py-3 justify-center bg-primary-foreground">
+        <Image src="/plai-logo.png" alt="Plai Logo" width={80} height={40} priority className="w-auto h-[109px]" />
+        
       </header>
 
       {/* Hero Section */}
-      <section className="w-full px-6 md:px-12 py-16 md:py-24 text-background border-none bg-primary-foreground">
+      <section className="w-full px-6 md:px-12 py-16 md:py-24 text-background border-none bg-primary-foreground md:pt-[52px]">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           {/* Left: Form */}
           <div className="space-y-4">
@@ -42,7 +40,7 @@ export default function Home() {
               src="/hero-image.png"
               alt="Children playing together outdoors"
               fill
-              className="object-cover"
+              className="object-cover border-none border-0"
               priority
             />
           </div>
@@ -90,13 +88,13 @@ export default function Home() {
       {/* Footer */}
       <footer className="w-full py-12 px-6 md:px-12 border-t bg-secondary">
         <div className="max-w-7xl mx-auto space-y-6">
-          <div className="flex gap-4 text-left flex-row items-start justify-start">
+          <div className="flex gap-4 text-left flex-row items-start justify-center">
             <Image src="/plai-logo.png" alt="Plai Logo" width={80} height={40} className="w-auto h-24 text-left" />
           </div>
-          <p className="max-w-md text-primary-foreground text-2xl">
+          <p className="max-w-md mx-auto text-primary-foreground text-xl text-center">
             Build lasting connections and friendships within your local parenting community.
           </p>
-          <p className="text-xs text-primary-foreground">© 2025 Plaidate. All Rights Reserved.</p>
+          <p className="text-xs text-primary-foreground text-center">© 2025 Plaidate. All Rights Reserved.</p>
         </div>
       </footer>
     </main>
