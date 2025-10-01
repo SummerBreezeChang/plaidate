@@ -163,14 +163,14 @@ export default function WaitlistForm({ onSuccessChange }: FormProps) {
         </motion.div>
       ) : (
         <form onSubmit={handleSubmit} className="relative">
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center w-full max-w-full overflow-hidden">
+          <div className="flex flex-col sm:flex-row gap-4 items-center w-full">
             <input
               type="text"
               name="name"
               value={formData.name}
               onChange={handleChange}
               placeholder="Name"
-              className="bg-white border border-[#D8D8D8] text-[#2E4F21] px-4 py-3 rounded-lg focus:outline-1 transition-all duration-300 focus:outline-offset-2 focus:outline-[#2E4F21] flex-1"
+              className="bg-white border border-[#D8D8D8] text-[#2E4F21] px-4 py-3 rounded-lg focus:outline-1 transition-all duration-300 focus:outline-offset-2 focus:outline-[#2E4F21] flex-1 w-full"
               style={{borderRadius: '8px'}}
               disabled={loading}
               required
@@ -181,14 +181,14 @@ export default function WaitlistForm({ onSuccessChange }: FormProps) {
               value={formData.email}
               onChange={handleChange}
               placeholder="Email"
-              className="bg-white border border-[#D8D8D8] text-[#2E4F21] px-4 py-3 rounded-lg focus:outline-1 transition-all duration-300 focus:outline-offset-2 focus:outline-[#2E4F21] flex-1"
+              className="bg-white border border-[#D8D8D8] text-[#2E4F21] px-4 py-3 rounded-lg focus:outline-1 transition-all duration-300 focus:outline-offset-2 focus:outline-[#2E4F21] flex-1 w-full"
               style={{borderRadius: '8px'}}
               disabled={loading}
               required
             />
             <button
               type="submit"
-              className="font-semibold bg-[#2E4F21] text-white px-4 sm:px-6 py-3 rounded-lg hover:bg-[#27451c] transition-all disabled:opacity-50 whitespace-nowrap flex-shrink-0 text-sm sm:text-base"
+              className="font-semibold bg-[#2E4F21] text-white px-4 sm:px-6 py-3 rounded-lg hover:bg-[#27451c] transition-all disabled:opacity-50 whitespace-nowrap flex-shrink-0 w-full sm:w-auto"
               style={{borderRadius: '8px'}}
               disabled={loading}
             >
