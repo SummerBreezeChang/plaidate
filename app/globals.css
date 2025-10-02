@@ -5,12 +5,11 @@
 
 :root {
   --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --foreground: rgb(46, 79, 33);
   --card: rgb(203, 203, 203);
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: rgb(46, 79, 33);
   --popover: rgb(213, 228, 208);
-  --popover-foreground: oklch(0.145 0 0);
-  /* Updated primary to forest green for CTAs matching design reference */
+  --popover-foreground: rgb(46, 79, 33);
   --primary: rgb(46, 79, 33);
   --primary-foreground: rgb(255, 253, 244);
   --secondary: rgb(122, 197, 248);
@@ -31,13 +30,14 @@
   --chart-5: rgb(189, 176, 224);
   --radius: 0.625rem;
   --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-foreground: rgb(46, 79, 33);
   --sidebar-primary: oklch(0.205 0 0);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --font-work-sans: "Work Sans", sans-serif;
 }
 
 .dark {
@@ -76,7 +76,7 @@
 }
 
 @theme inline {
-  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
+  --font-sans: var(--font-work-sans);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

@@ -43,7 +43,7 @@ export function WaitlistForm() {
 
   return (
     <div className="space-y-4">
-      <form onSubmit={handleSubmit} className="space-y-3">
+      <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <Input
             type="text"

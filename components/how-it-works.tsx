@@ -25,7 +25,7 @@ export function HowItWorks() {
     <div className="grid md:grid-cols-3 gap-6">
       {steps.map((step, index) => (
         <div key={index} className={`${step.color} rounded-3xl p-8 text-white space-y-4 min-h-[240px]`}>
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm text-left">
             <span className="text-2xl font-bold">{step.number}</span>
           </div>
           <h3 className="text-2xl font-bold">{step.title}</h3>
