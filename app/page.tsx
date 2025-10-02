@@ -43,7 +43,7 @@ export default function Home() {
           {/* Right: Image (shows first on mobile, second on desktop) */}
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden w-full order-1 md:order-2">
             <Image
-              src="/images/design-mode/Screenshot%202025-10-01%20at%208.07.44%E2%80%AFPM.png"
+              src="/hero-image.png"
               alt="Children playing together outdoors"
               fill
               className="object-cover"
@@ -98,7 +98,7 @@ export default function Home() {
       <footer className="w-full py-12 px-6 md:px-12 border-t bg-secondary">
         <div className="max-w-7xl mx-auto space-y-9">
           <div className="flex gap-4 text-left flex-row items-start justify-center">
-            <Image src="/plai-logo.png" alt="Plai Logo" width={80} height={40} className="w-auto text-left h-[77px]" />
+            <Image src="/plai-logo.png" alt="Plai Logo" width={80} height={40} className="w-auto text-left h-[45px]" />
           </div>
           <p className="max-w-md mx-auto text-primary-foreground text-center text-lg leading-normal">
             Build lasting connections and friendships within your local parenting community.
