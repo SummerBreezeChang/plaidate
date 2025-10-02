@@ -3,13 +3,19 @@ import { FeatureCards } from "@/components/feature-cards"
 import { HowItWorks } from "@/components/how-it-works"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export default function Home() {
   return (
     <main className="min-h-screen flex flex-col bg-background">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 flex items-center border-b border-none bg-primary-foreground py-4 justify-center">
-        <Image src="/plai-logo.png" alt="Plai Logo" width={80} height={40} priority className="w-auto h-16 mx-0" />
+      <header className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 border-b border-none bg-primary-foreground py-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <Image src="/plai-logo.png" alt="Plai Logo" width={80} height={40} priority className="w-auto h-16 mx-0" />
+          <Link href="/blog" className="text-primary font-medium hover:text-secondary-foreground transition-colors">
+            Blog
+          </Link>
+        </div>
       </header>
 
       {/* Hero Section */}
