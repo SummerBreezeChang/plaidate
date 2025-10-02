@@ -44,7 +44,7 @@ export function WaitlistForm() {
   return (
     <div className="space-y-4">
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div className="flex flex-col md:flex-row gap-3">
           <Input
             type="text"
             placeholder="Name"
@@ -63,14 +63,14 @@ export function WaitlistForm() {
             disabled={status === "loading"}
             className="h-12 text-base bg-background text-foreground"
           />
+          <Button
+            type="submit"
+            disabled={status === "loading"}
+            className="h-12 font-semibold hover:bg-[#7AC5F8] text-primary-foreground bg-secondary-foreground md:whitespace-nowrap md:px-6"
+          >
+            {status === "loading" ? "Joining..." : "Join Waitlist"}
+          </Button>
         </div>
-        <Button
-          type="submit"
-          disabled={status === "loading"}
-          className="w-full h-12 font-semibold hover:bg-[#7AC5F8] text-primary-foreground bg-secondary-foreground"
-        >
-          {status === "loading" ? "Joining..." : "Join Plaidate Waitlist"}
-        </Button>
       </form>
 
       {message && (

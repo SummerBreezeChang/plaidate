@@ -8,29 +8,34 @@ export default function Home() {
   return (
     <main className="min-h-screen flex flex-col bg-background">
       {/* Header */}
-      <header className="w-full px-6 md:px-12 flex items-center border-b border-none justify-center bg-primary-foreground py-4">
+      <header className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 flex items-center border-b border-none justify-center bg-primary-foreground py-4">
         <Image src="/plai-logo.png" alt="Plai Logo" width={80} height={40} priority className="w-auto h-16" />
       </header>
 
       {/* Hero Section */}
-      <section className="w-full px-6 md:px-12 md:py-24 text-background border-none bg-primary-foreground md:pt-[52px] md:pb-[76px] leading-4 py-[35px]">
+      <section className="w-full px-6 md:px-12 md:py-24 text-background border-none bg-primary-foreground md:pt-[52px] md:pb-[76px] leading-4 py-[35px] pt-28 md:pt-[120px]">
         <div className="max-w-7xl mx-auto flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left: Content (shows second on mobile, first on desktop) */}
           <div className="space-y-2 order-2 md:order-1">
             <div className="space-y-2">
-              <h1 className="md:text-6xl font-bold tracking-tight text-balance leading-tight text-primary text-4xl">
+              <h1
+                id="join-plaidate"
+                className="md:text-6xl font-bold tracking-tight text-balance leading-tight text-primary text-4xl"
+              >
                 Join Plaidate
               </h1>
-              <p className="leading-normal font-sans py-2 pb-4 text-base text-popover-foreground">
+              <p className="leading-normal font-sans py-2 text-base text-popover-foreground pb-8">
                 A platform for parents of K-5 children to easily host, join, and plan activities. Connect with skilled
                 parents who create engaging activities that help your child and others build social skills and
                 friendships.
               </p>
             </div>
 
-            <WaitlistForm />
+            <div id="waitlist">
+              <WaitlistForm />
+            </div>
 
-            <p className="text-sm text-muted-foreground text-center md:text-center">
+            <p className="text-sm text-muted-foreground text-center md:text-right">
               We'll be in touch to share updates
             </p>
           </div>
@@ -80,8 +85,11 @@ export default function Home() {
           <h2 className="tracking-tight text-balance leading-tight text-primary font-medium text-3xl">
             At Plaidate, we believe social skills are the foundation of kids' confidence and emotional growth.
           </h2>
-          <Button className="hover:bg-[#7AC5F8] rounded-full px-8 py-6 text-lg text-primary-foreground bg-secondary-foreground">
-            Join Plaidate Waitlist
+          <Button
+            asChild
+            className="hover:bg-[#7AC5F8] rounded-full px-8 py-6 text-lg text-primary-foreground bg-secondary-foreground"
+          >
+            <a href="#join-plaidate">Join Plaidate Waitlist</a>
           </Button>
         </div>
       </section>

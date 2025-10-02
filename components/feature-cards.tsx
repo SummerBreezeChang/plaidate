@@ -6,7 +6,7 @@ export function FeatureCards() {
       title: "No Out-of-Pocket",
       description:
         "Share costs automatically for group activities. When you take the kids to the museum, zoo, or grab pizza, split expenses seamlessly.",
-      color: "bg-[#5DADE2]",
+      color: "bg-[#7AC5F8]",
       illustration: "/illustrations/save.png",
       imagePosition: "left" as const,
     },
