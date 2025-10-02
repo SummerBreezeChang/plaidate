@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
 export function WaitlistForm() {
-  const [name, setName] = useState("")
+  const [firstName, setFirstName] = useState("")
   const [email, setEmail] = useState("")
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
   const [message, setMessage] = useState("")
@@ -21,7 +21,7 @@ export function WaitlistForm() {
       const response = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email }),
+        body: JSON.stringify({ firstName, email }),
       })
 
       const data = await response.json()
@@ -29,7 +29,7 @@ export function WaitlistForm() {
       if (response.ok) {
         setStatus("success")
         setMessage("Thanks for joining! We'll be in touch soon.")
-        setName("")
+        setFirstName("")
         setEmail("")
       } else {
         setStatus("error")
@@ -47,9 +47,9 @@ export function WaitlistForm() {
         <div className="flex flex-col md:flex-row gap-3">
           <Input
             type="text"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            placeholder="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
             required
             disabled={status === "loading"}
             className="h-12 text-base bg-background text-foreground"
