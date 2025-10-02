@@ -97,13 +97,13 @@ export default function Home() {
       {/* Footer */}
       <footer className="w-full py-12 px-6 md:px-12 border-t bg-secondary">
         <div className="max-w-7xl mx-auto space-y-9">
-          <div className="flex gap-4 text-left flex-row items-start justify-center">
-            <Image src="/plai-logo.png" alt="Plai Logo" width={80} height={40} className="w-auto text-left h-[45px]" />
+          <div className="flex gap-4 text-left flex-row items-start justify-end">
+            <Image src="/plai-logo.png" alt="Plai Logo" width={80} height={40} className="w-auto text-left h-8" />
           </div>
-          <p className="max-w-md mx-auto text-primary-foreground text-center text-lg leading-normal">
+          <p className="max-w-md text-primary-foreground text-left leading-normal text-base">
             Build lasting connections and friendships within your local parenting community.
           </p>
-          <p className="text-xs text-primary-foreground text-center">© 2025 Plaidate. All Rights Reserved.</p>
+          <p className="text-xs text-primary-foreground text-left">© 2025 Plaidate. All Rights Reserved.</p>
         </div>
       </footer>
     </main>
