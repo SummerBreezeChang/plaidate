@@ -2,52 +2,15 @@
 
 import type React from "react"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import confetti from "canvas-confetti"
 
 export function WaitlistForm() {
-  const [firstName, setFirstName] = useState("")
+  const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
   const [message, setMessage] = useState("")
-
-  useEffect(() => {
-    if (status === "success") {
-      // Fire confetti from multiple angles for a celebratory effect
-      const duration = 3000
-      const animationEnd = Date.now() + duration
-      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 }
-
-      const randomInRange = (min: number, max: number) => {
-        return Math.random() * (max - min) + min
-      }
-
-      const interval = setInterval(() => {
-        const timeLeft = animationEnd - Date.now()
-
-        if (timeLeft <= 0) {
-          return clearInterval(interval)
-        }
-
-        const particleCount = 50 * (timeLeft / duration)
-
-        confetti({
-          ...defaults,
-          particleCount,
-          origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
-        })
-        confetti({
-          ...defaults,
-          particleCount,
-          origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
-        })
-      }, 250)
-
-      return () => clearInterval(interval)
-    }
-  }, [status])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -58,7 +21,7 @@ export function WaitlistForm() {
       const response = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ firstName, email }),
+        body: JSON.stringify({ name, email }),
       })
 
       const data = await response.json()
@@ -66,7 +29,7 @@ export function WaitlistForm() {
       if (response.ok) {
         setStatus("success")
         setMessage("Thanks for joining! We'll be in touch soon.")
-        setFirstName("")
+        setName("")
         setEmail("")
       } else {
         setStatus("error")
@@ -84,9 +47,9 @@ export function WaitlistForm() {
         <div className="flex flex-col md:flex-row gap-3">
           <Input
             type="text"
-            placeholder="First Name"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             required
             disabled={status === "loading"}
             className="h-12 text-base bg-background text-foreground"

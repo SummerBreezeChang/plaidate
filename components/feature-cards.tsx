@@ -1,15 +1,6 @@
-"use client"
-
 import Image from "next/image"
-import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 export function FeatureCards() {
-  const card1 = useScrollAnimation({ threshold: 0.2 })
-  const card2 = useScrollAnimation({ threshold: 0.2 })
-  const card3 = useScrollAnimation({ threshold: 0.2 })
-
-  const cardRefs = [card1, card2, card3]
-
   const features = [
     {
       title: "No Out-of-Pocket",
@@ -42,13 +33,11 @@ export function FeatureCards() {
       {features.map((feature, index) => (
         <div
           key={index}
-          ref={cardRefs[index].ref}
           className={`${feature.color} rounded-3xl p-8 flex flex-col gap-8 items-center ${
-            index === 1 ? "md:flex-row-reverse md:ml-40 md:mr-0" : "md:flex-row md:ml-0 md:mr-40"
-          } transition-all duration-700 ${
-            cardRefs[index].isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+            index === 1
+              ? "md:flex-row-reverse md:ml-40 md:mr-0" // Easy Scheduling: right-aligned on desktop
+              : "md:flex-row md:ml-0 md:mr-40" // No Out-of-Pocket & Skill-Powered: left-aligned on desktop
           }`}
-          style={{ transitionDelay: `${index * 150}ms` }}
         >
           {feature.illustration && (
             <div className="relative w-32 h-32 md:w-40 md:h-40 flex-shrink-0">
@@ -62,7 +51,7 @@ export function FeatureCards() {
           )}
           <div className="flex-1 md:max-w-md">
             <h3 className="text-2xl font-bold mb-3 text-primary">{feature.title}</h3>
-            <p className="leading-normal my-0 py-0 px-0 text-primary text-base">{feature.description}</p>
+            <p className="text-sm leading-normal my-0 py-0 px-0 text-primary">{feature.description}</p>
           </div>
         </div>
       ))}

@@ -7,9 +7,9 @@ const notion = new Client({
 
 export async function POST(request: Request) {
   try {
-    const { firstName, email } = await request.json()
+    const { name, email } = await request.json()
 
-    if (!firstName || !email || !email.includes("@")) {
+    if (!name || !email || !email.includes("@")) {
       return NextResponse.json({ error: "Please provide a valid name and email address" }, { status: 400 })
     }
 
@@ -29,7 +29,7 @@ export async function POST(request: Request) {
           rich_text: [
             {
               text: {
-                content: firstName,
+                content: name,
               },
             },
           ],
@@ -45,7 +45,7 @@ export async function POST(request: Request) {
       },
     })
 
-    console.log("[v0] Successfully added to Notion:", { firstName, email })
+    console.log("[v0] Successfully added to Notion:", { name, email })
 
     return NextResponse.json({ success: true, message: "Successfully joined the waitlist!" }, { status: 200 })
   } catch (error: any) {

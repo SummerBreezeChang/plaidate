@@ -1,19 +1,10 @@
-"use client"
-
 import { WaitlistForm } from "@/components/waitlist-form"
 import { FeatureCards } from "@/components/feature-cards"
 import { HowItWorks } from "@/components/how-it-works"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 export default function Home() {
-  const heroContent = useScrollAnimation({ threshold: 0.2 })
-  const heroImage = useScrollAnimation({ threshold: 0.2 })
-  const whyParents = useScrollAnimation({ threshold: 0.2 })
-  const howItWorks = useScrollAnimation({ threshold: 0.2 })
-  const mission = useScrollAnimation({ threshold: 0.3 })
-
   return (
     <main className="min-h-screen flex flex-col bg-background">
       {/* Header */}
@@ -24,13 +15,8 @@ export default function Home() {
       {/* Hero Section */}
       <section className="w-full px-6 md:px-12 md:py-24 text-background border-none bg-primary-foreground md:pt-[52px] md:pb-[76px] leading-4 py-[35px] pt-28 md:pt-[120px]">
         <div className="max-w-7xl mx-auto flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-          {/* Left: Content */}
-          <div
-            ref={heroContent.ref}
-            className={`space-y-2 order-2 md:order-1 transition-all duration-700 ${
-              heroContent.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
+          {/* Left: Content (shows second on mobile, first on desktop) */}
+          <div className="space-y-2 order-2 md:order-1">
             <div className="space-y-2">
               <h1
                 id="join-plaidate"
@@ -54,13 +40,8 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Right: Image */}
-          <div
-            ref={heroImage.ref}
-            className={`relative aspect-[4/3] rounded-2xl overflow-hidden w-full order-1 md:order-2 transition-all duration-700 delay-200 ${
-              heroImage.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
+          {/* Right: Image (shows first on mobile, second on desktop) */}
+          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden w-full order-1 md:order-2">
             <Image
               src="/hero-image.png"
               alt="Children playing together outdoors"
@@ -75,12 +56,7 @@ export default function Home() {
       {/* Why Parents Love Section */}
       <section className="w-full px-6 md:px-12 py-16 bg-muted/30">
         <div className="max-w-7xl space-y-12 mx-auto">
-          <div
-            ref={whyParents.ref}
-            className={`text-center space-y-4 transition-all duration-700 ${
-              whyParents.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
+          <div className="text-center space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-primary">Why parents love Plaidate</h2>
             <p className="text-lg text-primary">
               One-stop place to chat, plan, and attend — instead of messy text threads or multiple apps.
@@ -94,12 +70,7 @@ export default function Home() {
       {/* How It Works Section */}
       <section className="w-full px-6 md:px-12 py-16 bg-popover">
         <div className="max-w-7xl mx-auto space-y-12">
-          <div
-            ref={howItWorks.ref}
-            className={`text-center space-y-4 transition-all duration-700 ${
-              howItWorks.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
+          <div className="text-center space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight">How it works</h2>
             <p className="text-lg text-primary">Getting started is simple and takes just a few minutes</p>
           </div>
@@ -110,12 +81,7 @@ export default function Home() {
 
       {/* Mission Statement */}
       <section className="w-full px-6 md:px-12 bg-primary-foreground py-[106px]">
-        <div
-          ref={mission.ref}
-          className={`max-w-4xl mx-auto text-center space-y-11 transition-all duration-700 ${
-            mission.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
+        <div className="max-w-4xl mx-auto text-center space-y-11">
           <h2 className="tracking-tight text-balance leading-tight text-primary font-medium text-3xl">
             At Plaidate, we believe social skills are the foundation of kids' confidence and emotional growth.
           </h2>
