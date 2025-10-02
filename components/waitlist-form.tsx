@@ -2,15 +2,52 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import confetti from "canvas-confetti"
 
 export function WaitlistForm() {
   const [firstName, setFirstName] = useState("")
   const [email, setEmail] = useState("")
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
   const [message, setMessage] = useState("")
+
+  useEffect(() => {
+    if (status === "success") {
+      // Fire confetti from multiple angles for a celebratory effect
+      const duration = 3000
+      const animationEnd = Date.now() + duration
+      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 }
+
+      const randomInRange = (min: number, max: number) => {
+        return Math.random() * (max - min) + min
+      }
+
+      const interval = setInterval(() => {
+        const timeLeft = animationEnd - Date.now()
+
+        if (timeLeft <= 0) {
+          return clearInterval(interval)
+        }
+
+        const particleCount = 50 * (timeLeft / duration)
+
+        confetti({
+          ...defaults,
+          particleCount,
+          origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+        })
+        confetti({
+          ...defaults,
+          particleCount,
+          origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+        })
+      }, 250)
+
+      return () => clearInterval(interval)
+    }
+  }, [status])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()

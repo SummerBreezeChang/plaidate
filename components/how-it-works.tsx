@@ -1,4 +1,14 @@
+"use client"
+
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
+
 export function HowItWorks() {
+  const step1 = useScrollAnimation({ threshold: 0.2 })
+  const step2 = useScrollAnimation({ threshold: 0.2 })
+  const step3 = useScrollAnimation({ threshold: 0.2 })
+
+  const stepRefs = [step1, step2, step3]
+
   const steps = [
     {
       number: "1",
@@ -24,7 +34,14 @@ export function HowItWorks() {
   return (
     <div className="grid md:grid-cols-3 gap-6">
       {steps.map((step, index) => (
-        <div key={index} className={`${step.color} rounded-3xl p-8 text-white space-y-4 min-h-[240px]`}>
+        <div
+          key={index}
+          ref={stepRefs[index].ref}
+          className={`${step.color} rounded-3xl p-8 text-white space-y-4 min-h-[240px] transition-all duration-700 ${
+            stepRefs[index].isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+          }`}
+          style={{ transitionDelay: `${index * 150}ms` }}
+        >
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm text-center">
             <span className="text-2xl font-bold">{step.number}</span>
           </div>
