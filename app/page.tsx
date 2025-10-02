@@ -9,7 +9,7 @@ export default function Home() {
     <main className="min-h-screen flex flex-col bg-background">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 flex items-center border-b border-none bg-primary-foreground py-4 justify-start">
-        <Image src="/plai-logo.png" alt="Plai Logo" width={80} height={40} priority className="w-auto h-16" />
+        <Image src="/plai-logo.png" alt="Plai Logo" width={80} height={40} priority className="w-auto h-16 mx-16" />
       </header>
 
       {/* Hero Section */}
