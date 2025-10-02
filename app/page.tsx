@@ -80,7 +80,7 @@ export default function Home() {
           <h2 className="tracking-tight text-balance leading-tight text-primary font-medium text-3xl">
             At Plaidate, we believe social skills are the foundation of kids' confidence and emotional growth.
           </h2>
-          <Button className="hover:bg-primary/90 rounded-full px-8 py-6 text-lg text-primary-foreground bg-secondary-foreground">
+          <Button className="hover:bg-[#7AC5F8] rounded-full px-8 py-6 text-lg text-primary-foreground bg-secondary-foreground">
             Join Plaidate Waitlist
           </Button>
         </div>
