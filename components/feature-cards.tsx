@@ -51,7 +51,7 @@ export function FeatureCards() {
           )}
           <div className="flex-1 md:max-w-md">
             <h3 className="text-2xl font-bold mb-3 text-primary">{feature.title}</h3>
-            <p className="text-sm leading-normal my-0 py-0 px-0 text-primary">{feature.description}</p>
+            <p className="leading-normal my-0 py-0 px-0 text-primary text-base">{feature.description}</p>
           </div>
         </div>
       ))}

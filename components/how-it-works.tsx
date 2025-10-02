@@ -29,7 +29,7 @@ export function HowItWorks() {
             <span className="text-2xl font-bold">{step.number}</span>
           </div>
           <h3 className="text-2xl font-bold text-primary-foreground">{step.title}</h3>
-          <p className="text-sm leading-normal opacity-95 text-primary-foreground">{step.description}</p>
+          <p className="leading-normal opacity-95 text-primary-foreground text-base">{step.description}</p>
         </div>
       ))}
     </div>
