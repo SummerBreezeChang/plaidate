@@ -33,7 +33,7 @@ export function FeatureCards() {
       {features.map((feature, index) => (
         <div
           key={index}
-          className={`${feature.color} rounded-3xl p-8 flex gap-8 flex-col items-center leading-4 ${
+          className={`${feature.color} rounded-3xl p-8 flex gap-8 leading-4 items-center px-8 flex-row ${
             index === 1 ? "ml-40 mr-0" : "mx-0 mr-40"
           } ${feature.imagePosition === "right" ? "md:flex-row-reverse" : "md:flex-row"} md:gap-4`}
         >
