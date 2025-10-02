@@ -29,13 +29,15 @@ export function FeatureCards() {
   ]
 
   return (
-    <div className="flex flex-col gap-6 max-w-4xl mx-auto">
+    <div className="flex flex-col gap-6 w-full">
       {features.map((feature, index) => (
         <div
           key={index}
-          className={`${feature.color} rounded-3xl p-8 flex gap-8 leading-4 items-center px-8 flex-row ${
-            index === 1 ? "ml-40 mr-0" : "mx-0 mr-40"
-          } ${feature.imagePosition === "right" ? "md:flex-row-reverse" : "md:flex-row"} md:gap-4`}
+          className={`${feature.color} rounded-3xl p-8 flex flex-col gap-8 items-center ${
+            index === 1
+              ? "md:flex-row-reverse md:ml-40 md:mr-0" // Easy Scheduling: right-aligned on desktop
+              : "md:flex-row md:ml-0 md:mr-40" // No Out-of-Pocket & Skill-Powered: left-aligned on desktop
+          }`}
         >
           {feature.illustration && (
             <div className="relative w-32 h-32 md:w-40 md:h-40 flex-shrink-0">
@@ -49,7 +51,7 @@ export function FeatureCards() {
           )}
           <div className="flex-1 md:max-w-md">
             <h3 className="text-2xl font-bold mb-3 text-primary">{feature.title}</h3>
-            <p className="text-sm leading-relaxed my-0 py-0 px-0 text-primary leading-4">{feature.description}</p>
+            <p className="text-sm leading-normal my-0 py-0 px-0 text-primary">{feature.description}</p>
           </div>
         </div>
       ))}

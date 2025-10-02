@@ -67,7 +67,7 @@ export function WaitlistForm() {
         <Button
           type="submit"
           disabled={status === "loading"}
-          className="w-full h-12 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground"
+          className="w-full h-12 font-semibold hover:bg-primary/90 bg-secondary-foreground text-primary-foreground"
         >
           {status === "loading" ? "Joining..." : "Join Plaidate Waitlist"}
         </Button>

@@ -28,8 +28,8 @@ export function HowItWorks() {
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm text-left">
             <span className="text-2xl font-bold">{step.number}</span>
           </div>
-          <h3 className="text-2xl font-bold">{step.title}</h3>
-          <p className="text-sm leading-relaxed opacity-95">{step.description}</p>
+          <h3 className="text-2xl font-bold text-primary-foreground">{step.title}</h3>
+          <p className="text-sm leading-normal opacity-95 text-primary-foreground">{step.description}</p>
         </div>
       ))}
     </div>

@@ -13,28 +13,30 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="w-full px-6 md:px-12 py-16 md:py-24 text-background border-none bg-primary-foreground md:pt-[52px] md:pb-[76px]">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          {/* Left: Form */}
-          <div className="space-y-2">
+      <section className="w-full px-6 md:px-12 md:py-24 text-background border-none bg-primary-foreground md:pt-[52px] md:pb-[76px] leading-4 py-[35px]">
+        <div className="max-w-7xl mx-auto flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          {/* Left: Content (shows second on mobile, first on desktop) */}
+          <div className="space-y-2 order-2 md:order-1">
             <div className="space-y-2">
-              <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-balance leading-tight text-primary">
+              <h1 className="md:text-6xl font-bold tracking-tight text-balance leading-tight text-primary text-4xl">
                 Join Plaidate
               </h1>
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-lg font-sans py-2 pb-4">
-                A family-friendly platform for parents of K-5 children to easily organize, promote, and participate in
-                virtual and in-person community events. Discover playdates, classes, and activities that help your child
-                build social skills and friendships.
+              <p className="leading-normal font-sans py-2 pb-4 text-base text-popover-foreground">
+                A platform for parents of K-5 children to easily host, join, and plan activities. Connect with skilled
+                parents who create engaging activities that help your child and others build social skills and
+                friendships.
               </p>
             </div>
 
             <WaitlistForm />
 
-            <p className="text-sm text-muted-foreground text-center">We'll be in touch to share updates</p>
+            <p className="text-sm text-muted-foreground text-center md:text-center">
+              We'll be in touch to share updates
+            </p>
           </div>
 
-          {/* Right: Image */}
-          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+          {/* Right: Image (shows first on mobile, second on desktop) */}
+          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden w-full order-1 md:order-2">
             <Image
               src="/images/design-mode/Screenshot%202025-10-01%20at%208.07.44%E2%80%AFPM.png"
               alt="Children playing together outdoors"
@@ -48,7 +50,7 @@ export default function Home() {
 
       {/* Why Parents Love Section */}
       <section className="w-full px-6 md:px-12 py-16 bg-muted/30">
-        <div className="max-w-7xl mx-auto space-y-12">
+        <div className="max-w-7xl space-y-12 mx-auto">
           <div className="text-center space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-primary">Why parents love Plaidate</h2>
             <p className="text-lg text-primary">
@@ -65,7 +67,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="text-center space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight">How it works</h2>
-            <p className="text-lg text-muted-foreground">Getting started is simple and takes just a few minutes</p>
+            <p className="text-lg text-primary">Getting started is simple and takes just a few minutes</p>
           </div>
 
           <HowItWorks />
@@ -75,10 +77,10 @@ export default function Home() {
       {/* Mission Statement */}
       <section className="w-full px-6 md:px-12 bg-primary-foreground py-[106px]">
         <div className="max-w-4xl mx-auto text-center space-y-11">
-          <h2 className="tracking-tight text-balance leading-tight text-primary text-3xl font-medium">
+          <h2 className="tracking-tight text-balance leading-tight text-primary font-medium text-3xl">
             At Plaidate, we believe social skills are the foundation of kids' confidence and emotional growth.
           </h2>
-          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-6 text-lg">
+          <Button className="hover:bg-primary/90 rounded-full px-8 py-6 text-lg text-primary-foreground bg-secondary-foreground">
             Join Plaidate Waitlist
           </Button>
         </div>
@@ -90,7 +92,7 @@ export default function Home() {
           <div className="flex gap-4 text-left flex-row items-start justify-center">
             <Image src="/plai-logo.png" alt="Plai Logo" width={80} height={40} className="w-auto text-left h-[77px]" />
           </div>
-          <p className="max-w-md mx-auto text-primary-foreground text-center text-lg">
+          <p className="max-w-md mx-auto text-primary-foreground text-center text-lg leading-normal">
             Build lasting connections and friendships within your local parenting community.
           </p>
           <p className="text-xs text-primary-foreground text-center">© 2025 Plaidate. All Rights Reserved.</p>
