@@ -12,7 +12,7 @@ export default function Home() {
       <header className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 border-b border-none bg-primary-foreground py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Image src="/plai-logo.png" alt="Plai Logo" width={80} height={40} priority className="w-auto h-16 mx-0" />
-          <Link href="/blog" className="text-primary font-medium hover:text-secondary-foreground transition-colors">
+          <Link href="/blog" className="font-medium hover:text-secondary-foreground transition-colors text-primary-foreground">
             Blog
           </Link>
         </div>
