@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-background px-6">
+    <main className="min-h-screen flex flex-col items-center justify-center px-6 bg-primary-foreground">
       <div className="max-w-2xl mx-auto text-center space-y-8">
         <Image src="/plai-logo.png" alt="Plai Logo" width={120} height={60} className="mx-auto" />
         <h1 className="text-4xl md:text-6xl font-bold text-primary">Welcome to Plaidate</h1>
