@@ -9,15 +9,15 @@ import { BookOpen, Headphones, Beaker, Hammer, ChefHat, Cpu, Package, FileText, 
 
 const categories = [
   { id: "all", name: "All Categories", icon: null },
-  { id: "parenting-books", name: "Parenting Books", icon: BookOpen },
-  { id: "kids-books", name: "Kids Books", icon: Book },
   { id: "podcasts", name: "Podcasts", icon: Headphones },
+  { id: "magazines", name: "Magazines", icon: FileText },
+  { id: "kids-books", name: "Kids Books", icon: Book },
+  { id: "parenting-books", name: "Parenting Books", icon: BookOpen },
+  { id: "stem-activities", name: "STEM Activities", icon: Cpu },
+  { id: "cooking-activities", name: "Cooking Activities", icon: ChefHat },
   { id: "science-activities", name: "Science Activities", icon: Beaker },
   { id: "diy-building", name: "DIY Building Activities", icon: Hammer },
-  { id: "cooking-activities", name: "Cooking Activities", icon: ChefHat },
-  { id: "stem-activities", name: "STEM Activities", icon: Cpu },
   { id: "subscription-boxes", name: "Subscription Boxes", icon: Package },
-  { id: "magazines", name: "Magazines", icon: FileText },
 ]
 
 const ageRanges = ["All Ages", "Ages 5-6", "Ages 7-8", "Ages 9-10"]
@@ -72,7 +72,7 @@ const resources = [
     category: "parenting-books",
     type: "Book",
     ageRange: "Ages 5-10",
-    link: "https://www.amazon.com/Simplicity-Parenting-Extraordinary-Calmer-Happier/dp/0345507983",
+    link: "https://www.amazon.com/Simplicity-Parenting-Extraordinary-Calmer-Happier/dp/0375869026",
   },
   {
     id: 31,
@@ -164,8 +164,106 @@ const resources = [
     ageRange: "All Ages",
     link: "https://themomhour.com/",
   },
-
-  // Science Activities (15 total)
+  {
+    id: 39,
+    title: "Karma & Chaos",
+    description: "Kail Lowry & Becky Hayter discuss real parenting challenges with humor and honesty",
+    image: "/karma-and-chaos-podcast-cover-art-colorful-microph.jpg",
+    category: "podcasts",
+    type: "Podcast",
+    ageRange: "All Ages",
+    link: "https://podcasts.apple.com/us/podcast/karma-chaos-with-kail-lowry-becky-hayter/id1532102239",
+  },
+  {
+    id: 40,
+    title: "For Crying Out Loud",
+    description: "Hilarious and heartfelt conversations about the ups and downs of parenting",
+    image: "/for-crying-out-loud-podcast-cover-art-baby-crying.jpg",
+    category: "podcasts",
+    type: "Podcast",
+    ageRange: "All Ages",
+    link: "https://podcasts.apple.com/us/podcast/for-crying-out-loud/id354082588",
+  },
+  {
+    id: 41,
+    title: "Care and Feeding",
+    description: "Slate's parenting show offering advice on raising kids in today's world",
+    image: "/care-and-feeding-slate-podcast-cover-art-parenting.jpg",
+    category: "podcasts",
+    type: "Podcast",
+    ageRange: "All Ages",
+    link: "https://podcasts.apple.com/us/podcast/care-and-feeding-slates-parenting-show/id774383607",
+  },
+  {
+    id: 42,
+    title: "The PedsDocTalk Podcast",
+    description: "Child health, development, and parenting advice from a pediatrician mom",
+    image: "/pedsdoctalk-podcast.webp",
+    category: "podcasts",
+    type: "Podcast",
+    ageRange: "All Ages",
+    link: "https://podcasts.apple.com/us/podcast/the-pedsdoctalk-podcast/id1501057527",
+  },
+  {
+    id: 43,
+    title: "Parenting Hell",
+    description: "Rob Beckett and Josh Widdicombe share hilarious parenting stories and struggles",
+    image: "/parenting-hell-podcast-cover-art-comedy-microphone.jpg",
+    category: "podcasts",
+    type: "Podcast",
+    ageRange: "All Ages",
+    link: "https://podcasts.apple.com/us/podcast/parenting-hell-with-rob-beckett-and-josh-widdicombe/id1510251497",
+  },
+  {
+    id: 44,
+    title: "Motherhood in Black and White",
+    description: "Exploring parenting through diverse perspectives and experiences",
+    image: "/motherhood-in-black-and-white.webp",
+    category: "podcasts",
+    type: "Podcast",
+    ageRange: "All Ages",
+    link: "https://podcasts.apple.com/gb/podcast/motherhood-in-black-white/id1525043882",
+  },
+  {
+    id: 45,
+    title: "Wow in the World",
+    description: "Science and curiosity podcast that makes learning fun for kids",
+    image: "/wow-in-the-world-kids-podcast-cover-art-science-co.jpg",
+    category: "podcasts",
+    type: "Podcast",
+    ageRange: "Ages 5-10",
+    link: "https://podcasts.apple.com/us/podcast/wow-in-the-world/id1233834541",
+  },
+  {
+    id: 46,
+    title: "Story Pirates",
+    description: "Professional actors bring kids' stories to life with music and comedy",
+    image: "/story-pirates-podcast-cover-art-pirate-ship-kids-s.jpg",
+    category: "podcasts",
+    type: "Podcast",
+    ageRange: "Ages 5-10",
+    link: "https://open.spotify.com/show/0OHMYcZChEVgTx2jz0yzze",
+  },
+  {
+    id: 47,
+    title: "Circle Round",
+    description: "Folktales from around the world adapted for modern kids",
+    image: "/circle-round-podcast-cover-art-folktales-storytell.jpg",
+    category: "podcasts",
+    type: "Podcast",
+    ageRange: "Ages 5-10",
+    link: "https://podcasts.apple.com/us/podcast/circle-round/id1246443751",
+  },
+  {
+    id: 48,
+    title: "Brains On!",
+    description: "Science podcast for curious kids exploring how the world works",
+    image: "/brains-on-science-podcast-cover-art-brain-kids-lea.jpg",
+    category: "podcasts",
+    type: "Podcast",
+    ageRange: "Ages 7-10",
+    link: "https://open.spotify.com/show/4EaTaVeNXR4QSFAArpyZyd",
+  },
   {
     id: 100,
     title: "Volcano Experiments",
@@ -316,8 +414,6 @@ const resources = [
     ageRange: "Ages 9-10",
     link: "https://www.sciencebuddies.org/stem-activities/cabbage-ph-indicator",
   },
-
-  // DIY Building Activities (15 total)
   {
     id: 200,
     title: "Cardboard Cities",
@@ -468,8 +564,6 @@ const resources = [
     ageRange: "Ages 9-10",
     link: "https://www.instructables.com/Rubber-Band-Powered-Car-1/",
   },
-
-  // Cooking Activities (15 total)
   {
     id: 300,
     title: "Energy Balls",
@@ -620,8 +714,6 @@ const resources = [
     ageRange: "Ages 9-10",
     link: "https://www.foodnetwork.com/recipes/food-network-kitchen/fresh-squeezed-lemonade-recipe-1973315",
   },
-
-  // STEM Activities (15 total)
   {
     id: 400,
     title: "LEGO Challenges",
@@ -810,7 +902,7 @@ const resources = [
     category: "magazines",
     type: "Magazine",
     ageRange: "Ages 9-10",
-    link: "https://cricketmedia.com/cricket-magazine",
+    link: "https://cricketmedia.com/",
   },
   {
     id: 9,
@@ -1047,103 +1139,100 @@ export default function ResourcesPage() {
         </div>
       </header>
 
-      <div className="pt-28 md:pt-32">
-        {/* Age Filter Bar */}
-        <div className="bg-muted/30 border-b border-border px-6 md:px-12 py-6">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex items-center gap-3 flex-wrap">
-              <span className="text-sm font-medium text-primary">Filter by age:</span>
-              {ageRanges.map((age) => (
-                <Button
-                  key={age}
-                  variant={selectedAge === age ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setSelectedAge(age)}
-                  className={
-                    selectedAge === age
-                      ? "rounded-full bg-secondary text-primary-foreground hover:bg-secondary/90"
-                      : "rounded-full"
-                  }
-                >
-                  {age}
-                </Button>
-              ))}
-            </div>
-          </div>
-        </div>
+      {/* Main Content */}
+      <div className="px-6 md:px-12 py-8 bg-primary-foreground pt-28 md:pt-32">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row gap-8">
+            {/* Sidebar */}
+            <aside className="w-full md:w-64 flex-shrink-0">
+              <div className="sticky top-32">
+                <h2 className="text-lg font-bold text-primary mb-4">Categories</h2>
+                <nav className="space-y-1">
+                  {categories.map((category) => {
+                    const Icon = category.icon
+                    return (
+                      <button
+                        key={category.id}
+                        onClick={() => setSelectedCategory(category.id)}
+                        className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-colors ${
+                          selectedCategory === category.id
+                            ? "bg-secondary text-primary-foreground font-medium"
+                            : "text-primary hover:bg-muted/50"
+                        }`}
+                      >
+                        {Icon && <Icon className="w-5 h-5" />}
+                        <span>{category.name}</span>
+                      </button>
+                    )
+                  })}
+                </nav>
+              </div>
+            </aside>
 
-        {/* Main Content */}
-        <div className="px-6 md:px-12 py-8 bg-primary-foreground">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col md:flex-row gap-8">
-              {/* Sidebar */}
-              <aside className="w-full md:w-64 flex-shrink-0">
-                <div className="sticky top-32">
-                  <h2 className="text-lg font-bold text-primary mb-4">Categories</h2>
-                  <nav className="space-y-1">
-                    {categories.map((category) => {
-                      const Icon = category.icon
-                      return (
-                        <button
-                          key={category.id}
-                          onClick={() => setSelectedCategory(category.id)}
-                          className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-colors ${
-                            selectedCategory === category.id
-                              ? "bg-secondary text-primary-foreground font-medium"
-                              : "text-primary hover:bg-muted/50"
-                          }`}
-                        >
-                          {Icon && <Icon className="w-5 h-5" />}
-                          <span>{category.name}</span>
-                        </button>
-                      )
-                    })}
-                  </nav>
-                </div>
-              </aside>
+            {/* Main Content Area */}
+            <main className="flex-1">
+              {/* Results Header */}
+              <div className="mb-8">
+                <p className="text-sm text-muted-foreground mb-6">
+                  <span className="font-semibold text-primary">{filteredResources.length}</span> resources found for{" "}
+                  <span className="font-semibold">{selectedAge.toLowerCase()}</span> in{" "}
+                  <span className="font-semibold">{currentCategoryName.toLowerCase()}</span>
+                </p>
 
-              {/* Main Content Area */}
-              <main className="flex-1">
-                {/* Results Header */}
-                <div className="mb-8">
-                  <p className="text-sm text-muted-foreground mb-6">
-                    <span className="font-semibold text-primary">{filteredResources.length}</span> resources found for{" "}
-                    <span className="font-semibold">{selectedAge.toLowerCase()}</span> in{" "}
-                    <span className="font-semibold">{currentCategoryName.toLowerCase()}</span>
+                <div className="space-y-2">
+                  <h1 className="text-4xl md:text-5xl font-bold text-primary">Explore All Resources</h1>
+                  <p className="text-lg text-popover-foreground">
+                    {selectedAge !== "All Ages" && `${selectedAge} • `}
+                    {selectedCategory !== "all" && `${currentCategoryName} • `}
+                    {filteredResources.length} resources to grow together
                   </p>
-
-                  <div className="space-y-2">
-                    <h1 className="text-4xl md:text-5xl font-bold text-primary">Explore All Resources</h1>
-                    <p className="text-lg text-popover-foreground">
-                      {currentCategoryName} • {filteredResources.length} resources to grow together
-                    </p>
-                  </div>
                 </div>
 
-                {/* Resource Grid */}
-                {filteredResources.length > 0 ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {filteredResources.map((resource) => (
-                      <ResourceCard key={resource.id} resource={resource} />
+                <div className="mt-6 pt-6 border-t border-border">
+                  <h3 className="text-sm font-bold text-primary mb-3">Filter by Age</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {ageRanges.map((age) => (
+                      <Button
+                        key={age}
+                        variant={selectedAge === age ? "default" : "outline"}
+                        size="sm"
+                        onClick={() => setSelectedAge(age)}
+                        className={
+                          selectedAge === age
+                            ? "rounded-full bg-secondary text-primary-foreground hover:bg-secondary/90"
+                            : "rounded-full"
+                        }
+                      >
+                        {age}
+                      </Button>
                     ))}
                   </div>
-                ) : (
-                  <div className="text-center py-12">
-                    <p className="text-lg text-muted-foreground">No resources found for the selected filters.</p>
-                    <Button
-                      onClick={() => {
-                        setSelectedCategory("all")
-                        setSelectedAge("All Ages")
-                      }}
-                      className="mt-4"
-                      variant="outline"
-                    >
-                      Clear Filters
-                    </Button>
-                  </div>
-                )}
-              </main>
-            </div>
+                </div>
+              </div>
+
+              {/* Resource Grid */}
+              {filteredResources.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {filteredResources.map((resource) => (
+                    <ResourceCard key={resource.id} resource={resource} />
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-12">
+                  <p className="text-lg text-muted-foreground">No resources found for the selected filters.</p>
+                  <Button
+                    onClick={() => {
+                      setSelectedCategory("all")
+                      setSelectedAge("All Ages")
+                    }}
+                    className="mt-4"
+                    variant="outline"
+                  >
+                    Clear Filters
+                  </Button>
+                </div>
+              )}
+            </main>
           </div>
         </div>
       </div>
