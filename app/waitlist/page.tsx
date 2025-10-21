@@ -41,7 +41,7 @@ export default function WaitlistPage() {
             </div>
 
             <p className="text-sm text-muted-foreground text-center md:text-right">
-              We'll be in touch to share updates
+              We'll be in touch to share updates. No spams.
             </p>
           </div>
 
@@ -84,36 +84,43 @@ export default function WaitlistPage() {
         </div>
       </section>
 
-      {/* Mission Statement */}
-      <section className="w-full px-6 md:px-12 bg-primary-foreground py-[106px]">
-        <div className="max-w-4xl mx-auto text-center space-y-11">
-          <h2 className="tracking-tight text-balance leading-tight text-primary font-medium text-3xl">
-            At Plaidate, we believe social skills are the foundation of kids' confidence and emotional growth.
-          </h2>
-          <Button
-            asChild
-            className="hover:bg-[#7AC5F8] rounded-full px-8 py-6 text-lg text-primary-foreground bg-secondary-foreground"
-          >
-            <a href="#join-plaidate">Join Plaidate Waitlist</a>
-          </Button>
-        </div>
-      </section>
+      <section className="w-full px-6 md:px-12 bg-primary-foreground py-16 md:py-24">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16">
+          {/* Left: Mission Statement & Join Waitlist */}
+          <div className="flex flex-col justify-center space-y-8 text-center md:text-left">
+            <h2 className="tracking-tight text-balance leading-tight text-primary font-medium text-2xl md:text-3xl">
+              At Plaidate, we believe social skills are the foundation of kids' confidence and emotional growth.
+            </h2>
+            <div>
+              <Button
+                asChild
+                className="hover:bg-[#7AC5F8] rounded-full px-8 py-6 text-lg text-primary-foreground bg-secondary-foreground"
+              >
+                <a href="#join-plaidate">Join the Waitlist</a>
+              </Button>
+            </div>
+          </div>
 
-      {/* Resources Section */}
-      <section className="w-full px-6 md:px-12 bg-muted/30 py-16 md:py-24">
-        <div className="max-w-4xl mx-auto text-center space-y-6">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-primary">Explore Parenting Resources</h2>
-          <p className="text-lg text-primary max-w-2xl mx-auto">
-            Discover curated books, podcasts, activities, and tools to help you build stronger connections with your
-            child and community.
-          </p>
-          <Button
-            asChild
-            size="lg"
-            className="rounded-full px-8 py-6 text-lg bg-secondary-foreground text-primary-foreground hover:bg-[#7AC5F8]"
-          >
-            <Link href="/resources">Browse Resources</Link>
-          </Button>
+          {/* Right: Resources Section */}
+          <div className="flex flex-col justify-center space-y-8 text-center md:text-left border-t md:border-t-0 md:border-l border-primary/20 pt-12 md:pt-0 md:pl-16">
+            <div className="space-y-4">
+              <h3 className="text-2xl md:text-3xl font-semibold text-primary">While You Wait, Explore Resources</h3>
+              <p className="text-base text-popover-foreground leading-relaxed">
+                Discover curated parenting books, podcasts, activities, and tools to help you build stronger connections
+                with your child today.
+              </p>
+            </div>
+            <div>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="rounded-full px-8 py-6 text-lg border-secondary-foreground text-secondary-foreground hover:bg-secondary-foreground hover:text-primary-foreground bg-transparent"
+              >
+                <Link href="/resources">Browse Resources</Link>
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
 
