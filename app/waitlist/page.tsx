@@ -1,0 +1,151 @@
+import { WaitlistForm } from "@/components/waitlist-form"
+import { FeatureCards } from "@/components/feature-cards"
+import { HowItWorks } from "@/components/how-it-works"
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
+
+export default function WaitlistPage() {
+  return (
+    <main className="min-h-screen flex flex-col bg-background">
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 border-b border-none bg-primary-foreground py-6">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <Link href="/">
+            <Image src="/plai-logo.png" alt="Plai Logo" width={80} height={40} priority className="w-auto h-16 mx-0" />
+          </Link>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="w-full px-6 md:px-12 md:py-24 text-background border-none bg-primary-foreground md:pt-[52px] md:pb-[76px] leading-4 py-[35px] pt-28 md:pt-[120px]">
+        <div className="max-w-7xl mx-auto flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          {/* Left: Content (shows second on mobile, first on desktop) */}
+          <div className="space-y-2 order-2 md:order-1">
+            <div className="space-y-2">
+              <h1
+                id="join-plaidate"
+                className="md:text-6xl font-bold tracking-tight text-balance leading-tight text-primary text-4xl"
+              >
+                Join Plaidate
+              </h1>
+              <p className="leading-normal font-sans py-2 text-base text-popover-foreground pb-8">
+                A platform for parents of K-5 children to easily host, join, and plan activities. Connect with skilled
+                parents who create engaging activities that help your child and others build social skills and
+                friendships.
+              </p>
+            </div>
+
+            <div id="waitlist">
+              <WaitlistForm />
+            </div>
+
+            <p className="text-sm text-muted-foreground text-center md:text-right">
+              We'll be in touch to share updates
+            </p>
+          </div>
+
+          {/* Right: Image (shows first on mobile, second on desktop) */}
+          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden w-full order-1 md:order-2">
+            <Image
+              src="/hero-image.png"
+              alt="Children playing together outdoors"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Why Parents Love Section */}
+      <section className="w-full px-6 md:px-12 py-16 bg-muted/30">
+        <div className="max-w-7xl space-y-12 mx-auto">
+          <div className="text-center space-y-4">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-primary">Why parents love Plaidate</h2>
+            <p className="text-lg text-primary">
+              One-stop place to chat, plan, and attend — instead of messy text threads or multiple apps.
+            </p>
+          </div>
+
+          <FeatureCards />
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section className="w-full px-6 md:px-12 py-16 bg-popover">
+        <div className="max-w-7xl mx-auto space-y-12">
+          <div className="text-center space-y-4">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">How it works</h2>
+            <p className="text-lg text-primary">Getting started is simple and takes just a few minutes</p>
+          </div>
+
+          <HowItWorks />
+        </div>
+      </section>
+
+      {/* Mission Statement */}
+      <section className="w-full px-6 md:px-12 bg-primary-foreground py-[106px]">
+        <div className="max-w-4xl mx-auto text-center space-y-11">
+          <h2 className="tracking-tight text-balance leading-tight text-primary font-medium text-3xl">
+            At Plaidate, we believe social skills are the foundation of kids' confidence and emotional growth.
+          </h2>
+          <Button
+            asChild
+            className="hover:bg-[#7AC5F8] rounded-full px-8 py-6 text-lg text-primary-foreground bg-secondary-foreground"
+          >
+            <a href="#join-plaidate">Join Plaidate Waitlist</a>
+          </Button>
+        </div>
+      </section>
+
+      {/* Resources Section */}
+      <section className="w-full px-6 md:px-12 bg-muted/30 py-16 md:py-24">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-primary">Explore Parenting Resources</h2>
+          <p className="text-lg text-primary max-w-2xl mx-auto">
+            Discover curated books, podcasts, activities, and tools to help you build stronger connections with your
+            child and community.
+          </p>
+          <Button
+            asChild
+            size="lg"
+            className="rounded-full px-8 py-6 text-lg bg-secondary-foreground text-primary-foreground hover:bg-[#7AC5F8]"
+          >
+            <Link href="/resources">Browse Resources</Link>
+          </Button>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="w-full py-12 px-6 md:px-12 border-t bg-secondary">
+        <div className="max-w-7xl mx-auto space-y-9">
+          <div className="flex flex-col md:flex-row gap-8 md:gap-4 text-left md:items-start md:justify-between">
+            <Image src="/plai-logo.png" alt="Plai Logo" width={80} height={40} className="w-auto text-left h-8" />
+            <nav className="flex flex-col gap-3">
+              <Link href="/" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors">
+                Homepage
+              </Link>
+              <Link
+                href="/waitlist"
+                className="text-primary-foreground hover:text-primary-foreground/80 transition-colors"
+              >
+                Waitlist
+              </Link>
+              <Link
+                href="/resources"
+                className="text-primary-foreground hover:text-primary-foreground/80 transition-colors"
+              >
+                Resources
+              </Link>
+            </nav>
+          </div>
+          <p className="max-w-md text-primary-foreground text-left leading-normal text-base">
+            Build lasting connections and friendships within your local parenting community.
+          </p>
+          <p className="text-xs text-primary-foreground text-left">© 2025 Plaidate. All Rights Reserved.</p>
+        </div>
+      </footer>
+    </main>
+  )
+}
