@@ -2036,6 +2036,34 @@ export default function ResourcesPage() {
           </div>
         </div>
       </div>
+
+      {/* Footer */}
+      <footer className="w-full py-12 px-6 md:px-12 border-t border-border bg-secondary">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+            <div className="space-y-4">
+              <Image src="/plai-logo.png" alt="Plai Logo" width={100} height={50} className="w-auto h-8" />
+              <p className="text-sm text-muted-foreground max-w-md">
+                Curated resources and community for intentional parenting
+              </p>
+            </div>
+            <nav className="flex flex-col md:flex-row gap-6">
+              <Link href="/" className="text-sm text-foreground hover:text-foreground/70 transition-colors">
+                Home
+              </Link>
+              <Link href="/resources" className="text-sm text-foreground hover:text-foreground/70 transition-colors">
+                Resources
+              </Link>
+              <Link href="/waitlist" className="text-sm text-foreground hover:text-foreground/70 transition-colors">
+                Waitlist
+              </Link>
+            </nav>
+          </div>
+          <div className="mt-8 pt-8 border-t border-border">
+            <p className="text-xs text-muted-foreground">© 2025 Plaidate. All Rights Reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
