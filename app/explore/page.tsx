@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
-import { Palette, Trees, GraduationCap, MapPin, Clock, Search, Sparkles } from "lucide-react"
+import { Palette, Trees, GraduationCap, MapPin, Clock, Calendar, Search, Sparkles } from "lucide-react"
 import { useState } from "react"
 
 export default function ExplorePage() {
@@ -121,7 +121,8 @@ export default function ExplorePage() {
       location: "Berkeley (East)",
       ages: "6-8",
       cost: "$5",
-      time: "Sat 10 AM",
+      date: "Sat, Oct 25",
+      time: "10:00 AM",
       avatar: "/friendly-mom-art-teacher.jpg",
     },
     {
@@ -131,7 +132,8 @@ export default function ExplorePage() {
       location: "Oakland North",
       ages: "4-7",
       cost: "Free",
-      time: "Sun 9 AM",
+      date: "Sun, Oct 26",
+      time: "9:00 AM",
       avatar: "/friendly-dad-soccer-coach.jpg",
     },
     {
@@ -141,7 +143,8 @@ export default function ExplorePage() {
       location: "Berkeley West",
       ages: "6-9",
       cost: "$8",
-      time: "Sat 2 PM",
+      date: "Sat, Nov 1",
+      time: "2:00 PM",
       avatar: "/friendly-mom-science-teacher.jpg",
     },
   ]
@@ -233,7 +236,7 @@ export default function ExplorePage() {
             </div>
 
             {/* Tabs */}
-            <div className="flex justify-center gap-2 border-b border-border">
+            <div className="flex justify-center gap-2 border-b border-border border-none">
               {["creative", "outdoor", "learning"].map((tab) => (
                 <button
                   key={tab}
@@ -252,14 +255,14 @@ export default function ExplorePage() {
             {/* Activity Cards Grid */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {activities[activeTab as keyof typeof activities].map((activity) => (
-                <Card key={activity.id} className="p-6 space-y-4 hover:shadow-lg transition-shadow">
+                <Card key={activity.id} className="p-6 space-y-4 hover:shadow-lg transition-shadow bg-chart-1">
                   <div className="flex items-start gap-3">
                     <div className="p-3 rounded-full bg-muted">
                       <activity.icon className="w-6 h-6 text-foreground" />
                     </div>
                     <div className="flex-1">
                       <h3 className="font-bold text-lg text-foreground">{activity.title}</h3>
-                      <p className="text-sm text-muted-foreground">{activity.category} Playdate</p>
+                      <p className="text-sm text-card-foreground">{activity.category} Playdate</p>
                     </div>
                   </div>
 
@@ -276,11 +279,11 @@ export default function ExplorePage() {
                   </div>
 
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <MapPin className="w-4 h-4" />
-                    <span>{activity.location}</span>
+                    <MapPin className="w-4 h-4 text-popover-foreground" />
+                    <span className="text-card-foreground">{activity.location}</span>
                   </div>
 
-                  <Button className="w-full rounded-full bg-transparent" variant="outline">
+                  <Button className="w-full rounded-full bg-secondary-foreground text-secondary border-none" variant="outline">
                     Request to Join
                   </Button>
                 </Card>
@@ -306,7 +309,7 @@ export default function ExplorePage() {
             {/* Playdate Cards Carousel */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {playdates.map((playdate) => (
-                <Card key={playdate.id} className="p-6 space-y-4 hover:shadow-lg transition-shadow">
+                <Card key={playdate.id} className="p-6 space-y-4 hover:shadow-lg transition-shadow bg-popover">
                   <div className="flex items-center gap-4">
                     <div className="w-16 h-16 rounded-full bg-muted overflow-hidden">
                       <Image
@@ -329,10 +332,14 @@ export default function ExplorePage() {
                       <span>{playdate.location}</span>
                     </div>
                     <div className="flex items-center gap-2 text-muted-foreground">
+                      <Calendar className="w-4 h-4" />
+                      <span>{playdate.date}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-muted-foreground">
                       <Clock className="w-4 h-4" />
                       <span>{playdate.time}</span>
                     </div>
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-4 text-popover">
                       <Badge variant="secondary">Ages {playdate.ages}</Badge>
                       <Badge variant="secondary">{playdate.cost}</Badge>
                     </div>
@@ -479,7 +486,7 @@ export default function ExplorePage() {
       )}
 
       {/* Footer */}
-      <footer className="w-full py-12 px-6 md:px-12 border-t border-border bg-secondary">
+      <footer className="w-full py-12 px-6 md:px-12 border-t border-border bg-secondary-foreground">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
             <div className="space-y-4">
