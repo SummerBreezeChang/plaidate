@@ -20,6 +20,8 @@ import {
   Heart,
   ArrowRight,
   Loader2,
+  Menu,
+  X,
 } from "lucide-react"
 import { useState, useEffect } from "react"
 
@@ -54,6 +56,7 @@ export default function ExplorePage() {
   const [activities, setActivities] = useState<Activity[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const fetchActivities = async (search?: string) => {
     setLoading(true)
@@ -72,12 +75,8 @@ export default function ExplorePage() {
         setActivities(data.activities || getStaticActivities(activeTab))
       } else {
         setActivities(data.activities || [])
-        if (data.status === "STATIC_DATA" && data.message) {
-          console.log("[v0]", data.message)
-        }
       }
     } catch (err) {
-      console.error("[v0] Error fetching activities:", err)
       setError("Using curated local activities")
       setActivities(getStaticActivities(activeTab))
     } finally {
@@ -240,7 +239,7 @@ export default function ExplorePage() {
           <Link href="/" className="flex items-center gap-2">
             <Image src="/plai-logo.png" alt="Plai Logo" width={100} height={50} priority className="w-auto h-10" />
           </Link>
-          <nav className="flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-6">
             <Link
               href="/explore"
               className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
@@ -261,7 +260,43 @@ export default function ExplorePage() {
               <Link href="/waitlist">Join Waitlist</Link>
             </Button>
           </nav>
+          <button
+            className="md:hidden p-2 hover:bg-secondary/10 rounded-lg transition-colors"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6 text-foreground" /> : <Menu className="w-6 h-6 text-foreground" />}
+          </button>
         </div>
+        {mobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 right-0 bg-primary-foreground border-b border-border/50 shadow-lg">
+            <nav className="flex flex-col p-4 space-y-3">
+              <Link
+                href="/explore"
+                className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors py-2 px-3 hover:bg-secondary/10 rounded-lg"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Explore
+              </Link>
+              <Link
+                href="/resources"
+                className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors py-2 px-3 hover:bg-secondary/10 rounded-lg"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Resources
+              </Link>
+              <Button
+                asChild
+                size="sm"
+                className="rounded-full bg-secondary-foreground hover:bg-secondary-foreground/90 text-primary-foreground w-full"
+              >
+                <Link href="/waitlist" onClick={() => setMobileMenuOpen(false)}>
+                  Join Waitlist
+                </Link>
+              </Button>
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* Hero Section - Added engaging hero with clear value prop */}
@@ -288,12 +323,31 @@ export default function ExplorePage() {
               </h2>
             </div>
 
-            <Card className="p-6 bg-secondary/5 border-border/50 border-none py-2 px-0 rounded-none">
+            <Card className="p-6 bg-secondary/5 border-border/50 border-none py-2 px-0 rounded-none shadow-none">
               <div className="flex flex-col md:flex-row gap-6 border-none">
-                {/* Location Tabs - Now first */}
+                {/* Location Section */}
                 <div className="flex-1">
                   <label className="text-sm font-medium text-foreground mb-2 block">Location</label>
-                  <div className="flex gap-2 flex-wrap">
+
+                  <div className="md:hidden">
+                    <Select
+                      value={selectedLocation}
+                      onValueChange={(value) => setSelectedLocation(value as keyof typeof LOCATION_COORDS)}
+                    >
+                      <SelectTrigger className="w-full bg-background">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {(Object.keys(LOCATION_COORDS) as Array<keyof typeof LOCATION_COORDS>).map((location) => (
+                          <SelectItem key={location} value={location}>
+                            {LOCATION_COORDS[location].name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="hidden md:flex flex-wrap flex-row gap-2 my-0 px-12">
                     {(Object.keys(LOCATION_COORDS) as Array<keyof typeof LOCATION_COORDS>).map((location) => (
                       <button
                         key={location}
@@ -310,10 +364,24 @@ export default function ExplorePage() {
                   </div>
                 </div>
 
-                {/* Category Tabs - Now second, side by side on desktop */}
+                {/* Category Section */}
                 <div className="flex-1">
-                  <label className="text-sm font-medium text-foreground mb-2 block">Category</label>
-                  <div className="flex gap-2 flex-wrap">
+                  <label className="text-sm font-medium text-foreground block mb-3">Category</label>
+
+                  <div className="md:hidden">
+                    <Select value={activeTab} onValueChange={setActiveTab}>
+                      <SelectTrigger className="w-full bg-background">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="creative">Creative</SelectItem>
+                        <SelectItem value="outdoor">Outdoor</SelectItem>
+                        <SelectItem value="learning">Learning</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="hidden md:flex gap-2 flex-wrap px-12">
                     {["creative", "outdoor", "learning"].map((tab) => (
                       <button
                         key={tab}
@@ -354,13 +422,13 @@ export default function ExplorePage() {
               </div>
             ) : null}
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 py-4">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 py-0">
               {activities.map((activity, index) => {
                 const IconComponent = getCategoryIcon(activeTab)
                 return (
                   <Card
                     key={activity.id}
-                    className="p-6 hover:shadow-xl hover:scale-105 transition-all duration-300 border-border/50 group relative flex flex-col bg-secondary"
+                    className="p-6 hover:shadow-xl hover:scale-105 transition-all duration-300 border-border/50 group relative flex flex-col bg-secondary py-4 px-4 leading-4 gap-1.5"
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     <div className="relative w-full h-40 rounded-lg overflow-hidden bg-muted mb-4">
@@ -381,10 +449,7 @@ export default function ExplorePage() {
                       </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-2 mb-3">
-                      <Badge variant="secondary" className="text-xs bg-blue-100 text-blue-700 border-blue-200">
-                        {activity.ages}
-                      </Badge>
+                    <div className="flex flex-wrap gap-2 mb-1.5">
                       <Badge variant="secondary" className="text-xs">
                         {activity.type}
                       </Badge>
@@ -436,7 +501,7 @@ export default function ExplorePage() {
                       </div>
                     )}
 
-                    <Button className="rounded-full bg-secondary-foreground text-secondary hover:bg-secondary-foreground/90 border-none group-hover:shadow-md transition-all w-full text-center mt-auto">
+                    <Button className="rounded-full hover:bg-secondary-foreground/90 group-hover:shadow-md transition-all w-full text-center mt-auto text-secondary-foreground border-none bg-sidebar">
                       Host a Plaidate
                     </Button>
                   </Card>
@@ -515,7 +580,7 @@ export default function ExplorePage() {
                     </div>
                   </div>
 
-                  <Button className="w-full rounded-full group-hover:shadow-md transition-all text-center">
+                  <Button className="w-full rounded-full group-hover:shadow-md transition-all text-center bg-sidebar text-popover-foreground">
                     Request to Join
                   </Button>
                 </Card>
@@ -532,8 +597,8 @@ export default function ExplorePage() {
               </p>
             </div>
 
-            <Card className="p-8 md:p-12 bg-gradient-to-br from-secondary/10 to-secondary-foreground/5 border-border/50 border-none md:py-6">
-              <div className="max-w-3xl space-y-2 mx-auto">
+            <Card className="p-8 md:p-12 bg-gradient-to-br from-secondary/10 to-secondary-foreground/5 border-border/50 border-none md:py-6 shadow-none mx-auto px-0">
+              <div className="max-w-3xl mx-auto space-y-3">
                 <div className="grid md:grid-cols-3 gap-6 px-0 mb-20">
                   <div className="text-center space-y-2">
                     <div className="w-12 h-12 rounded-full bg-secondary-foreground/10 flex items-center justify-center mx-auto">
@@ -561,7 +626,7 @@ export default function ExplorePage() {
                 <div className="flex justify-center">
                   <Button
                     size="lg"
-                    className="rounded-full px-10 py-6 text-lg bg-secondary-foreground hover:bg-secondary-foreground/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all"
+                    className="rounded-full text-lg bg-secondary-foreground hover:bg-secondary-foreground/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all py-6 px-14"
                     onClick={() => setShowHostModal(true)}
                   >
                     Host Your Plaidate

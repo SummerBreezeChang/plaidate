@@ -138,28 +138,43 @@ export async function GET(request: NextRequest) {
 
   const searchParams = request.nextUrl.searchParams
   const category = searchParams.get("category") || "museum"
+  const locationParam = searchParams.get("location") || "37.8044,-122.2712" // Default to Oakland
+  const radiusParam = searchParams.get("radius") || "15000"
+  const searchQuery = searchParams.get("search")
+
+  const [lat, lng] = locationParam.split(",").map(Number)
+  const radius = Number(radiusParam)
+
+  const getCityName = (latitude: number, longitude: number): string => {
+    if (Math.abs(latitude - 37.7749) < 0.05 && Math.abs(longitude - -122.4194) < 0.05) return "San Francisco"
+    if (Math.abs(latitude - 37.8715) < 0.05 && Math.abs(longitude - -122.273) < 0.05) return "Berkeley"
+    if (Math.abs(latitude - 37.7652) < 0.05 && Math.abs(longitude - -122.2416) < 0.05) return "Alameda"
+    return "Oakland" // Default
+  }
+
+  const cityName = getCityName(lat, lng)
 
   try {
     const categoryMap: Record<string, string> = {
-      creative: "art museums and creative activities for kids in Oakland CA",
-      outdoor: "parks and playgrounds for kids in Oakland CA",
-      learning: "science museums and educational activities for kids in Oakland CA",
-      museum: "museums for kids in Oakland CA",
-      all: "family activities for kids in Oakland CA",
+      creative: `art museums and creative activities for kids in ${cityName} CA`,
+      outdoor: `parks and playgrounds for kids in ${cityName} CA`,
+      learning: `science museums and educational activities for kids in ${cityName} CA`,
+      museum: `museums for kids in ${cityName} CA`,
+      all: `family activities for kids in ${cityName} CA`,
     }
 
-    const query = categoryMap[category] || categoryMap.all
+    const query = searchQuery || categoryMap[category] || categoryMap.all
 
     const url = "https://places.googleapis.com/v1/places:searchText"
 
     console.log("[v0] Fetching from Google Places API (New):", query)
+    console.log("[v0] Location:", cityName, `(${lat}, ${lng})`, "Radius:", radius)
 
     const response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "X-Goog-Api-Key": GOOGLE_PLACES_API_KEY,
-        // Request all fields we need including website and photos
         "X-Goog-FieldMask":
           "places.id,places.displayName,places.formattedAddress,places.rating,places.types,places.websiteUri,places.googleMapsUri,places.photos,places.editorialSummary,places.priceLevel",
       },
@@ -169,10 +184,10 @@ export async function GET(request: NextRequest) {
         locationBias: {
           circle: {
             center: {
-              latitude: 37.8044,
-              longitude: -122.2712,
+              latitude: lat,
+              longitude: lng,
             },
-            radius: 15000.0, // 15km radius around Oakland
+            radius: radius,
           },
         },
       }),
@@ -193,7 +208,6 @@ export async function GET(request: NextRequest) {
         console.log("[v0] 3. Enable billing on your Google Cloud project")
       }
 
-      // Return static data as fallback
       const staticCategory = category === "outdoor" ? "outdoor" : category === "learning" ? "learning" : "creative"
       const activities = STATIC_ACTIVITIES[staticCategory] || STATIC_ACTIVITIES.creative
       return NextResponse.json({
@@ -207,19 +221,16 @@ export async function GET(request: NextRequest) {
     console.log("[v0] Successfully fetched", data.places.length, "places from Google")
 
     const activities = data.places.slice(0, 6).map((place: any, index: number) => {
-      // Get photo URL from new API format
       const photoName = place.photos?.[0]?.name
       const photoUrl = photoName
         ? `https://places.googleapis.com/v1/${photoName}/media?maxHeightPx=400&maxWidthPx=600&key=${GOOGLE_PLACES_API_KEY}`
         : `/placeholder.svg?height=200&width=300&query=${encodeURIComponent(place.displayName?.text || "activity")}`
 
-      // Determine activity type from place types
       let activityType = "Indoor"
       if (place.types?.some((t: string) => ["park", "playground", "hiking_area", "campground"].includes(t))) {
         activityType = "Outdoor"
       }
 
-      // Determine cost from price level
       const cost = place.priceLevel === "PRICE_LEVEL_FREE" || activityType === "Outdoor" ? "Free" : "Paid"
 
       return {
@@ -232,7 +243,7 @@ export async function GET(request: NextRequest) {
         type: activityType,
         cost,
         rating: place.rating || 4.5,
-        location: place.formattedAddress || "Oakland, CA",
+        location: place.formattedAddress || `${cityName}, CA`,
         mapUrl:
           place.googleMapsUri ||
           `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.displayName?.text || "")}`,

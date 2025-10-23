@@ -5,12 +5,13 @@ import Image from "next/image"
 import Link from "next/link"
 import { ResourceCard } from "@/components/resource-card"
 import { Button } from "@/components/ui/button"
-import { BookOpen, Headphones, Hammer, ChefHat, Cpu, Package, FileText, Book } from "lucide-react"
+import { BookOpen, Headphones, Hammer, ChefHat, Cpu, Package, Book } from "lucide-react"
+import { Newspaper, Menu, X } from "lucide-react"
 
 const categories = [
   { id: "all", name: "All Categories", icon: null },
   { id: "podcasts", name: "Podcasts", icon: Headphones },
-  { id: "magazines", name: "Magazines", icon: FileText },
+  { id: "magazines", name: "Magazines", icon: Newspaper },
   { id: "kids-books", name: "Kids Books", icon: Book },
   { id: "parenting-books", name: "Parenting Books", icon: BookOpen },
   { id: "stem-activities", name: "STEM Activities", icon: Cpu },
@@ -1917,12 +1918,14 @@ const resources = [
 ]
 
 export default function ResourcesPage() {
-  const [selectedCategory, setSelectedCategory] = useState("all")
-  const [selectedAge, setSelectedAge] = useState("All Ages")
+  const [selectedCategory, setSelectedCategory] = useState<string>("all")
+  const [selectedAge, setSelectedAge] = useState<string>("all")
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const filteredResources = resources.filter((resource) => {
     const categoryMatch = selectedCategory === "all" || resource.category === selectedCategory
-    const ageMatch = selectedAge === "All Ages" || resource.ageRange === selectedAge
+    // Filter by age, ensuring to handle "All Ages" correctly
+    const ageMatch = selectedAge === "all" || resource.ageRange === selectedAge
     return categoryMatch && ageMatch
   })
 
@@ -1936,7 +1939,8 @@ export default function ResourcesPage() {
           <Link href="/" className="flex items-center gap-2">
             <Image src="/plai-logo.png" alt="Plai Logo" width={100} height={50} priority className="w-auto h-10" />
           </Link>
-          <nav className="flex items-center gap-6">
+
+          <nav className="hidden md:flex items-center gap-6">
             <Link
               href="/explore"
               className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
@@ -1957,7 +1961,45 @@ export default function ResourcesPage() {
               <Link href="/waitlist">Join Waitlist</Link>
             </Button>
           </nav>
+
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 text-foreground hover:text-foreground/70 transition-colors"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
+
+        {isMobileMenuOpen && (
+          <div className="md:hidden mt-4 pb-4 border-t border-border/50 pt-4">
+            <nav className="flex flex-col gap-4">
+              <Link
+                href="/explore"
+                className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Explore
+              </Link>
+              <Link
+                href="/resources"
+                className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Resources
+              </Link>
+              <Button
+                asChild
+                size="sm"
+                className="rounded-full bg-secondary-foreground hover:bg-secondary-foreground/90 text-primary-foreground w-full"
+              >
+                <Link href="/waitlist" onClick={() => setIsMobileMenuOpen(false)}>
+                  Join Waitlist
+                </Link>
+              </Button>
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* Main Content */}
@@ -2003,7 +2045,7 @@ export default function ResourcesPage() {
                 <div className="space-y-2">
                   <h1 className="text-4xl md:text-5xl font-bold text-primary">Explore All Resources</h1>
                   <p className="text-lg text-popover-foreground">
-                    {selectedAge !== "All Ages" && `${selectedAge} • `}
+                    {selectedAge !== "all" && `${selectedAge} • `}
                     {selectedCategory !== "all" && `${currentCategoryName} • `}
                     {filteredResources.length} resources to grow together
                   </p>
@@ -2044,7 +2086,7 @@ export default function ResourcesPage() {
                   <Button
                     onClick={() => {
                       setSelectedCategory("all")
-                      setSelectedAge("All Ages")
+                      setSelectedAge("all")
                     }}
                     className="mt-4"
                     variant="outline"

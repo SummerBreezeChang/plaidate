@@ -1,10 +1,15 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { BookOpen, Headphones, Hammer, ChefHat, Cpu, Package } from "lucide-react"
+import { BookOpen, Headphones, Hammer, ChefHat, Cpu, Package, Menu, X } from "lucide-react"
+import { useState } from "react"
 
 export default function Home() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
   return (
     <main className="min-h-screen bg-background">
       <header className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 backdrop-blur-md border-b border-border/50 py-4 bg-primary-foreground">
@@ -12,7 +17,7 @@ export default function Home() {
           <Link href="/" className="flex items-center gap-2">
             <Image src="/plai-logo.png" alt="Plai Logo" width={100} height={50} priority className="w-auto h-10" />
           </Link>
-          <nav className="flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-6">
             <Link
               href="/explore"
               className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
@@ -33,7 +38,43 @@ export default function Home() {
               <Link href="/waitlist">Join Waitlist</Link>
             </Button>
           </nav>
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 text-foreground hover:text-foreground/70 transition-colors"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
+        {isMobileMenuOpen && (
+          <div className="md:hidden mt-4 pb-4 border-t border-border/50 pt-4">
+            <nav className="flex flex-col gap-4">
+              <Link
+                href="/explore"
+                className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Explore
+              </Link>
+              <Link
+                href="/resources"
+                className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Resources
+              </Link>
+              <Button
+                asChild
+                size="sm"
+                className="rounded-full bg-secondary-foreground hover:bg-secondary-foreground/90 text-primary-foreground w-full"
+              >
+                <Link href="/waitlist" onClick={() => setIsMobileMenuOpen(false)}>
+                  Join Waitlist
+                </Link>
+              </Button>
+            </nav>
+          </div>
+        )}
       </header>
 
       <section className="pt-24 md:pt-32 pb-12 md:pb-20 px-6 md:px-12 bg-gradient-to-b from-muted/30 to-background bg-primary-foreground">
