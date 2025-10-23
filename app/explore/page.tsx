@@ -300,7 +300,7 @@ export default function ExplorePage() {
       </header>
 
       {/* Hero Section - Added engaging hero with clear value prop */}
-      <section className="relative pt-32 px-6 md:px-12 bg-gradient-to-b from-secondary/30 to-primary-foreground overflow-hidden pb-9 my-0">
+      <section className="relative pt-32 px-6 md:px-12 bg-gradient-to-b from-secondary/30 to-primary-foreground overflow-hidden my-0 pb-20">
         <div className="max-w-7xl mx-auto text-center space-y-6 relative z-10">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground animate-fade-in-up my-10">
             Find, Join, or Host
