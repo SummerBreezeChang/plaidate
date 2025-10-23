@@ -597,7 +597,7 @@ export default function ExplorePage() {
               </p>
             </div>
 
-            <Card className="p-8 md:p-12 bg-gradient-to-br from-secondary/10 to-secondary-foreground/5 border-border/50 border-none md:py-6 shadow-none mx-auto px-0">
+            <Card className="p-8 md:p-12 bg-gradient-to-br from-secondary/10 to-secondary-foreground/5 border-border/50 border-none md:py-6 shadow-none mx-auto px-0 bg-chart-4">
               <div className="max-w-3xl mx-auto space-y-3">
                 <div className="grid md:grid-cols-3 gap-6 px-0 mb-20">
                   <div className="text-center space-y-2">
@@ -605,21 +605,21 @@ export default function ExplorePage() {
                       <Shield className="w-6 h-6 text-secondary-foreground" />
                     </div>
                     <h3 className="font-semibold text-foreground">Safe & Verified</h3>
-                    <p className="text-sm text-muted-foreground">All hosts are background checked</p>
+                    <p className="text-sm text-foreground">All hosts are background checked</p>
                   </div>
                   <div className="text-center space-y-2">
                     <div className="w-12 h-12 rounded-full bg-secondary-foreground/10 flex items-center justify-center mx-auto">
                       <Users className="w-6 h-6 text-secondary-foreground" />
                     </div>
                     <h3 className="font-semibold text-foreground">Build Community</h3>
-                    <p className="text-sm text-muted-foreground">Connect with local families</p>
+                    <p className="text-sm text-foreground">Connect with local families</p>
                   </div>
                   <div className="text-center space-y-2">
                     <div className="w-12 h-12 rounded-full bg-secondary-foreground/10 flex items-center justify-center mx-auto">
                       <Heart className="w-6 h-6 text-secondary-foreground" />
                     </div>
                     <h3 className="font-semibold text-foreground">Share Your Passion</h3>
-                    <p className="text-sm text-muted-foreground">Teach what you love</p>
+                    <p className="text-sm text-foreground">Teach what you love</p>
                   </div>
                 </div>
 
@@ -633,7 +633,7 @@ export default function ExplorePage() {
                   </Button>
                 </div>
 
-                <p className="text-center text-sm text-muted-foreground">
+                <p className="text-center text-sm text-foreground">
                   <Shield className="w-4 h-4 inline mr-1" />
                   All listings are reviewed for safety before going live
                 </p>
