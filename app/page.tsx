@@ -14,10 +14,16 @@ export default function Home() {
           </Link>
           <nav className="flex items-center gap-6">
             <Link
+              href="/explore"
+              className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
+            >
+              Explore
+            </Link>
+            <Link
               href="/resources"
               className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
             >
-              Browse Resources
+              Resources
             </Link>
             <Button
               asChild
@@ -189,6 +195,12 @@ export default function Home() {
             <nav className="flex flex-col md:flex-row gap-6 text-primary-foreground">
               <Link href="/" className="text-sm hover:text-foreground/70 transition-colors text-primary-foreground">
                 Home
+              </Link>
+              <Link
+                href="/explore"
+                className="text-sm hover:text-foreground/70 transition-colors text-primary-foreground"
+              >
+                Explore
               </Link>
               <Link
                 href="/resources"

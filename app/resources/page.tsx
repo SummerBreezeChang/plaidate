@@ -1929,18 +1929,39 @@ export default function ResourcesPage() {
   const currentCategoryName = categories.find((cat) => cat.id === selectedCategory)?.name || "All Categories"
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 border-b bg-primary-foreground py-6">
+      <header className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 backdrop-blur-md border-b border-border/50 py-4 bg-primary-foreground">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/">
-            <Image src="/plai-logo.png" alt="Plai Logo" width={80} height={40} priority className="w-auto h-16 mx-0" />
+          <Link href="/" className="flex items-center gap-2">
+            <Image src="/plai-logo.png" alt="Plai Logo" width={100} height={50} priority className="w-auto h-10" />
           </Link>
+          <nav className="flex items-center gap-6">
+            <Link
+              href="/explore"
+              className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
+            >
+              Explore
+            </Link>
+            <Link
+              href="/resources"
+              className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
+            >
+              Resources
+            </Link>
+            <Button
+              asChild
+              size="sm"
+              className="rounded-full bg-secondary-foreground hover:bg-secondary-foreground/90 text-primary-foreground"
+            >
+              <Link href="/waitlist">Join Waitlist</Link>
+            </Button>
+          </nav>
         </div>
       </header>
 
       {/* Main Content */}
-      <div className="px-6 md:px-12 py-8 bg-primary-foreground pt-28 md:pt-32">
+      <div className="flex-1 px-6 md:px-12 py-8 bg-primary-foreground pt-28 md:pt-32">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row gap-8">
             {/* Sidebar */}
@@ -2043,24 +2064,36 @@ export default function ResourcesPage() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
             <div className="space-y-4">
               <Image src="/plai-logo.png" alt="Plai Logo" width={100} height={50} className="w-auto h-8" />
-              <p className="text-sm text-muted-foreground max-w-md">
+              <p className="text-sm max-w-md text-background">
                 Curated resources and community for intentional parenting
               </p>
             </div>
-            <nav className="flex flex-col md:flex-row gap-6">
-              <Link href="/" className="text-sm text-foreground hover:text-foreground/70 transition-colors">
+            <nav className="flex flex-col md:flex-row gap-6 text-primary-foreground">
+              <Link href="/" className="text-sm hover:text-foreground/70 transition-colors text-primary-foreground">
                 Home
               </Link>
-              <Link href="/resources" className="text-sm text-foreground hover:text-foreground/70 transition-colors">
+              <Link
+                href="/explore"
+                className="text-sm hover:text-foreground/70 transition-colors text-primary-foreground"
+              >
+                Explore
+              </Link>
+              <Link
+                href="/resources"
+                className="text-sm hover:text-foreground/70 transition-colors text-primary-foreground"
+              >
                 Resources
               </Link>
-              <Link href="/waitlist" className="text-sm text-foreground hover:text-foreground/70 transition-colors">
+              <Link
+                href="/waitlist"
+                className="text-sm hover:text-foreground/70 transition-colors border-primary-foreground border-none text-primary-foreground"
+              >
                 Waitlist
               </Link>
             </nav>
           </div>
-          <div className="mt-8 pt-8 border-t border-border">
-            <p className="text-xs text-muted-foreground">© 2025 Plaidate. All Rights Reserved.</p>
+          <div className="mt-8 pt-8 border-t border-border border-none">
+            <p className="text-xs text-primary-foreground">© 2025 Plaidate. All Rights Reserved.</p>
           </div>
         </div>
       </footer>
