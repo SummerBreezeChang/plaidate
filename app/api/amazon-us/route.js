@@ -51,6 +51,7 @@ export async function GET(request) {
 
     // Optional: log to see if images are returned
     console.log(JSON.stringify(data, null, 2));
+console.log(JSON.stringify(data, null, 2));
 
     return new Response(JSON.stringify(data), {
       headers: { "Content-Type": "application/json" },
