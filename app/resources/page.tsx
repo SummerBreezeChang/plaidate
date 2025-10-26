@@ -7,7 +7,6 @@ import { ResourceCard } from "@/components/resource-card"
 import { Button } from "@/components/ui/button"
 import { BookOpen, Headphones, Hammer, ChefHat, Cpu, Package, Book } from "lucide-react"
 import { Newspaper, Menu, X } from "lucide-react"
-import { addAffiliateTagsToResources } from "@/lib/amazon-affiliate"
 
 const categories = [
   { id: "all", name: "All Categories", icon: null },
@@ -77,54 +76,55 @@ const resourcesData = [
   },
   {
     id: 31,
-    title: "Where the Wild Things Are",
-    description: "Classic picture book about imagination and adventure by Maurice Sendak",
-    image: "/book-cover-wild-things.jpg",
+    title: "The Day the Crayons Quit",
+    description: "A hilarious and creative story about crayons going on strike by Drew Daywalt",
+    image: "/book-cover-crayons-quit.jpg",
     category: "kids-books",
     type: "Book",
-    ageRange: "Ages 5-6",
-    link: "https://www.amazon.com/Where-Wild-Things-Maurice-Sendak/dp/0060254920",
+    ageRange: "Ages 5-8",
+    link: "https://www.amazon.com/Day-Crayons-Quit-Drew-Daywalt/dp/0399255370",
   },
   {
     id: 32,
+    title: "Where the Wild Things Are",
+    description: "Classic tale of imagination and adventure by Maurice Sendak",
+    image: "/book-cover-wild-things.jpg",
+    category: "kids-books",
+    type: "Book",
+    ageRange: "Ages 5-8",
+    link: "https://www.amazon.com/Where-Wild-Things-Maurice-Sendak/dp/0060254920",
+  },
+  {
+    id: 33,
+    title: "The Giving Tree",
+    description: "Timeless story about generosity and love by Shel Silverstein",
+    image: "/book-cover-giving-tree.jpg",
+    category: "kids-books",
+    type: "Book",
+    ageRange: "Ages 5-10",
+    link: "https://www.amazon.com/Giving-Tree-Shel-Silverstein/dp/0060256656",
+  },
+  {
+    id: 34,
+    title: "Charlotte's Web",
+    description: "Beloved story of friendship between a pig and a spider by E.B. White",
+    image: "/book-cover-charlottes-web.jpg",
+    category: "kids-books",
+    type: "Book",
+    ageRange: "Ages 7-10",
+    link: "https://www.amazon.com/Charlottes-Web-E-B-White/dp/0064400557",
+  },
+  {
+    id: 35,
     title: "The Very Hungry Caterpillar",
-    description: "Beloved children's book about growth and transformation by Eric Carle",
+    description: "Colorful journey of a caterpillar's transformation by Eric Carle",
     image: "/book-cover-hungry-caterpillar.jpg",
     category: "kids-books",
     type: "Book",
     ageRange: "Ages 5-6",
     link: "https://www.amazon.com/Very-Hungry-Caterpillar-Eric-Carle/dp/0399226907",
   },
-  {
-    id: 33,
-    title: "Charlotte's Web",
-    description: "Timeless story of friendship and loyalty by E.B. White",
-    image: "/book-cover-charlottes-web.jpg",
-    category: "kids-books",
-    type: "Book",
-    ageRange: "Ages 7-8",
-    link: "https://www.amazon.com/Charlottes-Web-E-B-White/dp/0064400557",
-  },
-  {
-    id: 34,
-    title: "Wonder",
-    description: "Inspiring story about kindness and acceptance by R.J. Palacio",
-    image: "/book-cover-wonder.jpg",
-    category: "kids-books",
-    type: "Book",
-    ageRange: "Ages 9-10",
-    link: "https://www.amazon.com/Wonder-R-J-Palacio/dp/0375869026",
-  },
-  {
-    id: 35,
-    title: "Harry Potter and the Sorcerer's Stone",
-    description: "Magical adventure series that captivates young readers by J.K. Rowling",
-    image: "/book-cover-harry-potter.jpg",
-    category: "kids-books",
-    type: "Book",
-    ageRange: "Ages 9-10",
-    link: "https://www.amazon.com/Harry-Potter-Sorcerers-Stone-Rowling/dp/0590353403",
-  },
+  // Removed kids books (ids 31-35) - will be fetched from Amazon API
   {
     id: 5,
     title: "Good Inside with Dr. Becky",
@@ -223,7 +223,7 @@ const resourcesData = [
     category: "podcasts",
     type: "Podcast",
     ageRange: "All Ages",
-    link: "https://podcasts.apple.com/gb/podcast/motherhood-in-black-white/id1525043882",
+    link: "https://podcasts.apple.com/gb/podcast/motherhood-in-black-and-white/id1525043882",
   },
   {
     id: 45,
@@ -1918,19 +1918,85 @@ const resourcesData = [
   },
 ]
 
-const resources = addAffiliateTagsToResources(resourcesData)
+// const resources = addAffiliateTagsToResources(resourcesData) // This line is commented out in the updates, so we will keep it commented out.
 
 export default function ResourcesPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all")
-  const [selectedAge, setSelectedAge] = useState<string>("all")
+  const [selectedAge, setSelectedAge] = useState<string>("All Ages") // Changed from "all" to "All Ages"
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  // const [kidsBooks, setKidsBooks] = useState<any[]>([])
+  // const [isLoadingBooks, setIsLoadingBooks] = useState(false)
 
-  const filteredResources = resources.filter((resource) => {
-    const categoryMatch = selectedCategory === "all" || resource.category === selectedCategory
-    // Filter by age, ensuring to handle "All Ages" correctly
-    const ageMatch = selectedAge === "all" || resource.ageRange === selectedAge
-    return categoryMatch && ageMatch
-  })
+  // useEffect(() => {
+  //   async function fetchAmazonKidsBooks() {
+  //     // Only fetch if the category is 'kids-books' or 'all'
+  //     if (selectedCategory !== "kids-books" && selectedCategory !== "all") return
+
+  //     setIsLoadingBooks(true)
+  //     try {
+  //       console.log("[v0] Fetching kids books from Amazon API...")
+  //       const res = await fetch("/api/amazon-us?q=kids+books+ages+5-10")
+
+  //       if (!res.ok) {
+  //         const errorText = await res.text()
+  //         console.error("[v0] API returned error:", res.status, errorText)
+  //         throw new Error(`API error: ${res.status}`)
+  //       }
+
+  //       const data = await res.json()
+  //       console.log("[v0] Amazon Kids Books response:", data)
+
+  //       if (data.error) {
+  //         console.error("[v0] Amazon API error:", data.error)
+  //         setKidsBooks([])
+  //         return
+  //       }
+
+  //       if (data.SearchResult?.Items) {
+  //         const formattedBooks = data.SearchResult.Items.map((item: any, index: number) => ({
+  //           id: `amazon-${index}`, // Using index for ID, ensure uniqueness if needed
+  //           title: item.ItemInfo?.Title?.DisplayValue || "Untitled",
+  //           description: item.ItemInfo?.ByLineInfo?.Contributors?.[0]?.Name
+  //             ? `By ${item.ItemInfo.ByLineInfo.Contributors[0].Name}`
+  //             : "Kids book", // Provide a default description
+  //           image: item.Images?.Primary?.Large?.URL || "/placeholder.svg?height=400&width=300", // Fallback image
+  //           category: "kids-books",
+  //           type: "Book",
+  //           ageRange: "Ages 5-10", // Default age range, adjust if API provides it
+  //           link: item.DetailPageURL || "", // Fallback to empty string if URL is missing
+  //         }))
+  //         console.log("[v0] Formatted", formattedBooks.length, "books")
+  //         setKidsBooks(formattedBooks)
+  //       } else {
+  //         console.log("[v0] No items found in response")
+  //         setKidsBooks([]) // Clear books if no items found
+  //       }
+  //     } catch (error) {
+  //       console.error("[v0] Error fetching kids books:", error)
+  //       setKidsBooks([]) // Clear books on error
+  //     } finally {
+  //       setIsLoadingBooks(false)
+  //     }
+  //   }
+  //   fetchAmazonKidsBooks()
+  // }, [selectedCategory]) // Re-fetch when selectedCategory changes
+
+  // Combine static resources with dynamically fetched kids books
+  // const allResources = [...resourcesData, ...kidsBooks]
+
+  const filteredResources = resourcesData
+    .filter((resource) => {
+      if (selectedCategory === "all") return true
+      return resource.category === selectedCategory
+    })
+    .filter((resource) => {
+      if (selectedAge === "All Ages") return true
+      return resource.ageRange === selectedAge
+    })
+
+  // const allResources = selectedCategory === "kids-books" || selectedCategory === "all"
+  //   ? [...filteredResources, ...kidsBooks]
+  //   : filteredResources
 
   const currentCategoryName = categories.find((cat) => cat.id === selectedCategory)?.name || "All Categories"
 
@@ -2048,7 +2114,7 @@ export default function ResourcesPage() {
                 <div className="space-y-2">
                   <h1 className="text-4xl md:text-5xl font-bold text-primary">Explore All Resources</h1>
                   <p className="text-lg text-popover-foreground">
-                    {selectedAge !== "all" && `${selectedAge} • `}
+                    {selectedAge !== "All Ages" && `${selectedAge} • `} {/* Changed from "all" */}
                     {selectedCategory !== "all" && `${currentCategoryName} • `}
                     {filteredResources.length} resources to grow together
                   </p>
@@ -2076,6 +2142,14 @@ export default function ResourcesPage() {
                 </div>
               </div>
 
+              {/* Loading state for kids books */}
+              {/* Removed loading state as dynamic fetching is removed */}
+              {/* {isLoadingBooks && selectedCategory === "kids-books" && (
+                <div className="text-center py-8">
+                  <p className="text-muted-foreground">Loading kids books from Amazon...</p>
+                </div>
+              )} */}
+
               {/* Resource Grid */}
               {filteredResources.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -2089,7 +2163,7 @@ export default function ResourcesPage() {
                   <Button
                     onClick={() => {
                       setSelectedCategory("all")
-                      setSelectedAge("all")
+                      setSelectedAge("All Ages") // Changed from "all"
                     }}
                     className="mt-4"
                     variant="outline"
