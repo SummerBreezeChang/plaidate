@@ -7,6 +7,7 @@ import { ResourceCard } from "@/components/resource-card"
 import { Button } from "@/components/ui/button"
 import { BookOpen, Headphones, Hammer, ChefHat, Cpu, Package, Book } from "lucide-react"
 import { Newspaper, Menu, X } from "lucide-react"
+import { addAffiliateTagsToResources } from "@/lib/amazon-affiliate"
 
 const categories = [
   { id: "all", name: "All Categories", icon: null },
@@ -22,7 +23,7 @@ const categories = [
 
 const ageRanges = ["All Ages", "Ages 5-6", "Ages 7-8", "Ages 9-10"]
 
-const resources = [
+const resourcesData = [
   {
     id: 1,
     title: "The Whole-Brain Child",
@@ -1916,6 +1917,8 @@ const resources = [
     link: "https://bitsbox.com/",
   },
 ]
+
+const resources = addAffiliateTagsToResources(resourcesData)
 
 export default function ResourcesPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all")
