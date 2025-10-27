@@ -7,6 +7,7 @@ import { ResourceCard } from "@/components/resource-card"
 import { Button } from "@/components/ui/button"
 import { BookOpen, Headphones, Hammer, ChefHat, Cpu, Package, Book } from "lucide-react"
 import { Newspaper, Menu, X } from "lucide-react"
+import { addAffiliateTagsToResources } from "@/lib/amazon-affiliate"
 
 const categories = [
   { id: "all", name: "All Categories", icon: null },
@@ -1918,7 +1919,7 @@ const resourcesData = [
   },
 ]
 
-// const resources = addAffiliateTagsToResources(resourcesData) // This line is commented out in the updates, so we will keep it commented out.
+const resources = addAffiliateTagsToResources(resourcesData)
 
 export default function ResourcesPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all")
@@ -1984,7 +1985,7 @@ export default function ResourcesPage() {
   // Combine static resources with dynamically fetched kids books
   // const allResources = [...resourcesData, ...kidsBooks]
 
-  const filteredResources = resourcesData
+  const filteredResources = resources
     .filter((resource) => {
       if (selectedCategory === "all") return true
       return resource.category === selectedCategory
