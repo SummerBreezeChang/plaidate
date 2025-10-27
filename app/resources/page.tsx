@@ -130,7 +130,8 @@ const resourcesData = [
     id: 5,
     title: "Good Inside with Dr. Becky",
     description: "Dr. Becky Kennedy shares practical parenting strategies and insights",
-    image: "/podcast-artwork-good-inside.jpg",
+    image:
+      "https://www.goodinside.com/_next/image/?url=https%3A%2F%2Fmedia.goodinside.com%2Fwp-content%2Fuploads%2F2022%2F01%2F16165840%2Fpodcast-hero-image.png&w=1920&q=75",
     category: "podcasts",
     type: "Podcast",
     ageRange: "All Ages",
@@ -140,7 +141,8 @@ const resourcesData = [
     id: 36,
     title: "The Longest Shortest Time",
     description: "Honest conversations about the beautiful, messy reality of parenting",
-    image: "/podcast-artwork-longest-shortest-time.jpg",
+    image:
+      "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/7a/c9/4d/7ac94d7d-8bd7-ec02-29e7-9ade3c276fec/mza_8069757835232362769.jpeg/300x300bb.webp",
     category: "podcasts",
     type: "Podcast",
     ageRange: "All Ages",
@@ -150,7 +152,8 @@ const resourcesData = [
     id: 37,
     title: "Unruffled",
     description: "Janet Lansbury's respectful parenting advice and guidance",
-    image: "/podcast-artwork-unruffled.jpg",
+    image:
+      "https://d3tkwokssgv28o.cloudfront.net/wp-content/uploads/2015/08/15063638/Respectful-Parenting-Podcasts-Janet-Lansbury-Unruffled.jpg",
     category: "podcasts",
     type: "Podcast",
     ageRange: "All Ages",
@@ -160,7 +163,8 @@ const resourcesData = [
     id: 38,
     title: "The Mom Hour",
     description: "Real talk about motherhood, parenting, and life balance",
-    image: "/podcast-artwork-mom-hour.jpg",
+    image:
+      "https://content.production.cdn.art19.com/images/f3/0b/23/d1/f30b23d1-a776-480c-9724-c2e47912b285/3f949c8a077eff5048bed4181386a30113fb7d040e4b9c40873b4255167314919747013ca3c39d653aab32cb1cd0bd5141b005a26d345c9dfbb7164bd46171e6.jpeg",
     category: "podcasts",
     type: "Podcast",
     ageRange: "All Ages",
@@ -170,7 +174,8 @@ const resourcesData = [
     id: 39,
     title: "Karma & Chaos",
     description: "Kail Lowry & Becky Hayter discuss real parenting challenges with humor and honesty",
-    image: "/karma-and-chaos-podcast-cover-art-colorful-microph.jpg",
+    image:
+      "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/07/0b/41/070b4137-6918-8177-e0a0-46ca2a713603/mza_9354260193347751978.jpeg/300x300bb.webp",
     category: "podcasts",
     type: "Podcast",
     ageRange: "All Ages",
@@ -180,7 +185,8 @@ const resourcesData = [
     id: 40,
     title: "For Crying Out Loud",
     description: "Hilarious and heartfelt conversations about the ups and downs of parenting",
-    image: "/for-crying-out-loud-podcast-cover-art-baby-crying.jpg",
+    image:
+      "https://is1-ssl.mzstatic.com/image/thumb/Podcasts116/v4/a4/48/9f/a4489fd6-22ef-1e8a-b00c-11257733e56b/mza_6173555322903625944.jpg/300x300bb.webp",
     category: "podcasts",
     type: "Podcast",
     ageRange: "All Ages",
@@ -190,7 +196,8 @@ const resourcesData = [
     id: 41,
     title: "Care and Feeding",
     description: "Slate's parenting show offering advice on raising kids in today's world",
-    image: "/care-and-feeding-slate-podcast-cover-art-parenting.jpg",
+    image:
+      "https://is1-ssl.mzstatic.com/image/thumb/Podcasts122/v4/f9/f6/09/f9f609b2-da63-f904-9e17-e85103cecbc4/mza_5983804079826215748.jpg/300x300bb.webp",
     category: "podcasts",
     type: "Podcast",
     ageRange: "All Ages",
@@ -210,7 +217,8 @@ const resourcesData = [
     id: 43,
     title: "Parenting Hell",
     description: "Rob Beckett and Josh Widdicombe share hilarious parenting stories and struggles",
-    image: "/parenting-hell-podcast-cover-art-comedy-microphone.jpg",
+    image:
+      "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/17/53/7f/17537fbb-9d61-b47b-1d39-38c7072e24df/mza_12980508835516502454.jpg/300x300bb.webp",
     category: "podcasts",
     type: "Podcast",
     ageRange: "All Ages",
@@ -230,7 +238,8 @@ const resourcesData = [
     id: 45,
     title: "Wow in the World",
     description: "Science and curiosity podcast that makes learning fun for kids",
-    image: "/wow-in-the-world-kids-podcast-cover-art-science-co.jpg",
+    image:
+      "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/4c/b0/4a/4cb04a06-4e0a-d534-2a28-3f2fb37fa14e/mza_14610475686329584932.jpeg/300x300bb.webp",
     category: "podcasts",
     type: "Podcast",
     ageRange: "Ages 5-10",
@@ -240,17 +249,19 @@ const resourcesData = [
     id: 46,
     title: "Story Pirates",
     description: "Professional actors bring kids' stories to life with music and comedy",
-    image: "/story-pirates-podcast-cover-art-pirate-ship-kids-s.jpg",
+    image:
+      "https://is1-ssl.mzstatic.com/image/thumb/Podcasts116/v4/b5/93/16/b5931679-5def-c089-a36a-e5f3e3c4cc79/mza_6689736812831414250.jpg/300x300bb.webp",
     category: "podcasts",
     type: "Podcast",
     ageRange: "Ages 5-10",
-    link: "https://open.spotify.com/show/0OHMYcZChEVgTx2jz0yzze",
+    link: "https://podcasts.apple.com/us/podcast/story-pirates/id719585944",
   },
   {
     id: 47,
     title: "Circle Round",
     description: "Folktales from around the world adapted for modern kids",
-    image: "/circle-round-podcast-cover-art-folktales-storytell.jpg",
+    image:
+      "https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/30/d2/ab/30d2ab4f-f30f-d237-47ff-a0a1b631a542/mza_5757785439665484212.jpg/300x300bb.webp",
     category: "podcasts",
     type: "Podcast",
     ageRange: "Ages 5-10",
@@ -260,7 +271,8 @@ const resourcesData = [
     id: 48,
     title: "Brains On!",
     description: "Science podcast for curious kids exploring how the world works",
-    image: "/brains-on-science-podcast-cover-art-brain-kids-lea.jpg",
+    image:
+      "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/99/e5/39/99e53993-e2ea-70a3-64d6-f2f8ab84e53/mza_8458923780593912977.jpg/300x300bb.webp",
     category: "podcasts",
     type: "Podcast",
     ageRange: "Ages 7-10",
@@ -2093,7 +2105,7 @@ export default function ResourcesPage() {
                             : "text-primary hover:bg-muted/50"
                         }`}
                       >
-                        {Icon && <Icon className="w-5 h-5" />}
+                        {Icon && <Icon className="w-5 h-5 text-card-foreground" />}
                         <span className="text-foreground">{category.name}</span>
                       </button>
                     )
@@ -2131,9 +2143,7 @@ export default function ResourcesPage() {
                         size="sm"
                         onClick={() => setSelectedAge(age)}
                         className={
-                          selectedAge === age
-                            ? "rounded-full bg-secondary text-primary-foreground hover:bg-secondary/90"
-                            : "rounded-full"
+                          selectedAge === age ? "rounded-full bg-blue-500 text-white hover:bg-blue-600" : "rounded-full"
                         }
                       >
                         {age}
