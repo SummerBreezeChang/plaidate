@@ -188,7 +188,7 @@ export default function WaitlistPage() {
       </section>
 
       {/* Footer */}
-      <footer className="w-full py-12 px-6 md:px-12 border-t border-border bg-secondary">
+      <footer className="w-full py-12 px-6 md:px-12 border-t border-border bg-secondary-foreground">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
             <div className="space-y-4">
