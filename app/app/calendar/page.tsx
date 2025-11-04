@@ -55,13 +55,13 @@ export default function CalendarPage() {
       <div className="grid grid-cols-2 rounded-lg border p-1 text-sm">
         <button
           onClick={() => setTab("hosting")}
-          className={`rounded-md py-2 bg-primary ${tab==="hosting" ? "bg-gray-900 text-white" : ""}`}
+          className={`rounded-md py-2 bg-background ${tab==="hosting" ? "bg-gray-900 text-white" : ""}`}
         >
           Hosting ({hosting.length})
         </button>
         <button
           onClick={() => setTab("joining")}
-          className={`rounded-md py-2 ${tab==="joining" ? "bg-gray-900 text-white" : ""}`}
+          className={`rounded-md py-2 bg-background ${tab==="joining" ? "bg-gray-900 text-white" : ""}`}
         >
           Joining ({joining.length})
         </button>
@@ -73,7 +73,7 @@ export default function CalendarPage() {
         <div className="space-y-2">
           {list.map(x => (
             <Link key={x.id} id={`evt-${x.id}`} href={`/app/p/${x.id}`}
-              className={`block rounded-xl border p-4 bg-chart-1 ${added===x.id ? "ring-2 ring-green-600" : ""}`}>
+              className={`block rounded-xl border p-4 bg-card ${added===x.id ? "ring-2 ring-green-600" : ""}`}>
               <div className="font-medium">{x.title}</div>
               <div className="text-sm text-gray-600">{x.when} — {x.city}</div>
             </Link>
