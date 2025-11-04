@@ -146,17 +146,17 @@ export default function SearchPage() {
                   </div>
 
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-start justify-between gap-2 mb-2">
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-bold text-foreground text-lg leading-tight mb-1">{activity.title}</h3>
-                        <p className="text-sm text-muted-foreground flex items-center gap-1">
-                          <MapPin className="w-3 h-3 flex-shrink-0" />
-                          <span className="truncate">{activity.location}</span>
-                        </p>
+                    <div className="mb-2">
+                      <div className="flex items-start justify-between gap-2 mb-1">
+                        <h3 className="font-bold text-foreground text-lg leading-tight flex-1 min-w-0">{activity.title}</h3>
+                        <Badge variant="secondary" className="flex-shrink-0 text-xs">
+                          {activity.type}
+                        </Badge>
                       </div>
-                      <Badge variant="secondary" className="flex-shrink-0">
-                        {activity.type}
-                      </Badge>
+                      <p className="text-sm text-muted-foreground flex items-center gap-1">
+                        <MapPin className="w-3 h-3 flex-shrink-0" />
+                        <span className="truncate">{activity.location}</span>
+                      </p>
                     </div>
 
                     <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{activity.description}</p>
