@@ -31,17 +31,17 @@ export function ResourceCard({ resource }: ResourceCardProps) {
             />
           </div>
         </CardHeader>
-        <CardContent className="p-6 space-y-3">
+        <CardContent className="p-6 space-y-2 px-4 py-3">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="px-3 py-1 rounded-full bg-chart-2 text-primary-foreground text-sm font-medium">
+            <span className="px-3 py-1 rounded-full text-primary-foreground text-sm font-medium bg-chart-1">
               {resource.type}
             </span>
             <span className="text-sm text-muted-foreground">{resource.ageRange}</span>
           </div>
-          <h3 className="text-xl font-bold text-primary leading-tight group-hover:text-secondary-foreground transition-colors">
+          <h3 className="font-bold text-primary leading-tight group-hover:text-secondary-foreground transition-colors text-lg">
             {resource.title}
           </h3>
-          <p className="text-popover-foreground leading-relaxed line-clamp-3">{resource.description}</p>
+          <p className="text-popover-foreground leading-relaxed line-clamp-3 text-sm">{resource.description}</p>
         </CardContent>
       </Card>
     </Link>

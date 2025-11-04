@@ -1603,7 +1603,7 @@ export default function ResourcesPage() {
             {/* Sidebar */}
             <aside className="w-full md:w-64 flex-shrink-0">
               <div className="sticky top-32">
-                <h2 className="text-lg font-bold text-primary mb-4">Categories</h2>
+                <h2 className="text-lg font-bold mb-4 text-foreground">Categories</h2>
                 <nav className="space-y-1">
                   {categories.map((category) => {
                     const Icon = category.icon
@@ -1629,24 +1629,20 @@ export default function ResourcesPage() {
             {/* Main Content Area */}
             <main className="flex-1">
               {/* Results Header */}
-              <div className="mb-8">
-                <p className="text-sm text-muted-foreground mb-6">
-                  <span className="font-semibold text-primary">{filteredResources.length}</span> resources found for{" "}
+              <div className="mb-6">
+                <p className="text-sm text-muted-foreground mb-3">
+                  <span className="font-semibold text-muted-foreground">{filteredResources.length}</span> resources found for{" "}
                   <span className="font-semibold">{selectedAge.toLowerCase()}</span> in{" "}
                   <span className="font-semibold">{currentCategoryName.toLowerCase()}</span>
                 </p>
 
                 <div className="space-y-2">
-                  <h1 className="text-4xl md:text-5xl font-bold text-primary">Explore All Resources</h1>
-                  <p className="text-lg text-popover-foreground">
-                    {selectedAge !== "All Ages" && `${selectedAge} • `}
-                    {selectedCategory !== "all" && `${currentCategoryName} • `}
-                    {filteredResources.length} resources to grow together
-                  </p>
+                  <h1 className="text-4xl md:text-5xl font-bold text-foreground">Explore All Resources</h1>
+                  
                 </div>
 
-                <div className="mt-6 pt-6 border-t border-gray-200">
-                  <h3 className="text-sm font-bold text-primary mb-3">Filter by Age</h3>
+                <div className="border-t border-gray-200 pt-3 mt-2 border-none">
+                  <h3 className="text-sm font-bold mb-3 text-muted-foreground">Filter by Age</h3>
                   <div className="flex flex-wrap gap-2">
                     {ageRanges.map((age) => (
                       <Button

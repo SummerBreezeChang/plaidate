@@ -5,17 +5,17 @@
 
 :root {
   /* Updated to match Plaidate design reference with exact colors */
-  --background: #ffffff;
+  --background: rgb(252, 246, 235);
   --foreground: #1b4229; /* Dark green for text */
   --card: #d5e4d0; /* Light green-tinted background */
   --card-foreground: #1b4229;
-  --popover: #ffffff;
+  --popover: rgb(252, 246, 235);
   --popover-foreground: #1b4229;
   --primary: #3d98d6; /* Primary blue for buttons */
-  --primary-foreground: #ffffff; /* White text on primary for AA contrast */
-  --secondary: #f4d03f; /* Yellow for secondary elements */
+  --primary-foreground: rgb(253, 246, 235); /* White text on primary for AA contrast */
+  --secondary: rgb(249, 234, 176); /* Yellow for secondary elements */
   --secondary-foreground: #1b4229;
-  --muted: #f9fafb;
+  --muted: rgb(252, 246, 235);
   --muted-foreground: #6b7280;
   --accent: #7ac5f8; /* Light blue accent */
   --accent-foreground: #1b4229;

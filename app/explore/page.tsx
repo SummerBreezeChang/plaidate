@@ -564,7 +564,7 @@ export default function ExplorePage() {
             <Button
               asChild
               size="sm"
-              className="rounded-full bg-secondary-foreground hover:bg-secondary-foreground/90 text-primary-foreground"
+              className="rounded-full hover:bg-secondary-foreground/90 text-primary-foreground bg-primary"
             >
               <Link href="/waitlist">Join Waitlist</Link>
             </Button>
@@ -609,7 +609,7 @@ export default function ExplorePage() {
       </header>
 
       {/* Hero Section - Added engaging hero with clear value prop */}
-      <section className="relative pt-32 px-6 md:px-12 bg-gradient-to-b from-secondary/30 to-primary-foreground overflow-hidden my-0 pb-20">
+      <section className="relative pt-32 px-6 md:px-12 bg-gradient-to-b from-secondary/30 to-primary-foreground overflow-hidden my-0 pb-20 border-none">
         <div className="max-w-7xl mx-auto text-center space-y-6 relative z-10">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground animate-fade-in-up my-10">
             Find, Join, or Host
@@ -665,7 +665,7 @@ export default function ExplorePage() {
                           // </CHANGE>
                           setSelectedLocation(location)
                         }}
-                        className={`px-6 text-sm font-medium capitalize rounded-full transition-all py-2 ${
+                        className={`px-6 text-sm font-medium capitalize rounded-full transition-all py-2 bg-primary ${
                           selectedLocation === location
                             ? "bg-secondary-foreground text-primary-foreground shadow-md scale-105"
                             : "bg-secondary/20 text-foreground hover:bg-secondary/30"
@@ -942,7 +942,7 @@ export default function ExplorePage() {
                 <div className="flex justify-center">
                   <Button
                     size="lg"
-                    className="rounded-full text-lg bg-secondary-foreground hover:bg-secondary-foreground/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all py-6 px-14"
+                    className="rounded-full text-lg hover:bg-secondary-foreground/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all py-6 px-14 bg-primary"
                     onClick={() => setShowHostModal(true)}
                   >
                     Host Your Plaidate
