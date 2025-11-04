@@ -50,7 +50,7 @@ export default function CalendarPage() {
   }, [added, tab, list.length]);
 
   return (
-    <div className="p-4 space-y-4">
+    <div className="p-4 space-y-4 bg-primary-foreground">
       {/* segmented control */}
       <div className="grid grid-cols-2 rounded-lg border p-1 text-sm">
         <button
@@ -73,7 +73,7 @@ export default function CalendarPage() {
         <div className="space-y-2">
           {list.map(x => (
             <Link key={x.id} id={`evt-${x.id}`} href={`/app/p/${x.id}`}
-              className={`block rounded-xl border p-4 ${added===x.id ? "ring-2 ring-green-600" : ""}`}>
+              className={`block rounded-xl border p-4 bg-chart-1 ${added===x.id ? "ring-2 ring-green-600" : ""}`}>
               <div className="font-medium">{x.title}</div>
               <div className="text-sm text-gray-600">{x.when} — {x.city}</div>
             </Link>
