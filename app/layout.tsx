@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`font-sans ${workSans.variable} ${_v0_fontVariables}`}>
         {!inApp && (
           <header className="sticky top-0 z-50 border-b bg-white/90 backdrop-blur">
-            <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
+            <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 bg-primary-foreground">
               <Link href="/" className="flex items-center">
                 <Image
                   src="/images/design-mode/PlaidateLogo.png"

@@ -55,7 +55,7 @@ export default function CalendarPage() {
       <div className="grid grid-cols-2 rounded-lg border p-1 text-sm">
         <button
           onClick={() => setTab("hosting")}
-          className={`rounded-md py-2 ${tab==="hosting" ? "bg-gray-900 text-white" : ""}`}
+          className={`rounded-md py-2 bg-primary ${tab==="hosting" ? "bg-gray-900 text-white" : ""}`}
         >
           Hosting ({hosting.length})
         </button>
