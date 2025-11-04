@@ -33,7 +33,7 @@ export default function Home() {
             <Button
               asChild
               size="sm"
-              className="rounded-full bg-secondary-foreground hover:bg-secondary-foreground/90 text-primary-foreground"
+              className="rounded-full hover:bg-secondary-foreground/90 text-primary-foreground bg-primary"
             >
               <Link href="/waitlist">Join Waitlist</Link>
             </Button>
@@ -81,8 +81,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <div className="inline-block px-4 py-2 bg-accent rounded-full">
-                <span className="text-sm font-medium text-foreground">Curated for Modern Parents</span>
+              <div className="inline-block px-4 py-2 bg-accent rounded-full opacity-75">
+                <span className="text-sm font-medium text-background">Curated for Modern Parents</span>
               </div>
               {/* </CHANGE> */}
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
@@ -127,7 +127,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-6 md:px-12 py-20 md:py-32 bg-primary-foreground">
+      <section className="px-6 md:px-12 py-20 bg-primary-foreground md:py-20">
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="text-center space-y-4">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">Explore by category</h2>
@@ -206,7 +206,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-6 md:px-12 py-20 md:py-32 bg-secondary-foreground">
+      <section className="px-6 md:px-12 py-20 bg-secondary md:py-24">
         <div className="max-w-5xl mx-auto text-center space-y-8">
           <div className="space-y-4">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground text-balance">

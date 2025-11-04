@@ -31,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
               <Link href="/" className="flex items-center">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PlaidateLogo-HYd1EVEfWytuE1HiUpsLcc60kHXHzS.png"
+                  src="/images/design-mode/PlaidateLogo.png"
                   alt="Plai"
                   width={80}
                   height={40}
