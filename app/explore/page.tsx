@@ -543,7 +543,7 @@ export default function ExplorePage() {
   return (
     <main className="min-h-screen bg-background flex flex-col">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 backdrop-blur-md border-b border-border/50 py-4 bg-primary-foreground">
+      <header className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 backdrop-blur-md border-b border-gray-200/50 py-4 bg-primary-foreground">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <Image src="/plai-logo.png" alt="Plai Logo" width={100} height={50} priority className="w-auto h-10" />
@@ -578,7 +578,7 @@ export default function ExplorePage() {
           </button>
         </div>
         {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-primary-foreground border-b border-border/50 shadow-lg">
+          <div className="md:hidden absolute top-full left-0 right-0 bg-primary-foreground border-b border-gray-200/50 shadow-lg">
             <nav className="flex flex-col p-4 space-y-3">
               <Link
                 href="/explore"
@@ -632,7 +632,7 @@ export default function ExplorePage() {
               </h2>
             </div>
 
-            <Card className="p-6 bg-secondary/5 border-border/50 border-none py-2 px-0 rounded-none shadow-none">
+            <Card className="p-6 bg-secondary/5 border-gray-200/50 border-none py-2 px-0 rounded-none shadow-none">
               <div className="flex flex-col md:flex-row gap-6 border-none">
                 {/* Location Section */}
                 <div className="flex-1">
@@ -730,7 +730,8 @@ export default function ExplorePage() {
                 <span className="ml-3 text-muted-foreground">Loading activities...</span>
               </div>
             ) : error ? (
-              <div className="text-center py-4 px-6 bg-secondary/10 rounded-lg border border-border/50">
+              // Replaced border-border with border-gray-200
+              <div className="text-center py-4 px-6 bg-secondary/10 rounded-lg border border-gray-200/50">
                 <p className="text-sm text-muted-foreground">{error}</p>
               </div>
             ) : null}
@@ -741,7 +742,8 @@ export default function ExplorePage() {
                 return (
                   <Card
                     key={activity.id}
-                    className="p-6 hover:shadow-xl hover:scale-105 transition-all duration-300 border-border/50 group relative flex flex-col bg-secondary py-4 px-4 leading-4 gap-1.5"
+                    // Replaced border-border with border-gray-200
+                    className="p-6 hover:shadow-xl hover:scale-105 transition-all duration-300 border-gray-200/50 group relative flex flex-col bg-secondary py-4 px-4 leading-4 gap-1.5"
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     <div className="relative w-full h-40 rounded-lg overflow-hidden bg-muted mb-4">
@@ -848,7 +850,8 @@ export default function ExplorePage() {
               {playdates.map((playdate, index) => (
                 <Card
                   key={playdate.id}
-                  className="p-6 space-y-4 hover:shadow-xl hover:scale-105 transition-all duration-300 bg-popover border-border/50 group relative"
+                  // Replaced border-border with border-gray-200
+                  className="p-6 space-y-4 hover:shadow-xl hover:scale-105 transition-all duration-300 bg-popover border-gray-200/50 group relative"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="flex items-center gap-4">
@@ -910,7 +913,7 @@ export default function ExplorePage() {
               </p>
             </div>
 
-            <Card className="p-8 md:p-12 bg-gradient-to-br from-secondary/10 to-secondary-foreground/5 border-border/50 border-none md:py-6 shadow-none mx-auto px-0 bg-chart-4">
+            <Card className="p-8 md:p-12 bg-gradient-to-br from-secondary/10 to-secondary-foreground/5 border-gray-200/50 border-none md:py-6 shadow-none mx-auto px-0 bg-chart-4">
               <div className="max-w-3xl mx-auto space-y-3">
                 <div className="grid md:grid-cols-3 gap-6 px-0 mb-20">
                   <div className="text-center space-y-2">
@@ -1110,7 +1113,7 @@ export default function ExplorePage() {
       )}
 
       {/* Footer */}
-      <footer className="w-full py-12 px-6 md:px-12 border-t border-border bg-accent-foreground">
+      <footer className="w-full py-12 px-6 md:px-12 border-t border-gray-200 bg-accent-foreground">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
             <div className="space-y-4">
@@ -1143,7 +1146,7 @@ export default function ExplorePage() {
               </Link>
             </nav>
           </div>
-          <div className="mt-8 pt-8 border-t border-border border-none">
+          <div className="mt-8 pt-8 border-t border-gray-200 border-none">
             <p className="text-xs text-primary-foreground">© 2025 Plaidate. All Rights Reserved.</p>
           </div>
         </div>

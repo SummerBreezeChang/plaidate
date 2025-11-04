@@ -65,7 +65,7 @@ export default function ActivitiesPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 bg-primary-foreground border-b border-border shadow-sm">
+      <header className="sticky top-0 z-50 bg-primary-foreground border-b border-gray-200 shadow-sm">
         <div className="max-w-5xl mx-auto px-4 py-4 space-y-4">
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-bold text-foreground">Activities</h1>

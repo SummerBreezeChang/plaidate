@@ -64,7 +64,7 @@ export default function SearchPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 bg-primary-foreground border-b border-border shadow-sm">
+      <header className="sticky top-0 z-50 bg-primary-foreground border-b border-gray-200 shadow-sm">
         <div className="max-w-5xl mx-auto px-4 py-4 space-y-4">
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-bold text-foreground">Search Activities</h1>
@@ -148,7 +148,9 @@ export default function SearchPage() {
                   <div className="flex-1 min-w-0">
                     <div className="mb-2">
                       <div className="flex items-start justify-between gap-2 mb-1">
-                        <h3 className="font-bold text-foreground text-lg leading-tight flex-1 min-w-0">{activity.title}</h3>
+                        <h3 className="font-bold text-foreground text-lg leading-tight flex-1 min-w-0">
+                          {activity.title}
+                        </h3>
                         <Badge variant="secondary" className="flex-shrink-0 text-xs">
                           {activity.type}
                         </Badge>

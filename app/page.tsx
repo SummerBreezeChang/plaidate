@@ -168,7 +168,7 @@ export default function Home() {
                     Visit Website
                   </Link>
 
-                  <Button className="w-full bg-white hover:bg-gray-50 text-foreground border border-border">
+                  <Button className="w-full bg-white hover:bg-gray-50 text-foreground border border-gray-200">
                     Host a Plaidate
                   </Button>
                 </div>
@@ -260,7 +260,7 @@ export default function Home() {
                     </Badge>
                   </div>
 
-                  <Button className="w-full bg-white hover:bg-gray-50 text-foreground border border-border">
+                  <Button className="w-full bg-white hover:bg-gray-50 text-foreground border border-gray-200">
                     Request to Join
                   </Button>
                 </div>

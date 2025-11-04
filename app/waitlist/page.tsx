@@ -15,7 +15,7 @@ export default function WaitlistPage() {
   return (
     <main className="min-h-screen flex flex-col bg-background">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 backdrop-blur-md border-b border-border/50 py-4 bg-primary-foreground">
+      <header className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 backdrop-blur-md border-b border-gray-200/50 py-4 bg-primary-foreground">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <Image src="/plai-logo.png" alt="Plai Logo" width={100} height={50} priority className="w-auto h-10" />
@@ -46,7 +46,7 @@ export default function WaitlistPage() {
           </button>
         </div>
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-border/50 pt-4">
+          <div className="md:hidden mt-4 pb-4 border-t border-gray-200/50 pt-4">
             <nav className="flex flex-col gap-4">
               <Link
                 href="/explore"
@@ -89,7 +89,9 @@ export default function WaitlistPage() {
                 Join Plaidate
               </h1>
               <p className="leading-normal font-sans py-2 text-base text-popover-foreground pb-8">
-                A platform for parents of K-5 children to easily host, join, and plan activities. Connect with skilled parents who create engaging activities that help your child and others build social skills and friendships.
+                A platform for parents of K-5 children to easily host, join, and plan activities. Connect with skilled
+                parents who create engaging activities that help your child and others build social skills and
+                friendships.
               </p>
             </div>
 
@@ -182,7 +184,7 @@ export default function WaitlistPage() {
       </section>
 
       {/* Footer */}
-      <footer className="w-full py-12 px-6 md:px-12 border-t border-border bg-primary">
+      <footer className="w-full py-12 px-6 md:px-12 border-t border-gray-200 bg-primary">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
             <div className="space-y-4">
@@ -215,7 +217,7 @@ export default function WaitlistPage() {
               </Link>
             </nav>
           </div>
-          <div className="mt-8 pt-8 border-t border-border border-none">
+          <div className="mt-8 pt-8 border-t border-gray-200 border-none">
             <p className="text-xs text-primary-foreground">© 2025 Plaidate. All Rights Reserved.</p>
           </div>
         </div>

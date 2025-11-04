@@ -21,7 +21,7 @@ const workSans = Work_Sans({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const path = headers().get("x-invoke-path") || ""
   const inApp = path.startsWith("/app")
-
+  
   return (
     <html lang="en">
       <body className={`font-sans ${workSans.variable} ${_v0_fontVariables}`}>

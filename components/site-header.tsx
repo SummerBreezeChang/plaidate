@@ -10,7 +10,7 @@ export function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 backdrop-blur-md border-b border-border/50 py-4 bg-primary-foreground">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 backdrop-blur-md border-b border-gray-200/50 py-4 bg-primary-foreground">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Image src="/plai-logo.png" alt="Plai Logo" width={100} height={50} priority className="w-auto h-10" />
@@ -51,7 +51,7 @@ export function SiteHeader() {
         </button>
       </div>
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-primary-foreground border-b border-border/50 shadow-lg">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-primary-foreground border-b border-gray-200/50 shadow-lg">
           <nav className="flex flex-col p-4 space-y-3">
             <Link
               href="/explore"

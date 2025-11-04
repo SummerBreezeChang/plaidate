@@ -20,7 +20,7 @@ interface ResourceCardProps {
 export function ResourceCard({ resource }: ResourceCardProps) {
   return (
     <Link href={resource.link} className="group">
-      <Card className="h-full overflow-hidden transition-all hover:shadow-lg border-border bg-slate-100">
+      <Card className="h-full overflow-hidden transition-all hover:shadow-lg border-gray-200 bg-slate-100">
         <CardHeader className="p-0">
           <div className="relative aspect-[4/3] overflow-hidden">
             <Image
