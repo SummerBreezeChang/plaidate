@@ -4,263 +4,356 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { BookOpen, Headphones, Hammer, ChefHat, Cpu, Package, Menu, X } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { MapPin, ExternalLink, Shield, Users, Heart } from "lucide-react"
 import { useState } from "react"
 
 export default function Home() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [selectedLocation, setSelectedLocation] = useState("Oakland")
+  const [selectedCategory, setSelectedCategory] = useState("Creative")
 
   return (
     <main className="min-h-screen bg-background">
-      <header className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 backdrop-blur-md border-b border-border/50 py-4 bg-primary-foreground border-none">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <Image src="/plai-logo.png" alt="Plai Logo" width={100} height={50} priority className="w-auto h-10" />
-          </Link>
-          <nav className="hidden md:flex items-center gap-6">
-            <Link
-              href="/explore"
-              className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
-            >
-              Explore
-            </Link>
-            <Link
-              href="/resources"
-              className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
-            >
-              Resources
-            </Link>
-            <Button
-              asChild
-              size="sm"
-              className="rounded-full hover:bg-secondary-foreground/90 text-primary-foreground bg-primary"
-            >
-              <Link href="/waitlist">Join Waitlist</Link>
-            </Button>
-          </nav>
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-foreground hover:text-foreground/70 transition-colors"
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-        {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-border/50 pt-4">
-            <nav className="flex flex-col gap-4">
-              <Link
-                href="/explore"
-                className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Explore
-              </Link>
-              <Link
-                href="/resources"
-                className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Resources
-              </Link>
-              <Button
-                asChild
-                size="sm"
-                className="rounded-full bg-secondary-foreground hover:bg-secondary-foreground/90 text-primary-foreground w-full"
-              >
-                <Link href="/waitlist" onClick={() => setIsMobileMenuOpen(false)}>
-                  Join Waitlist
-                </Link>
-              </Button>
-            </nav>
-          </div>
-        )}
-      </header>
-
-      <section className="pt-24 md:pt-32 pb-12 md:pb-20 px-6 md:px-12 bg-gradient-to-b from-muted/30 to-background bg-primary-foreground">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <div className="inline-block px-4 py-2 bg-accent rounded-full opacity-75">
-                <span className="text-sm font-medium text-background">Curated for Modern Parents</span>
-              </div>
-              {/* </CHANGE> */}
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
-                Resources that actually help
-              </h1>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                Stop endless scrolling. We've done the research for you—discover books, podcasts, activities, and tools
-                that make parenting easier and more meaningful.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button
-                  asChild
-                  size="lg"
-                  className="rounded-full px-8 bg-primary hover:bg-primary/90 text-primary-foreground"
-                  // </CHANGE>
-                >
-                  <Link href="/resources">Join Waitlist</Link>
-                </Button>
-              </div>
-            </div>
-
-            <div className="relative">
-              <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/hero-image.png"
-                  alt="Parents and children engaging together"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-background border border-border rounded-2xl p-4 shadow-lg">
-                <div className="text-3xl font-bold text-foreground">200+</div>
-                <div className="text-sm text-muted-foreground">Curated Resources</div>
-              </div>
-              <div className="absolute -top-6 -right-6 bg-background border border-border rounded-2xl p-4 shadow-lg">
-                <div className="text-3xl font-bold text-foreground">6</div>
-                <div className="text-sm text-muted-foreground">Categories</div>
-              </div>
-            </div>
-          </div>
+      <section className="pt-16 pb-12 px-6 md:px-12 bg-muted/30">
+        <div className="max-w-5xl mx-auto text-center">
+          <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-[#1B4229] mb-8">Find, Join, or Host</h1>
         </div>
       </section>
 
-      <section className="px-6 md:px-12 py-20 bg-primary-foreground md:py-20">
-        <div className="max-w-7xl mx-auto space-y-12">
-          <div className="text-center space-y-4">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">Explore by category</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Every resource is hand-picked and verified for quality
-            </p>
+      <section className="px-6 md:px-12 py-16 bg-background">
+        <div className="max-w-6xl mx-auto space-y-8">
+          <div className="space-y-6">
+            <h2 className="text-3xl font-bold text-foreground">Discover Activities</h2>
+
+            {/* Location and Category Filters */}
+            <div className="flex flex-col md:flex-row gap-6">
+              <div className="space-y-2 flex-1">
+                <label className="text-sm font-medium text-muted-foreground">Location</label>
+                <div className="flex flex-wrap gap-2">
+                  {["San Francisco", "Berkeley", "Oakland", "Alameda"].map((location) => (
+                    <Button
+                      key={location}
+                      variant={selectedLocation === location ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => setSelectedLocation(location)}
+                      className={selectedLocation === location ? "bg-[#5DADE2] hover:bg-[#5DADE2]/90" : ""}
+                    >
+                      {location}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-2 flex-1">
+                <label className="text-sm font-medium text-muted-foreground">Category</label>
+                <div className="flex flex-wrap gap-2">
+                  {["Creative", "Outdoor", "Learning"].map((category) => (
+                    <Button
+                      key={category}
+                      variant={selectedCategory === category ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => setSelectedCategory(category)}
+                      className={selectedCategory === category ? "bg-[#5DADE2] hover:bg-[#5DADE2]/90" : ""}
+                    >
+                      {category}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex items-end">
+                <Link href="/explore" className="text-sm font-medium text-[#5DADE2] hover:underline">
+                  View All →
+                </Link>
+              </div>
+            </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Activity Cards Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                title: "Parenting Books",
-                count: "20 books",
-                image: "/stack-of-parenting-books-on-wooden-table.jpg",
-                color: "from-[#7AC5F8]/20 to-[#7AC5F8]/5",
-                icon: BookOpen,
+                title: "Museum of Children's Art (MOCHA)",
+                description:
+                  "Mecca for hands-on culture & arts activities for all ages, with educational exhibits & programs.",
+                image: "/modern-art-museum-interior.jpg",
+                indoor: true,
+                paid: true,
+                address: "1221 Broadway Lt, #48, Oakland, CA 94612, USA",
+                website: "#",
               },
               {
-                title: "Podcasts",
-                count: "15 shows",
-                image: "/podcast-microphone-and-headphones-setup.jpg",
-                color: "from-[#F4D03F]/20 to-[#F4D03F]/5",
-                icon: Headphones,
+                title: "The Floating Art Museum",
+                description: "2817 Blanding Ave, Alameda, CA 94501, USA",
+                image: "/floating-art-museum-waterfront.jpg",
+                indoor: false,
+                paid: true,
+                address: "2817 Blanding Ave, Alameda, CA 94501, USA",
+                website: "#",
               },
               {
-                title: "STEM Activities",
-                count: "15 kits",
-                image: "/colorful-science-experiment-kit-for-kids.jpg",
-                color: "from-[#C39BD3]/20 to-[#C39BD3]/5",
-                icon: Cpu,
+                title: "Color Me Mine",
+                description:
+                  "Paint-your-own ceramics chain, with a studio available for walk-ins, workshops & parties.",
+                image: "/colorful-ceramics-painting-studio.jpg",
+                indoor: true,
+                paid: true,
+                address: "2205 S Shore Center, Alameda, CA 94501, USA",
+                website: "#",
               },
               {
-                title: "Cooking Tools",
-                count: "15 products",
-                image: "/kids-cooking-utensils-and-apron.jpg",
-                color: "from-[#52BE80]/20 to-[#52BE80]/5",
-                icon: ChefHat,
+                title: "The Museum of Art and Digital Entertainment - (The MADE)",
+                description: "921 Washington St, Oakland, CA 94607, USA",
+                image: "/digital-entertainment-museum-arcade.jpg",
+                indoor: true,
+                paid: true,
+                address: "921 Washington St, Oakland, CA 94607, USA",
+                website: "#",
               },
               {
-                title: "Building Activities",
-                count: "15 sets",
-                image: "/colorful-building-blocks-and-construction-toys.jpg",
-                color: "from-[#EC7063]/20 to-[#EC7063]/5",
-                icon: Hammer,
+                title: "Oakland Museum of California",
+                description:
+                  "Artifacts & interactive displays in a modern building focusing on state art, history & science.",
+                image: "/california-museum-building-exterior.jpg",
+                indoor: true,
+                paid: false,
+                address: "1000 Oak St, Oakland, CA 94607, USA",
+                website: "#",
               },
               {
-                title: "Subscription Boxes",
-                count: "12 boxes",
-                image: "/subscription-box-with-crafts-and-activities.jpg",
-                color: "from-[#5DADE2]/20 to-[#5DADE2]/5",
-                icon: Package,
+                title: "Children's Creativity Museum",
+                description:
+                  "A place for kids to explore art & technology by making music videos, animating short films & more.",
+                image: "/kids-creativity-museum-interactive.jpg",
+                indoor: true,
+                paid: true,
+                address: "221 4th St, San Francisco, CA 94103, USA",
+                website: "#",
               },
-            ].map((category, index) => (
-              <Link key={index} href="/resources">
-                <Card className="group overflow-hidden border-border hover:shadow-xl transition-all duration-300 cursor-pointer bg-popover">
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <div className={`absolute inset-0 bg-gradient-to-br ${category.color} z-10`} />
-                    <Image
-                      src={category.image || "/placeholder.svg"}
-                      alt={category.title}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
-                    <div className="absolute top-4 right-4 z-20 bg-background/90 backdrop-blur-sm rounded-full p-3 shadow-lg">
-                      <category.icon className="w-6 h-6 text-foreground" />
-                    </div>
+            ].map((activity, index) => (
+              <Card key={index} className="overflow-hidden bg-[#E3F2FD] border-none">
+                <div className="relative aspect-video">
+                  <Image
+                    src={activity.image || "/placeholder.svg"}
+                    alt={activity.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-6 space-y-4">
+                  <div>
+                    <h3 className="font-bold text-lg text-foreground mb-2">{activity.title}</h3>
+                    <p className="text-sm text-muted-foreground line-clamp-2">{activity.description}</p>
                   </div>
-                  <div className="p-6 space-y-2">
-                    <h3 className="text-xl font-bold text-foreground">{category.title}</h3>
-                    <p className="text-sm text-muted-foreground">{category.count}</p>
+
+                  <div className="flex gap-2">
+                    <Badge variant="secondary" className="bg-[#E8F5E9] text-[#2E7D32] border-none">
+                      {activity.indoor ? "Indoor" : "Outdoor"}
+                    </Badge>
+                    <Badge variant="secondary" className="bg-[#E3F2FD] text-[#1976D2] border-none">
+                      {activity.paid ? "Paid" : "Free"}
+                    </Badge>
                   </div>
-                </Card>
-              </Link>
+
+                  <div className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                    <span className="line-clamp-1">{activity.address}</span>
+                  </div>
+
+                  <Link
+                    href={activity.website}
+                    className="flex items-center gap-1 text-sm text-[#5DADE2] hover:underline"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    Visit Website
+                  </Link>
+
+                  <Button className="w-full bg-white hover:bg-gray-50 text-foreground border border-border">
+                    Host a Plaidate
+                  </Button>
+                </div>
+              </Card>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="px-6 md:px-12 py-20 bg-secondary md:py-24">
-        <div className="max-w-5xl mx-auto text-center space-y-8">
-          <div className="space-y-4">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground text-balance">
-              "Finally, a place where I don't have to second-guess every parenting decision"
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Join hundreds of parents who trust our curated recommendations
-            </p>
+      <section className="px-6 md:px-12 py-16 bg-muted/30">
+        <div className="max-w-6xl mx-auto space-y-8">
+          <div className="flex justify-between items-center">
+            <div>
+              <h2 className="text-3xl font-bold text-foreground mb-2">Join a Plaidate</h2>
+              <p className="text-muted-foreground">
+                Connect with verified local parents hosting small, trusted playdates
+              </p>
+            </div>
+            <Link href="/explore" className="text-sm font-medium text-[#5DADE2] hover:underline">
+              See All →
+            </Link>
           </div>
-          <Button
-            asChild
-            size="lg"
-            className="rounded-full px-8 bg-primary hover:bg-primary/90 text-primary-foreground"
-          >
-            <Link href="/waitlist">Get Early Access to Plaidate</Link>
-          </Button>
+
+          {/* Host Cards Grid */}
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                name: "Lena - Art Teacher Mom",
+                title: "Watercolor Playdate",
+                avatar: "/woman-art-teacher.jpg",
+                location: "Berkeley (East)",
+                date: "Sat, Oct 25",
+                time: "10:00 AM",
+                ages: "Ages 6-8",
+                price: "$5",
+              },
+              {
+                name: "Marco - Soccer Coach Dad",
+                title: "Mini Soccer Camp",
+                avatar: "/man-soccer-coach.jpg",
+                location: "Oakland North",
+                date: "Sun, Oct 26",
+                time: "9:00 AM",
+                ages: "Ages 4-7",
+                price: "Free",
+              },
+              {
+                name: "Sarah - Science Educator",
+                title: "Science Experiments",
+                avatar: "/woman-science-teacher.jpg",
+                location: "Berkeley West",
+                date: "Sat, Nov 1",
+                time: "2:00 PM",
+                ages: "Ages 5-9",
+                price: "$2",
+              },
+            ].map((host, index) => (
+              <Card key={index} className="overflow-hidden bg-[#E8F5E9] border-none">
+                <div className="p-6 space-y-4">
+                  <div className="flex items-start gap-3">
+                    <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
+                      <Image src={host.avatar || "/placeholder.svg"} alt={host.name} fill className="object-cover" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-bold text-foreground">{host.name}</h3>
+                      <p className="text-sm text-muted-foreground">{host.title}</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2 text-sm">
+                    <div className="flex items-center gap-2 text-muted-foreground">
+                      <MapPin className="w-4 h-4" />
+                      <span>{host.location}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-muted-foreground">
+                      <span className="font-medium">{host.date}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-muted-foreground">
+                      <span>{host.time}</span>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-2">
+                    <Badge variant="secondary" className="bg-white/50">
+                      {host.ages}
+                    </Badge>
+                    <Badge variant="secondary" className="bg-white/50">
+                      {host.price}
+                    </Badge>
+                  </div>
+
+                  <Button className="w-full bg-white hover:bg-gray-50 text-foreground border border-border">
+                    Request to Join
+                  </Button>
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
-      <footer className="w-full py-12 px-6 md:px-12 border-t border-border bg-primary">
-        <div className="max-w-7xl mx-auto">
+      <section className="px-6 md:px-12 py-16 bg-background">
+        <div className="max-w-4xl mx-auto space-y-8">
+          <div className="text-center space-y-2">
+            <h2 className="text-3xl font-bold text-foreground">Host Your Own Plaidate</h2>
+            <p className="text-muted-foreground">
+              Share your passion, skill, or hobby with nearby families and build community
+            </p>
+          </div>
+
+          <Card className="overflow-hidden bg-[#F4D03F] border-none">
+            <div className="p-8 md:p-12">
+              <div className="grid md:grid-cols-3 gap-8 mb-8">
+                <div className="text-center space-y-2">
+                  <div className="flex justify-center mb-3">
+                    <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+                      <Shield className="w-6 h-6 text-[#1B4229]" />
+                    </div>
+                  </div>
+                  <h3 className="font-bold text-[#1B4229]">Safe & Verified</h3>
+                  <p className="text-sm text-[#1B4229]/80">All hosts are background checked</p>
+                </div>
+
+                <div className="text-center space-y-2">
+                  <div className="flex justify-center mb-3">
+                    <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+                      <Users className="w-6 h-6 text-[#1B4229]" />
+                    </div>
+                  </div>
+                  <h3 className="font-bold text-[#1B4229]">Build Community</h3>
+                  <p className="text-sm text-[#1B4229]/80">Connect with local families</p>
+                </div>
+
+                <div className="text-center space-y-2">
+                  <div className="flex justify-center mb-3">
+                    <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+                      <Heart className="w-6 h-6 text-[#1B4229]" />
+                    </div>
+                  </div>
+                  <h3 className="font-bold text-[#1B4229]">Share Your Passion</h3>
+                  <p className="text-sm text-[#1B4229]/80">Teach what you love</p>
+                </div>
+              </div>
+
+              <div className="text-center">
+                <Button size="lg" className="bg-[#5DADE2] hover:bg-[#5DADE2]/90 text-white rounded-full px-8">
+                  Host Your Plaidate
+                </Button>
+                <p className="text-xs text-[#1B4229]/70 mt-4">All listings are reviewed for safety before going live</p>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </section>
+
+      <footer className="w-full py-12 px-6 md:px-12 bg-[#5DADE2]">
+        <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
             <div className="space-y-4">
-              <Image src="/plai-logo.png" alt="Plai Logo" width={100} height={50} className="w-auto h-8" />
-              <p className="text-sm max-w-md text-background">
-                Curated resources and community for intentional parenting
-              </p>
+              <Image
+                src="/images/design-mode/PlaidateLogo.png"
+                alt="Plai Logo"
+                width={80}
+                height={40}
+                className="w-auto h-8"
+              />
+              <p className="text-sm max-w-md text-white">Curated resources and community for intentional parenting</p>
             </div>
-            <nav className="flex flex-col md:flex-row gap-6 text-primary-foreground">
-              <Link href="/" className="text-sm hover:text-foreground/70 transition-colors text-primary-foreground">
+            <nav className="flex flex-col md:flex-row gap-6">
+              <Link href="/" className="text-sm text-white hover:text-white/80 transition-colors">
                 Home
               </Link>
-              <Link
-                href="/explore"
-                className="text-sm hover:text-foreground/70 transition-colors text-primary-foreground"
-              >
+              <Link href="/explore" className="text-sm text-white hover:text-white/80 transition-colors">
                 Explore
               </Link>
-              <Link
-                href="/resources"
-                className="text-sm hover:text-foreground/70 transition-colors text-primary-foreground"
-              >
+              <Link href="/resources" className="text-sm text-white hover:text-white/80 transition-colors">
                 Resources
               </Link>
-              <Link
-                href="/waitlist"
-                className="text-sm hover:text-foreground/70 transition-colors border-primary-foreground border-none text-primary-foreground"
-              >
+              <Link href="/waitlist" className="text-sm text-white hover:text-white/80 transition-colors">
                 Waitlist
               </Link>
             </nav>
           </div>
-          <div className="mt-8 pt-8 border-t border-border border-none">
-            <p className="text-xs text-primary-foreground">© 2025 Plaidate. All Rights Reserved.</p>
+          <div className="mt-8 pt-8 border-t border-white/20">
+            <p className="text-xs text-white">© 2025 Plaidate. All Rights Reserved.</p>
           </div>
         </div>
       </footer>
