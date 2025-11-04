@@ -1550,7 +1550,7 @@ export default function ResourcesPage() {
             <Button
               asChild
               size="sm"
-              className="rounded-full bg-secondary-foreground hover:bg-secondary-foreground/90 text-primary-foreground"
+              className="rounded-full hover:bg-secondary-foreground/90 text-primary-foreground bg-primary bg-primary"
             >
               <Link href="/waitlist">Join Waitlist</Link>
             </Button>
@@ -1597,7 +1597,7 @@ export default function ResourcesPage() {
       </header>
 
       {/* Main Content */}
-      <div className="flex-1 px-6 md:px-12 py-8 bg-primary-foreground pt-28 md:pt-32">
+      <div className="flex-1 px-6 md:px-12 py-8 pt-28 md:pt-32 bg-background">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row gap-8">
             {/* Sidebar */}
@@ -1701,7 +1701,7 @@ export default function ResourcesPage() {
       </div>
 
       {/* Footer */}
-      <footer className="w-full py-12 px-6 md:px-12 border-t border-border bg-secondary-foreground">
+      <footer className="w-full py-12 px-6 md:px-12 border-t border-border bg-primary">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
             <div className="space-y-4">

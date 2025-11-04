@@ -59,6 +59,13 @@ export default function ExplorePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const fetchActivities = async (search?: string) => {
+    console.log("[v0] fetchActivities called with:", {
+      selectedLocation,
+      activeTab,
+      locationName: LOCATION_COORDS[selectedLocation].name,
+      search,
+    })
+    // </CHANGE>
     setLoading(true)
     setError(null)
 
@@ -72,116 +79,418 @@ export default function ExplorePage() {
 
       if (data.error) {
         setError(data.message || data.error)
-        setActivities(data.activities || getStaticActivities(activeTab))
+        const staticActivities = getStaticActivities(activeTab, selectedLocation)
+        console.log(
+          "[v0] Setting static activities:",
+          staticActivities.length,
+          "activities for",
+          LOCATION_COORDS[selectedLocation].name,
+        )
+        // </CHANGE>
+        setActivities(data.activities || staticActivities)
       } else {
+        console.log("[v0] Setting API activities:", data.activities?.length || 0, "activities")
+        // </CHANGE>
         setActivities(data.activities || [])
       }
     } catch (err) {
       setError("Using curated local activities")
-      setActivities(getStaticActivities(activeTab))
+      const staticActivities = getStaticActivities(activeTab, selectedLocation)
+      console.log(
+        "[v0] Error occurred, using static activities:",
+        staticActivities.length,
+        "activities for",
+        LOCATION_COORDS[selectedLocation].name,
+      )
+      // </CHANGE>
+      setActivities(staticActivities)
     } finally {
       setLoading(false)
     }
   }
 
   useEffect(() => {
+    console.log(
+      "[v0] useEffect triggered - fetching activities for:",
+      LOCATION_COORDS[selectedLocation].name,
+      "category:",
+      activeTab,
+    )
+    // </CHANGE>
     fetchActivities()
   }, [activeTab, selectedLocation])
 
-  const getStaticActivities = (category: string): Activity[] => {
-    const museums = [
-      {
-        id: 1,
-        title: "Oakland Museum of California",
-        description: "Art, history, and natural science museum",
-        image: "/oakland-museum.jpg",
-        ages: "All Ages",
-        type: "Indoor",
-        cost: "$16",
-        rating: 4.6,
-        location: "1000 Oak St, Oakland, CA",
-        placeId: "ChIJVVVVVYx3hYARGpkL8KqqCAQ",
-        websiteUrl: "https://www.oaklandmuseum.org/",
-        mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJVVVVVYx3hYARGpkL8KqqCAQ",
-      },
-      {
-        id: 2,
-        title: "Lawrence Hall of Science",
-        description: "Interactive science center with hands-on exhibits",
-        image: "/lawrence-hall-of-science.jpg",
-        ages: "All Ages",
-        type: "Indoor",
-        cost: "$15",
-        rating: 4.7,
-        location: "1 Centennial Dr, Berkeley, CA",
-        placeId: "ChIJrU3KAHJ9hYARs8HI7Y8L8KQ",
-        websiteUrl: "https://www.lawrencehallofscience.org/",
-        mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJrU3KAHJ9hYARs8HI7Y8L8KQ",
-      },
-      {
-        id: 3,
-        title: "Chabot Space & Science Center",
-        description: "Planetarium and space exploration exhibits",
-        image: "/chabot-space-center.jpg",
-        ages: "5+",
-        type: "Indoor",
-        cost: "$20",
-        rating: 4.5,
-        location: "10000 Skyline Blvd, Oakland, CA",
-        placeId: "ChIJN1t_tDeuRYARYXpoq7ScCGM",
-        websiteUrl: "https://www.chabotspace.org/",
-        mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJN1t_tDeuRYARYXpoq7ScCGM",
-      },
-    ]
+  const getStaticActivities = (category: string, location: keyof typeof LOCATION_COORDS): Activity[] => {
+    const locationName = LOCATION_COORDS[location].name
 
-    const parks = [
-      {
-        id: 4,
-        title: "Tilden Regional Park",
-        description: "Nature trails, playground, and steam train",
-        image: "/tilden-park.jpg",
-        ages: "All Ages",
-        type: "Outdoor",
-        cost: "Free",
-        rating: 4.8,
-        location: "Berkeley Hills, CA",
-        placeId: "ChIJVVVVVVV9hYARGpkL8KqqCAQ",
-        websiteUrl: "https://www.tildensp.org/",
-        mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+    const activitiesByLocation = {
+      oakland: {
+        museums: [
+          {
+            id: 1,
+            title: "Oakland Museum of California",
+            description: "Art, history, and natural science museum",
+            image: "/oakland-museum-of-california-building-exterior.jpg",
+            ages: "All Ages",
+            type: "Indoor",
+            cost: "$16",
+            rating: 4.6,
+            location: "1000 Oak St, Oakland, CA",
+            placeId: "ChIJVVVVVYx3hYARGpkL8KqqCAQ",
+            websiteUrl: "https://www.oaklandmuseum.org/",
+            mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJVVVVVYx3hYARGpkL8KqqCAQ",
+          },
+          {
+            id: 2,
+            title: "Chabot Space & Science Center",
+            description: "Planetarium and space exploration exhibits",
+            image: "/chabot-space-center-planetarium-oakland.jpg",
+            ages: "5+",
+            type: "Indoor",
+            cost: "$20",
+            rating: 4.5,
+            location: "10000 Skyline Blvd, Oakland, CA",
+            placeId: "ChIJN1t_tDeuRYARYXpoq7ScCGM",
+            websiteUrl: "https://www.chabotspace.org/",
+            mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJN1t_tDeuRYARYXpoq7ScCGM",
+          },
+          {
+            id: 3,
+            title: "Children's Fairyland",
+            description: "Storybook theme park for young children",
+            image: "/children-fairyland-oakland-colorful-playground.jpg",
+            ages: "2-8",
+            type: "Outdoor",
+            cost: "$12",
+            rating: 4.7,
+            location: "699 Bellevue Ave, Oakland, CA",
+            placeId: "ChIJVVVVVYx3hYARGpkL8KqqCAQ",
+            websiteUrl: "https://fairyland.org/",
+            mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJVVVVVYx3hYARGpkL8KqqCAQ",
+          },
+        ],
+        parks: [
+          {
+            id: 4,
+            title: "Lake Merritt",
+            description: "Urban lake with playground and gardens",
+            image: "/lake-merritt-oakland-california-scenic-view.jpg",
+            ages: "All Ages",
+            type: "Outdoor",
+            cost: "Free",
+            rating: 4.6,
+            location: "Oakland, CA",
+            placeId: "ChIJVVVVVYx3hYARGpkL8KqqCAQ",
+            websiteUrl: "https://www.oaklandca.gov/topics/lake-merritt",
+            mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJVVVVVYx3hYARGpkL8KqqCAQ",
+          },
+          {
+            id: 5,
+            title: "Redwood Regional Park",
+            description: "Hiking trails through redwood forest",
+            image: "/redwood-regional-park-oakland-tall-trees-hiking-tr.jpg",
+            ages: "5+",
+            type: "Outdoor",
+            cost: "Free",
+            rating: 4.7,
+            location: "Oakland Hills, CA",
+            placeId: "ChIJVVVVVYx3hYARGpkL8KqqCAQ",
+            websiteUrl: "https://www.ebparks.org/parks/redwood",
+            mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJVVVVVYx3hYARGpkL8KqqCAQ",
+          },
+          {
+            id: 6,
+            title: "Joaquin Miller Park",
+            description: "Nature trails and picnic areas",
+            image: "/joaquin-miller-park-oakland-playground-nature.jpg",
+            ages: "All Ages",
+            type: "Outdoor",
+            cost: "Free",
+            rating: 4.5,
+            location: "Oakland, CA",
+            placeId: "ChIJVVVVVYx3hYARGpkL8KqqCAQ",
+            websiteUrl: "https://www.oaklandca.gov/topics/joaquin-miller-park",
+            mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJVVVVVYx3hYARGpkL8KqqCAQ",
+          },
+        ],
       },
-      {
-        id: 5,
-        title: "Lake Merritt",
-        description: "Urban lake with playground and gardens",
-        image: "/lake-merritt.jpg",
-        ages: "All Ages",
-        type: "Outdoor",
-        cost: "Free",
-        rating: 4.6,
-        location: "Oakland, CA",
-        placeId: "ChIJVVVVVYx3hYARGpkL8KqqCAQ",
-        websiteUrl: "https://www.lakemerritt.com/",
-        mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJVVVVVYx3hYARGpkL8KqqCAQ",
+      berkeley: {
+        museums: [
+          {
+            id: 7,
+            title: "Lawrence Hall of Science",
+            description: "Interactive science center with hands-on exhibits",
+            image: "/berkeley-lawrence-hall-of-science-building.jpg",
+            ages: "All Ages",
+            type: "Indoor",
+            cost: "$15",
+            rating: 4.7,
+            location: "1 Centennial Dr, Berkeley, CA",
+            placeId: "ChIJrU3KAHJ9hYARs8HI7Y8L8KQ",
+            websiteUrl: "https://www.lawrencehallofscience.org/",
+            mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJrU3KAHJ9hYARs8HI7Y8L8KQ",
+          },
+          {
+            id: 8,
+            title: "UC Berkeley Art Museum",
+            description: "Contemporary art and film archive",
+            image: "/uc-berkeley-art-museum-modern-building.jpg",
+            ages: "8+",
+            type: "Indoor",
+            cost: "$14",
+            rating: 4.4,
+            location: "2155 Center St, Berkeley, CA",
+            placeId: "ChIJrU3KAHJ9hYARs8HI7Y8L8KQ",
+            websiteUrl: "https://bampfa.org/",
+            mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJrU3KAHJ9hYARs8HI7Y8L8KQ",
+          },
+          {
+            id: 9,
+            title: "Berkeley Natural History Museums",
+            description: "Paleontology, zoology, and anthropology exhibits",
+            image: "/berkeley-natural-history-museum-dinosaur-exhibit.jpg",
+            ages: "All Ages",
+            type: "Indoor",
+            cost: "Free",
+            rating: 4.6,
+            location: "UC Berkeley Campus, Berkeley, CA",
+            placeId: "ChIJrU3KAHJ9hYARs8HI7Y8L8KQ",
+            websiteUrl: "https://bnhm.berkeley.edu/",
+            mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJrU3KAHJ9hYARs8HI7Y8L8KQ",
+          },
+        ],
+        parks: [
+          {
+            id: 10,
+            title: "Tilden Regional Park",
+            description: "Nature trails, playground, and steam train",
+            image: "/tilden-park-berkeley-steam-train-children.jpg",
+            ages: "All Ages",
+            type: "Outdoor",
+            cost: "Free",
+            rating: 4.8,
+            location: "Berkeley Hills, CA",
+            placeId: "ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+            websiteUrl: "https://www.ebparks.org/parks/tilden",
+            mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+          },
+          {
+            id: 11,
+            title: "Berkeley Marina",
+            description: "Waterfront park with kite flying and playgrounds",
+            image: "/berkeley-marina-waterfront-kites-flying.jpg",
+            ages: "All Ages",
+            type: "Outdoor",
+            cost: "Free",
+            rating: 4.5,
+            location: "Berkeley, CA",
+            placeId: "ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+            websiteUrl: "https://www.cityofberkeley.info/marina/",
+            mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+          },
+          {
+            id: 12,
+            title: "Codornices Park",
+            description: "Park with famous concrete slide",
+            image: "/codornices-park-berkeley-concrete-slide.jpg",
+            ages: "3+",
+            type: "Outdoor",
+            cost: "Free",
+            rating: 4.7,
+            location: "1201 Euclid Ave, Berkeley, CA",
+            placeId: "ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+            websiteUrl: "https://www.cityofberkeley.info/parks/",
+            mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+          },
+        ],
       },
-      {
-        id: 6,
-        title: "Redwood Regional Park",
-        description: "Hiking trails through redwood forest",
-        image: "/redwood-park.jpg",
-        ages: "5+",
-        type: "Outdoor",
-        cost: "Free",
-        rating: 4.7,
-        location: "Oakland Hills, CA",
-        placeId: "ChIJVVVVVYx3hYARGpkL8KqqCAQ",
-        websiteUrl: "https://www.redwoodrangers.org/",
-        mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJVVVVVYx3hYARGpkL8KqqCAQ",
+      alameda: {
+        museums: [
+          {
+            id: 13,
+            title: "USS Hornet Museum",
+            description: "Historic aircraft carrier museum",
+            image: "/uss-hornet-aircraft-carrier-alameda.jpg",
+            ages: "6+",
+            type: "Indoor",
+            cost: "$20",
+            rating: 4.6,
+            location: "707 W Hornet Ave, Alameda, CA",
+            placeId: "ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+            websiteUrl: "https://www.uss-hornet.org/",
+            mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+          },
+          {
+            id: 14,
+            title: "Alameda Museum",
+            description: "Local history and heritage exhibits",
+            image: "/alameda-museum-historic-building.jpg",
+            ages: "All Ages",
+            type: "Indoor",
+            cost: "Free",
+            rating: 4.3,
+            location: "2324 Alameda Ave, Alameda, CA",
+            placeId: "ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+            websiteUrl: "https://www.alamedamuseum.org/",
+            mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+          },
+          {
+            id: 15,
+            title: "Pacific Pinball Museum",
+            description: "Playable pinball machines from all eras",
+            image: "/pacific-pinball-museum-alameda-vintage-machines.jpg",
+            ages: "5+",
+            type: "Indoor",
+            cost: "$20",
+            rating: 4.8,
+            location: "1510 Webster St, Alameda, CA",
+            placeId: "ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+            websiteUrl: "https://www.pacificpinball.org/",
+            mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+          },
+        ],
+        parks: [
+          {
+            id: 16,
+            title: "Crown Memorial State Beach",
+            description: "Sandy beach with playground and picnic areas",
+            image: "/crown-beach-alameda-sandy-shore-families.jpg",
+            ages: "All Ages",
+            type: "Outdoor",
+            cost: "Free",
+            rating: 4.5,
+            location: "8th St & Otis Dr, Alameda, CA",
+            placeId: "ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+            websiteUrl: "https://www.parks.ca.gov/",
+            mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+          },
+          {
+            id: 17,
+            title: "Washington Park",
+            description: "Large park with sports fields and playground",
+            image: "/washington-park-alameda-playground-children.jpg",
+            ages: "All Ages",
+            type: "Outdoor",
+            cost: "Free",
+            rating: 4.4,
+            location: "740 Central Ave, Alameda, CA",
+            placeId: "ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+            websiteUrl: "https://www.alamedaca.gov/Departments/Recreation-and-Parks",
+            mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+          },
+          {
+            id: 18,
+            title: "Crab Cove Visitor Center",
+            description: "Marine science center with touch tanks",
+            image: "/crab-cove-alameda-marine-center-touch-tanks.jpg",
+            ages: "All Ages",
+            type: "Outdoor",
+            cost: "$5",
+            rating: 4.6,
+            location: "1252 McKay Ave, Alameda, CA",
+            placeId: "ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+            websiteUrl: "https://www.ebparks.org/parks/crab_cove",
+            mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+          },
+        ],
       },
-    ]
+      "san-francisco": {
+        museums: [
+          {
+            id: 19,
+            title: "Exploratorium",
+            description: "Interactive science and art museum",
+            image: "/exploratorium-san-francisco-pier-15-interactive.jpg",
+            ages: "All Ages",
+            type: "Indoor",
+            cost: "$30",
+            rating: 4.7,
+            location: "Pier 15, San Francisco, CA",
+            placeId: "ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+            websiteUrl: "https://www.exploratorium.edu/",
+            mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+          },
+          {
+            id: 20,
+            title: "California Academy of Sciences",
+            description: "Natural history museum with aquarium and planetarium",
+            image: "/california-academy-sciences-sf-green-roof.jpg",
+            ages: "All Ages",
+            type: "Indoor",
+            cost: "$36",
+            rating: 4.8,
+            location: "55 Music Concourse Dr, San Francisco, CA",
+            placeId: "ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+            websiteUrl: "https://www.calacademy.org/",
+            mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+          },
+          {
+            id: 21,
+            title: "Children's Creativity Museum",
+            description: "Hands-on multimedia arts and technology",
+            image: "/childrens-creativity-museum-sf-kids-technology.jpg",
+            ages: "2-12",
+            type: "Indoor",
+            cost: "$15",
+            rating: 4.5,
+            location: "221 4th St, San Francisco, CA",
+            placeId: "ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+            websiteUrl: "https://creativity.org/",
+            mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+          },
+        ],
+        parks: [
+          {
+            id: 22,
+            title: "Golden Gate Park",
+            description: "Large urban park with playgrounds and gardens",
+            image: "/golden-gate-park-sf-playground-families.jpg",
+            ages: "All Ages",
+            type: "Outdoor",
+            cost: "Free",
+            rating: 4.8,
+            location: "San Francisco, CA",
+            placeId: "ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+            websiteUrl: "https://sfrecpark.org/destination/golden-gate-park/",
+            mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+          },
+          {
+            id: 23,
+            title: "Crissy Field",
+            description: "Waterfront park with beach and Golden Gate views",
+            image: "/crissy-field-sf-golden-gate-bridge-beach.jpg",
+            ages: "All Ages",
+            type: "Outdoor",
+            cost: "Free",
+            rating: 4.7,
+            location: "San Francisco, CA",
+            placeId: "ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+            websiteUrl: "https://www.parksconservancy.org/parks/crissy-field",
+            mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+          },
+          {
+            id: 24,
+            title: "Yerba Buena Gardens",
+            description: "Urban park with children's play area",
+            image: "/yerba-buena-gardens-sf-urban-playground.jpg",
+            ages: "All Ages",
+            type: "Outdoor",
+            cost: "Free",
+            rating: 4.6,
+            location: "750 Howard St, San Francisco, CA",
+            placeId: "ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+            websiteUrl: "https://www.yerbabuenagardens.com/",
+            mapUrl: "https://www.google.com/maps/place/?q=place_id:ChIJVVVVVVV9hYARGpkL8KqqCAQ",
+          },
+        ],
+      },
+    }
 
-    if (category === "learning") return museums
-    if (category === "outdoor") return parks
-    return museums.slice(0, 3)
+    const locationData = activitiesByLocation[location]
+
+    if (category === "learning") return locationData.museums
+    if (category === "outdoor") return locationData.parks
+    return locationData.museums.slice(0, 3)
   }
 
   const playdates = [
@@ -351,7 +660,11 @@ export default function ExplorePage() {
                     {(Object.keys(LOCATION_COORDS) as Array<keyof typeof LOCATION_COORDS>).map((location) => (
                       <button
                         key={location}
-                        onClick={() => setSelectedLocation(location)}
+                        onClick={() => {
+                          console.log("[v0] Location button clicked:", LOCATION_COORDS[location].name)
+                          // </CHANGE>
+                          setSelectedLocation(location)
+                        }}
                         className={`px-6 text-sm font-medium capitalize rounded-full transition-all py-2 ${
                           selectedLocation === location
                             ? "bg-secondary-foreground text-primary-foreground shadow-md scale-105"
@@ -797,7 +1110,7 @@ export default function ExplorePage() {
       )}
 
       {/* Footer */}
-      <footer className="w-full py-12 px-6 md:px-12 border-t border-border bg-secondary-foreground">
+      <footer className="w-full py-12 px-6 md:px-12 border-t border-border bg-accent-foreground">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
             <div className="space-y-4">

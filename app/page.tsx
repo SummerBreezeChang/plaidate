@@ -12,7 +12,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-background">
-      <header className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 backdrop-blur-md border-b border-border/50 py-4 bg-primary-foreground">
+      <header className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-12 backdrop-blur-md border-b border-border/50 py-4 bg-primary-foreground border-none">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <Image src="/plai-logo.png" alt="Plai Logo" width={100} height={50} priority className="w-auto h-10" />
@@ -81,9 +81,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <div className="inline-block px-4 py-2 bg-[#7AC5F8]/10 rounded-full">
-                <span className="text-sm font-medium text-[#7AC5F8]">Curated for Modern Parents</span>
+              <div className="inline-block px-4 py-2 bg-accent rounded-full">
+                <span className="text-sm font-medium text-foreground">Curated for Modern Parents</span>
               </div>
+              {/* </CHANGE> */}
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
                 Resources that actually help
               </h1>
@@ -95,7 +96,8 @@ export default function Home() {
                 <Button
                   asChild
                   size="lg"
-                  className="rounded-full px-8 bg-secondary-foreground hover:bg-secondary-foreground/90 text-primary-foreground"
+                  className="rounded-full px-8 bg-primary hover:bg-primary/90 text-primary-foreground"
+                  // </CHANGE>
                 >
                   <Link href="/resources">Join Waitlist</Link>
                 </Button>
@@ -180,7 +182,7 @@ export default function Home() {
               },
             ].map((category, index) => (
               <Link key={index} href="/resources">
-                <Card className="group overflow-hidden border-border hover:shadow-xl transition-all duration-300 cursor-pointer bg-chart-5">
+                <Card className="group overflow-hidden border-border hover:shadow-xl transition-all duration-300 cursor-pointer bg-popover">
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <div className={`absolute inset-0 bg-gradient-to-br ${category.color} z-10`} />
                     <Image
@@ -204,7 +206,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-6 md:px-12 py-20 md:py-32 bg-chart-4">
+      <section className="px-6 md:px-12 py-20 md:py-32 bg-secondary-foreground">
         <div className="max-w-5xl mx-auto text-center space-y-8">
           <div className="space-y-4">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground text-balance">
@@ -217,14 +219,14 @@ export default function Home() {
           <Button
             asChild
             size="lg"
-            className="rounded-full px-8 bg-secondary-foreground hover:bg-secondary-foreground/90 text-primary-foreground"
+            className="rounded-full px-8 bg-primary hover:bg-primary/90 text-primary-foreground"
           >
             <Link href="/waitlist">Get Early Access to Plaidate</Link>
           </Button>
         </div>
       </section>
 
-      <footer className="w-full py-12 px-6 md:px-12 border-t border-border bg-secondary-foreground">
+      <footer className="w-full py-12 px-6 md:px-12 border-t border-border bg-primary">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
             <div className="space-y-4">

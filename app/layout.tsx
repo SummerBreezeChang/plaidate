@@ -1,57 +1,57 @@
 import type React from "react"
-import type { Metadata } from "next"
-import { Work_Sans } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
+import Link from "next/link"
+import Image from "next/image"
+import { headers } from "next/headers"
 import "./globals.css"
+
+import { Work_Sans, Space_Grotesk as V0_Font_Space_Grotesk, Geist_Mono as V0_Font_Geist_Mono, Rubik as V0_Font_Rubik } from 'next/font/google'
+
+// Initialize fonts
+const _spaceGrotesk = V0_Font_Space_Grotesk({ subsets: ['latin'], weight: ["300","400","500","600","700"], variable: '--v0-font-space-grotesk' })
+const _geistMono = V0_Font_Geist_Mono({ subsets: ['latin'], weight: ["100","200","300","400","500","600","700","800","900"], variable: '--v0-font-geist-mono' })
+const _rubik = V0_Font_Rubik({ subsets: ['latin'], weight: ["300","400","500","600","700","800","900"], variable: '--v0-font-rubik' })
+const _v0_fontVariables = `${_spaceGrotesk.variable} ${_geistMono.variable} ${_rubik.variable}`
 
 const workSans = Work_Sans({
   subsets: ["latin"],
+  weight: ["400", "600"],
   variable: "--font-work-sans",
-  display: "swap",
 })
 
-export const metadata: Metadata = {
-  title: "Join Plaidate - Connect with Parents for Playdates",
-  description:
-    "A family-friendly platform for parents of K–5 children to easily organize, discover, and join playdates — while streamlining communication, payments, and activity planning.",
-  generator: "v0.app",
-  icons: {
-    icon: "/favicon.png",
-  },
-  openGraph: {
-    title: "Join Plaidate",
-    description:
-      "A family-friendly platform for parents of K–5 children to easily organize, discover, and join playdates — while streamlining communication, payments, and activity planning.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Join Plaidate - Connect with Parents for Playdates",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Join Plaidate",
-    description:
-      "A family-friendly platform for parents of K–5 children to easily organize, discover, and join playdates.",
-    images: ["/og-image.png"],
-  },
-}
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const path = headers().get("x-invoke-path") || ""
+  const inApp = path.startsWith("/app")
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
   return (
     <html lang="en">
-      <body className={`font-sans ${workSans.variable}`}>
-        <Suspense fallback={null}>{children}</Suspense>
-        <Analytics />
+      <body className={`font-sans ${workSans.variable} ${_v0_fontVariables}`}>
+        {!inApp && (
+          <header className="sticky top-0 z-50 border-b bg-white/90 backdrop-blur">
+            <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
+              <Link href="/" className="flex items-center">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PlaidateLogo-HYd1EVEfWytuE1HiUpsLcc60kHXHzS.png"
+                  alt="Plai"
+                  width={80}
+                  height={40}
+                  className="h-8 w-auto"
+                  priority
+                />
+              </Link>
+              <nav className="flex items-center gap-4"></nav>
+            </div>
+          </header>
+        )}
+
+        <main className="min-h-screen">
+          <Suspense fallback={null}>{children}</Suspense>
+        </main>
       </body>
     </html>
   )
 }
+
+export const metadata = {
+      generator: 'v0.app'
+    };

@@ -66,7 +66,7 @@ export function WaitlistForm() {
           <Button
             type="submit"
             disabled={status === "loading"}
-            className="h-12 font-semibold hover:bg-[#7AC5F8] text-primary-foreground bg-secondary-foreground md:whitespace-nowrap md:px-6"
+            className="h-12 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground md:whitespace-nowrap md:px-6"
           >
             {status === "loading" ? "Joining..." : "Join Waitlist"}
           </Button>

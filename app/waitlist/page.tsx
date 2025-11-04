@@ -33,11 +33,7 @@ export default function WaitlistPage() {
             >
               Resources
             </Link>
-            <Button
-              asChild
-              size="sm"
-              className="rounded-full bg-secondary-foreground hover:bg-secondary-foreground/90 text-primary-foreground"
-            >
+            <Button asChild size="sm" className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground">
               <Link href="/waitlist">Join Waitlist</Link>
             </Button>
           </nav>
@@ -69,7 +65,7 @@ export default function WaitlistPage() {
               <Button
                 asChild
                 size="sm"
-                className="rounded-full bg-secondary-foreground hover:bg-secondary-foreground/90 text-primary-foreground w-full"
+                className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground w-full"
               >
                 <Link href="/waitlist" onClick={() => setIsMobileMenuOpen(false)}>
                   Join Waitlist
@@ -88,14 +84,12 @@ export default function WaitlistPage() {
             <div className="space-y-2">
               <h1
                 id="join-plaidate"
-                className="md:text-6xl font-bold tracking-tight text-balance leading-tight text-primary text-4xl"
+                className="md:text-6xl font-bold tracking-tight text-balance leading-tight text-4xl text-foreground"
               >
                 Join Plaidate
               </h1>
               <p className="leading-normal font-sans py-2 text-base text-popover-foreground pb-8">
-                A platform for parents of K-5 children to easily host, join, and plan activities. Connect with skilled
-                parents who create engaging activities that help your child and others build social skills and
-                friendships.
+                A platform for parents of K-5 children to easily host, join, and plan activities. Connect with skilled parents who create engaging activities that help your child and others build social skills and friendships.
               </p>
             </div>
 
@@ -125,8 +119,8 @@ export default function WaitlistPage() {
       <section className="w-full px-6 md:px-12 py-16 bg-muted/30">
         <div className="max-w-7xl space-y-12 mx-auto">
           <div className="text-center space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-primary">Why parents love Plaidate</h2>
-            <p className="text-lg text-primary">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">Why parents love Plaidate</h2>
+            <p className="text-lg text-foreground">
               One-stop place to chat, plan, and attend — instead of messy text threads or multiple apps.
             </p>
           </div>
@@ -157,7 +151,7 @@ export default function WaitlistPage() {
             <div>
               <Button
                 asChild
-                className="hover:bg-[#7AC5F8] rounded-full px-8 py-6 text-lg text-primary-foreground bg-secondary-foreground"
+                className="bg-primary hover:bg-primary/90 rounded-full px-8 py-6 text-lg text-primary-foreground"
               >
                 <a href="#join-plaidate">Join the Waitlist</a>
               </Button>
@@ -178,7 +172,7 @@ export default function WaitlistPage() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="rounded-full px-8 py-6 text-lg border-secondary-foreground text-secondary-foreground hover:bg-secondary-foreground hover:text-primary-foreground bg-transparent"
+                className="rounded-full px-8 py-6 text-lg border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
               >
                 <Link href="/resources">Resources</Link>
               </Button>
@@ -188,7 +182,7 @@ export default function WaitlistPage() {
       </section>
 
       {/* Footer */}
-      <footer className="w-full py-12 px-6 md:px-12 border-t border-border bg-secondary-foreground">
+      <footer className="w-full py-12 px-6 md:px-12 border-t border-border bg-primary">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
             <div className="space-y-4">
