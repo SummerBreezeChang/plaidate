@@ -118,7 +118,7 @@ export default function Home() {
       </section>
 
       {/* Why Parents Love Section */}
-      <section className="w-full px-6 md:px-12 py-16 bg-muted/30">
+      <section className="w-full px-6 md:px-12 py-16 bg-sidebar">
         <div className="max-w-7xl space-y-12 mx-auto">
           <div className="text-center space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">Why parents love Plaidate</h2>
@@ -132,7 +132,7 @@ export default function Home() {
       </section>
 
       {/* How It Works Section */}
-      <section className="w-full px-6 md:px-12 py-16 bg-popover">
+      <section className="w-full px-6 md:px-12 py-16 bg-card">
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="text-center space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight">How it works</h2>
@@ -147,7 +147,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16">
           {/* Left: Mission Statement & Join Waitlist */}
           <div className="flex flex-col justify-center space-y-8 text-center md:text-left">
-            <h2 className="tracking-tight text-balance leading-tight text-primary font-medium text-2xl md:text-3xl">
+            <h2 className="tracking-tight text-balance leading-tight font-medium text-2xl md:text-3xl text-foreground">
               At Plaidate, we believe social skills are the foundation of kids' confidence and emotional growth.
             </h2>
             <div>
@@ -163,7 +163,7 @@ export default function Home() {
           {/* Right: Resources Section */}
           <div className="flex flex-col justify-center space-y-8 text-center md:text-left border-t md:border-t-0 md:border-l border-primary/20 pt-12 md:pt-0 md:pl-16">
             <div className="space-y-4">
-              <h3 className="text-2xl md:text-3xl font-semibold text-primary">While You Wait, Explore Resources</h3>
+              <h3 className="text-2xl md:text-3xl font-semibold text-foreground">While You Wait, Explore Resources</h3>
               <p className="text-base text-popover-foreground leading-relaxed">
                 Discover curated parenting books, podcasts, activities, and tools to help you build stronger connections
                 with your child today.

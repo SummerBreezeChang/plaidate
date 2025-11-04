@@ -26,10 +26,10 @@ export function HowItWorks() {
       {steps.map((step, index) => (
         <div key={index} className={`${step.color} rounded-3xl p-8 space-y-4 min-h-[240px]`}>
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary-foreground/20 backdrop-blur-sm text-center">
-            <span className="text-2xl font-semibold text-foreground">{step.number}</span>
+            <span className="text-2xl font-semibold text-popover">{step.number}</span>
           </div>
-          <h3 className="text-2xl font-semibold text-foreground">{step.title}</h3>
-          <p className="text-sm leading-normal opacity-95 text-foreground">{step.description}</p>
+          <h3 className="text-2xl font-semibold text-popover">{step.title}</h3>
+          <p className="text-sm leading-normal opacity-95 text-popover">{step.description}</p>
         </div>
       ))}
     </div>
