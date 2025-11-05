@@ -1536,12 +1536,6 @@ export default function ResourcesPage() {
 
           <nav className="hidden md:flex items-center gap-6">
             <Link
-              href="/explore"
-              className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
-            >
-              Explore
-            </Link>
-            <Link
               href="/resources"
               className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
             >
@@ -1569,13 +1563,6 @@ export default function ResourcesPage() {
           <div className="md:hidden mt-4 pb-4 border-t border-gray-200/50 pt-4">
             <nav className="flex flex-col gap-4">
               <Link
-                href="/explore"
-                className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Explore
-              </Link>
-              <Link
                 href="/resources"
                 className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -1597,7 +1584,7 @@ export default function ResourcesPage() {
       </header>
 
       {/* Main Content */}
-      <div className="flex-1 px-6 md:px-12 py-8 pt-28 md:pt-32 bg-background">
+      <div className="flex-1 px-6 md:px-12 py-8 pt-28 bg-background md:pt-16">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row gap-8">
             {/* Sidebar */}
@@ -1631,14 +1618,13 @@ export default function ResourcesPage() {
               {/* Results Header */}
               <div className="mb-6">
                 <p className="text-sm text-muted-foreground mb-3">
-                  <span className="font-semibold text-muted-foreground">{filteredResources.length}</span> resources found for{" "}
-                  <span className="font-semibold">{selectedAge.toLowerCase()}</span> in{" "}
+                  <span className="font-semibold text-muted-foreground">{filteredResources.length}</span> resources
+                  found for <span className="font-semibold">{selectedAge.toLowerCase()}</span> in{" "}
                   <span className="font-semibold">{currentCategoryName.toLowerCase()}</span>
                 </p>
 
                 <div className="space-y-2">
                   <h1 className="text-4xl md:text-5xl font-bold text-foreground">Explore All Resources</h1>
-                  
                 </div>
 
                 <div className="border-t border-gray-200 pt-3 mt-2 border-none">
@@ -1709,12 +1695,6 @@ export default function ResourcesPage() {
             <nav className="flex flex-col md:flex-row gap-6 text-primary-foreground">
               <Link href="/" className="text-sm hover:text-foreground/70 transition-colors text-primary-foreground">
                 Home
-              </Link>
-              <Link
-                href="/explore"
-                className="text-sm hover:text-foreground/70 transition-colors text-primary-foreground"
-              >
-                Explore
               </Link>
               <Link
                 href="/resources"
