@@ -108,7 +108,7 @@ export default function Home() {
       <section className="w-full px-6 md:px-12 py-16 bg-sidebar">
         <div className="max-w-7xl space-y-12 mx-auto">
           <div className="text-center space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">Why parents love Plaidate</h2>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">Why parents love Plai</h2>
             <p className="text-lg text-foreground">
               One-stop place to chat, plan, and attend — instead of messy text threads or multiple apps.
             </p>
@@ -135,7 +135,7 @@ export default function Home() {
           {/* Left: Mission Statement & Join Waitlist */}
           <div className="flex flex-col justify-center space-y-8 text-center md:text-left">
             <h2 className="tracking-tight text-balance leading-tight font-medium text-2xl md:text-3xl text-foreground">
-              At Plaidate, we believe social skills are the foundation of kids' confidence and emotional growth.
+              At Plai, we believe social skills are the foundation of kids' confidence and emotional growth.
             </h2>
             <div>
               <Button
