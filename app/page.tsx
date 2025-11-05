@@ -76,9 +76,7 @@ export default function Home() {
                 Join Plai
               </h1>
               <p className="leading-normal font-sans py-2 text-base text-popover-foreground pb-8">
-                A platform for parents of K-5 children to easily host, join, and plan activities. Connect with skilled
-                parents who create engaging activities that help your child and others build social skills and
-                friendships.
+                A platform for parents of K-5 children to easily host, join, and plan activities. Connect with skilled parents who create engaging activities that help your child build social skills and friendships.
               </p>
             </div>
 
