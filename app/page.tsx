@@ -20,13 +20,7 @@ export default function Home() {
           <Link href="/" className="flex items-center gap-2">
             <Image src="/plai-logo.png" alt="Plai Logo" width={100} height={50} priority className="w-auto h-10" />
           </Link>
-          <nav className="hidden md:flex items-center gap-6">
-            <Link
-              href="/explore"
-              className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
-            >
-              Explore
-            </Link>
+          <nav className="hidden md:flex items-center gap-9">
             <Link
               href="/resources"
               className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
@@ -48,13 +42,6 @@ export default function Home() {
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 border-t border-gray-200/50 pt-4">
             <nav className="flex flex-col gap-4">
-              <Link
-                href="/explore"
-                className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Explore
-              </Link>
               <Link
                 href="/resources"
                 className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
@@ -196,12 +183,6 @@ export default function Home() {
             <nav className="flex flex-col md:flex-row gap-6 text-primary-foreground">
               <Link href="/" className="text-sm hover:text-foreground/70 transition-colors text-primary-foreground">
                 Home
-              </Link>
-              <Link
-                href="/explore"
-                className="text-sm hover:text-foreground/70 transition-colors text-primary-foreground"
-              >
-                Explore
               </Link>
               <Link
                 href="/resources"
