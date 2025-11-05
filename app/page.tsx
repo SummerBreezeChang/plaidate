@@ -73,7 +73,7 @@ export default function Home() {
                 id="join-plaidate"
                 className="md:text-6xl font-bold tracking-tight text-balance leading-tight text-4xl text-foreground"
               >
-                Join Plaidate
+                Join Plai
               </h1>
               <p className="leading-normal font-sans py-2 text-base text-popover-foreground pb-8">
                 A platform for parents of K-5 children to easily host, join, and plan activities. Connect with skilled
@@ -199,7 +199,7 @@ export default function Home() {
             </nav>
           </div>
           <div className="mt-8 pt-8 border-t border-gray-200 border-none">
-            <p className="text-xs text-primary-foreground">© 2025 Plaidate. All Rights Reserved.</p>
+            <p className="text-xs text-primary-foreground">© 2025 Plai. All Rights Reserved.</p>
           </div>
         </div>
       </footer>
